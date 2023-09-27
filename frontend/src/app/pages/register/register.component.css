@@ -1,0 +1,27 @@
+#cajaExterior {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.rounded-pill {
+    border-radius: 20px;
+  }
+
+#registrar-url{
+    text-decoration: none;
+}
+input.ng-invalid.ng-touched {
+  border: solid 2px rgb(223, 107, 87) !important;
+}
+
+input.ng-valid {
+  border: solid 2px #3cc53d !important;
+}
+
+.control-error{
+  color: rgb(223, 107, 87);
+  font-size: 12px;
+}
+

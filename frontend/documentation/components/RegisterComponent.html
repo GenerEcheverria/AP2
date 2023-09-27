@@ -1,0 +1,1223 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>frontend documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">frontend documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  RegisterComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/pages/register/register.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente para el registro de usuarios.</p>
+
+    </p>
+
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-register</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./register.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./register.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#crypto" >crypto</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#formLogin" >formLogin</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#imageSrc" >imageSrc</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#pass" >pass</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#pass2" >pass2</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#emailValidator" >emailValidator</a>
+                            </li>
+                            <li>
+                                <a href="#imageValidator" >imageValidator</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onFileChange" >onFileChange</a>
+                            </li>
+                            <li>
+                                <a href="#onSubmit" >onSubmit</a>
+                            </li>
+                            <li>
+                                <a href="#passwordsMatchValidator" >passwordsMatchValidator</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(formBuilder: <a href="https://angular.io/api/forms/FormBuilder" target="_blank">FormBuilder</a>, authService: <a href="../injectables/AuthService.html" target="_self">AuthService</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/pages/register/register.component.ts:43</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>formBuilder</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/forms/FormBuilder" target="_blank" >FormBuilder</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>authService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="emailValidator"></a>
+                    <span class="name">
+                        <span ><b>emailValidator</b></span>
+                        <a href="#emailValidator"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>emailValidator()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="74"
+                            class="link-to-prism">src/app/pages/register/register.component.ts:74</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://angular.io/api/forms/ValidatorFn" target="_blank" >ValidatorFn</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="imageValidator"></a>
+                    <span class="name">
+                        <span ><b>imageValidator</b></span>
+                        <a href="#imageValidator"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>imageValidator(control: <a href="https://angular.io/api/forms/AbstractControl" target="_blank">AbstractControl</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="102"
+                            class="link-to-prism">src/app/pages/register/register.component.ts:102</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Validador personalizado para la dimensión de la imagen.
+Verifica que la imagen tenga dimensiones cuadradas.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>control</td>
+                                    <td>
+                                                <code><a href="https://angular.io/api/forms/AbstractControl" target="_blank" >AbstractControl</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Control del formulario.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>ValidationErrors | null</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>Error de validación si la imagen no tiene dimensiones cuadradas.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="51"
+                            class="link-to-prism">src/app/pages/register/register.component.ts:51</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Se ejecuta al inicializar el componente.
+Se configura el formulario de registro con las validaciones correspondientes.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onFileChange"></a>
+                    <span class="name">
+                        <span ><b>onFileChange</b></span>
+                        <a href="#onFileChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onFileChange(event: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="82"
+                            class="link-to-prism">src/app/pages/register/register.component.ts:82</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>event</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onSubmit"></a>
+                    <span class="name">
+                        <span ><b>onSubmit</b></span>
+                        <a href="#onSubmit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onSubmit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="129"
+                            class="link-to-prism">src/app/pages/register/register.component.ts:129</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Método para enviar el formulario de registro.
+Se obtienen los valores ingresados por el usuario y se realiza el registro llamando al servicio de autenticación.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="passwordsMatchValidator"></a>
+                    <span class="name">
+                        <span ><b>passwordsMatchValidator</b></span>
+                        <a href="#passwordsMatchValidator"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>passwordsMatchValidator(formGroup: <a href="https://angular.io/api/forms/FormGroup" target="_blank">FormGroup</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="61"
+                            class="link-to-prism">src/app/pages/register/register.component.ts:61</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>formGroup</td>
+                                    <td>
+                                                <code><a href="https://angular.io/api/forms/FormGroup" target="_blank" >FormGroup</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="crypto"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>crypto</b></span>
+                        <a href="#crypto"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Crypto</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/pages/register/register.component.ts:43</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Instancia de la clase Crypto para encriptar contraseñas.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formLogin"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>formLogin</b></span>
+                        <a href="#formLogin"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/forms/FormGroup" target="_blank" >FormGroup</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/pages/register/register.component.ts:23</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Formulario de registro.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="imageSrc"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>imageSrc</b></span>
+                        <a href="#imageSrc"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/pages/register/register.component.ts:38</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Fuente de imagen para mostrar la vista previa.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="pass"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>pass</b></span>
+                        <a href="#pass"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/pages/register/register.component.ts:28</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Contraseña ingresada por el usuario.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="pass2"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>pass2</b></span>
+                        <a href="#pass2"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/pages/register/register.component.ts:33</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Confirmación de contraseña ingresada por el usuario.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { formatNumber } from &#x27;@angular/common&#x27;;
+import { Component } from &#x27;@angular/core&#x27;;
+import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors, ValidatorFn } from &#x27;@angular/forms&#x27;;
+import { User } from &#x27;src/app/interfaces/user&#x27;;
+import { Crypto } from &#x27;src/app/util/crypto&#x27;;
+import { AuthService } from &#x27;src/app/services/auth.service&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+import { saveAs } from &#x27;file-saver&#x27;;
+
+/**
+ * Componente para el registro de usuarios.
+ */
+@Component({
+  selector: &#x27;app-register&#x27;,
+  templateUrl: &#x27;./register.component.html&#x27;,
+  styleUrls: [&#x27;./register.component.css&#x27;]
+})
+export class RegisterComponent {
+
+  /**
+   * Formulario de registro.
+   */
+  public formLogin!: FormGroup;
+
+   /**
+   * Contraseña ingresada por el usuario.
+   */
+  public pass: string &#x3D; &#x27;&#x27;
+
+  /**
+   * Confirmación de contraseña ingresada por el usuario.
+   */
+  public pass2: string &#x3D; &#x27;&#x27;
+
+  /**
+   * Fuente de imagen para mostrar la vista previa.
+   */
+  public imageSrc: string &#x3D; &#x27;&#x27;;
+
+  /**
+   * Instancia de la clase Crypto para encriptar contraseñas.
+   */
+  private crypto &#x3D; new Crypto;
+
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {}
+
+  /**
+   * Se ejecuta al inicializar el componente.
+   * Se configura el formulario de registro con las validaciones correspondientes.
+   */
+  ngOnInit(): void {
+    this.formLogin &#x3D; this.formBuilder.group({
+      Nombre: [&#x27;&#x27;, [Validators.required, Validators.minLength(3)]],
+      email: [&#x27;&#x27;, [Validators.required, this.emailValidator()]],
+      telefono: [&#x27;&#x27;, [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
+      fotoPerfil: [&#x27;&#x27;, [Validators.required, this.imageValidator.bind(this)]],
+      password: [&#x27;&#x27;, [Validators.required, Validators.minLength(8)]],
+      confirmPassword: [&#x27;&#x27;, [Validators.required]]}, { validator: this.passwordsMatchValidator }); 
+  }
+
+  passwordsMatchValidator(formGroup: FormGroup) {
+    const password &#x3D; formGroup.get(&#x27;password&#x27;)?.value;
+    const confirmPassword &#x3D; formGroup.get(&#x27;confirmPassword&#x27;)?.value;
+    if(password !&#x3D; &quot;&quot; &amp;&amp; confirmPassword !&#x3D;&quot;&quot;){
+      if (password &amp;&amp; confirmPassword &amp;&amp; password !&#x3D;&#x3D; confirmPassword) {
+        formGroup.get(&#x27;confirmPassword&#x27;)?.setErrors({ passwordsNotMatch: true });
+      } else {
+        formGroup.get(&#x27;confirmPassword&#x27;)?.setErrors(null);
+      }
+    }
+  }
+  
+  
+  emailValidator(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null &#x3D;&gt; {
+      const emailPattern &#x3D; /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      const isValid &#x3D; emailPattern.test(control.value);
+      return isValid ? null : { emailInvalid: true };
+    };
+  }
+
+  onFileChange(event: any) {
+    const file &#x3D; event.target.files[0];
+    if (file &amp;&amp; file.type.match(/image\/(gif|jpe?g|png)$/i)) {
+      const reader &#x3D; new FileReader();
+      reader.onload &#x3D; () &#x3D;&gt; {
+        this.imageSrc &#x3D; reader.result as string;
+      };
+      console.log(&#x27;hola owo&#x27;)
+      reader.readAsDataURL(file);
+    } else {
+      this.imageSrc &#x3D; &#x27;&#x27;;
+    }
+  }
+
+  /**
+   * Validador personalizado para la dimensión de la imagen.
+   * Verifica que la imagen tenga dimensiones cuadradas.
+   * @param control Control del formulario.
+   * @returns Error de validación si la imagen no tiene dimensiones cuadradas.
+   */
+  imageValidator(control: AbstractControl): ValidationErrors | null {
+    const file &#x3D; control.value;
+    if (!file) {
+      return null;
+    }
+
+    const reader &#x3D; new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload &#x3D; () &#x3D;&gt; {
+      const img &#x3D; new Image();
+      img.src &#x3D; reader.result as string;
+      img.onload &#x3D; () &#x3D;&gt; {
+        if (img.width !&#x3D;&#x3D; img.height) {
+          control.setErrors({ dimensions: true });
+        } else {
+          control.setErrors(null);
+        }
+      };
+    };
+
+    return null;
+  }
+
+   /**
+   * Método para enviar el formulario de registro.
+   * Se obtienen los valores ingresados por el usuario y se realiza el registro llamando al servicio de autenticación.
+   */
+  onSubmit() {
+    const formUser &#x3D; this.formLogin.value;
+    console.log(formUser);
+    const newUser:User &#x3D; {
+      &#x27;name&#x27;: formUser.Nombre,
+      &#x27;email&#x27; : formUser.email,
+      &#x27;password&#x27; : this.crypto.encrypted(formUser.password),
+      &#x27;role&#x27; : &quot;admin&quot;,
+      &#x27;phone&#x27;: formUser.telefono,
+      &#x27;photo&#x27;: &quot;adadad&quot;, //aqui le deben pasar la url
+    }
+    this.authService.register(newUser.name, newUser.email, newUser.password, newUser.role, newUser.phone, newUser.photo).subscribe(
+      (response) &#x3D;&gt; {
+        this.router.navigate([&#x27;/login&#x27;]);
+      },
+      (error) &#x3D;&gt; {
+        console.error(error);
+      }
+    );
+  }
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;head&gt;
+    &lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;https://fonts.googleapis.com/css?family&#x3D;Inter&quot;&gt;
+&lt;/head&gt;
+&lt;div class&#x3D;&quot;row m-0 p-0 bg-secondary&quot; id&#x3D;&quot;cajaExterior&quot;&gt;
+    &lt;div class&#x3D;&quot;col-3&quot;&gt;&lt;/div&gt;
+    &lt;div class&#x3D;&quot;col-6 border border-azure-web mt-5 mb-5 bg-white rounded-5&quot;&gt;
+        &lt;div class&#x3D;&quot;row&quot;&gt;
+            &lt;div class&#x3D;&quot;col-12 m-0 p-0&quot;&gt;
+                &lt;div  style&#x3D;&quot;text-align: center;&quot;&gt;
+                    &lt;h4 class&#x3D;&quot;m-0 p-0 mt-3 p-3 fw-bold&quot; style&#x3D;&quot;font-family: &#x27;Inter&#x27;;&quot;&gt;Regístrate&lt;/h4&gt;
+                &lt;/div&gt;
+                &lt;form *ngIf&#x3D;&quot;formLogin&quot; [formGroup]&#x3D;&quot;formLogin&quot; (ngSubmit)&#x3D;&quot;onSubmit()&quot; class&#x3D;&quot;mb-4&quot;&gt;
+                    &lt;div *ngIf&#x3D;&quot;imageSrc!&#x3D;&#x27;&#x27;&quot;&gt;
+                        &lt;div class&#x3D;&quot;row&quot;&gt;
+                            &lt;div class&#x3D;&quot;col-8 m-0 p-0&quot;&gt;
+                                &lt;div class&#x3D;&quot;m-0 p-0 mt-2 p-3&quot;&gt;
+                                    &lt;label for&#x3D;&quot;Nombre&quot;&gt;Nombre:&lt;/label&gt;
+                                    &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;Nombre&quot; pattern&#x3D;&quot;^[A-Z][a-z]*$&quot; formControlName&#x3D;&quot;Nombre&quot; class&#x3D;&quot;form-control rounded-pill bg-azure-web mt-2&quot; &gt;
+                                
+                                    &lt;div *ngIf&#x3D;&quot;formLogin.get(&#x27;Nombre&#x27;)?.invalid &amp;&amp; (formLogin.get(&#x27;Nombre&#x27;)?.dirty || formLogin.get(&#x27;Nombre&#x27;)?.touched)&quot;&gt;
+                                        &lt;div class&#x3D;&quot;control-error&quot; *ngIf&#x3D;&quot;formLogin.get(&#x27;Nombre&#x27;)?.errors?.[&#x27;required&#x27;]&quot;&gt;El campo Nombre es requerido.&lt;/div&gt;
+                                        &lt;div class&#x3D;&quot;control-error&quot; *ngIf&#x3D;&quot;formLogin.get(&#x27;Nombre&#x27;)?.errors?.[&#x27;minlength&#x27;]&quot;&gt;No es un Nombre válido&lt;/div&gt;
+                                    &lt;/div&gt;
+                                
+                                &lt;/div&gt;
+                                &lt;div class&#x3D;&quot;m-0 p-0 mt-2 p-3&quot;&gt;
+                                    &lt;label for&#x3D;&quot;email&quot;&gt;Correo electrónico:&lt;/label&gt;
+                                    &lt;input type&#x3D;&quot;email&quot; id&#x3D;&quot;email&quot; pattern&#x3D;&quot;[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$&quot; formControlName&#x3D;&quot;email&quot; class&#x3D;&quot;form-control rounded-pill bg-azure-web mt-2&quot; &gt;
+                                
+                                    &lt;div *ngIf&#x3D;&quot;formLogin.get(&#x27;email&#x27;)?.invalid &amp;&amp; (formLogin.get(&#x27;email&#x27;)?.dirty || formLogin.get(&#x27;email&#x27;)?.touched)&quot;&gt;
+                                        &lt;div class&#x3D;&quot;control-error&quot; *ngIf&#x3D;&quot;formLogin.get(&#x27;email&#x27;)?.errors?.[&#x27;required&#x27;]&quot;&gt;El campo Email es requerido.&lt;/div&gt;
+                                        &lt;div class&#x3D;&quot;control-error&quot; *ngIf&#x3D;&quot;formLogin.get(&#x27;email&#x27;)?.errors?.[&#x27;email&#x27;]&quot;&gt;No es un email válido&lt;/div&gt;
+                                    &lt;/div&gt;
+                                
+                                &lt;/div&gt;
+                                &lt;div class&#x3D;&quot;m-0 p-0 mt-2 p-3&quot;&gt;
+                                    &lt;label for&#x3D;&quot;telefono&quot;&gt;Teléfono:&lt;/label&gt;
+                                    &lt;input type&#x3D;&quot;telefono&quot; id&#x3D;&quot;telefono&quot; pattern&#x3D;&quot;^[0-9]+$&quot; formControlName&#x3D;&quot;telefono&quot; class&#x3D;&quot;form-control rounded-pill bg-azure-web mt-2&quot;&gt;
+                                    &lt;div *ngIf&#x3D;&quot;formLogin.get(&#x27;telefono&#x27;)?.invalid &amp;&amp; (formLogin.get(&#x27;telefono&#x27;)?.dirty || formLogin.get(&#x27;telefono&#x27;)?.touched)&quot;&gt;
+                                        &lt;div class&#x3D;&quot;control-error&quot; *ngIf&#x3D;&quot;formLogin.get(&#x27;telefono&#x27;)?.errors?.[&#x27;required&#x27;]&quot;&gt;Se requiere un número telefónico&lt;/div&gt;
+                                        &lt;div class&#x3D;&quot;control-error&quot; *ngIf&#x3D;&quot;formLogin.get(&#x27;telefono&#x27;)?.errors?.[&#x27;minlength&#x27;]&quot;&gt;El teléfono debe tener 10 números&lt;/div&gt;
+                                        &lt;div class&#x3D;&quot;control-error&quot; *ngIf&#x3D;&quot;formLogin.get(&#x27;telefono&#x27;)?.errors?.[&#x27;maxlength&#x27;]&quot;&gt;El teléfono debe tener 10 números&lt;/div&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class&#x3D;&quot;col-4 m-0 p-0&quot;&gt;
+                                &lt;div class&#x3D;&quot;m-0 p-0 mt-2 p-3&quot;&gt;
+                                    &lt;img [src]&#x3D;&quot;imageSrc&quot; *ngIf&#x3D;&quot;imageSrc&quot; style&#x3D;&quot;width: 80%;&quot; alt&#x3D;&quot;Foto de perfil&quot; /&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div *ngIf&#x3D;&quot;imageSrc&#x3D;&#x3D;&#x27;&#x27;&quot;&gt;
+                        &lt;div class&#x3D;&quot;m-0 p-0 mt-2 p-3&quot;&gt;
+                            &lt;label for&#x3D;&quot;Nombre&quot;&gt;Nombre:&lt;/label&gt;
+                            &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;Nombre&quot; pattern&#x3D;&quot;^[A-Za-záéíóúÁÉÍÓÚñÑüÜ\s]+$&quot; formControlName&#x3D;&quot;Nombre&quot; class&#x3D;&quot;form-control rounded-pill bg-azure-web mt-2&quot; &gt;
+                        
+                            &lt;div *ngIf&#x3D;&quot;formLogin.get(&#x27;Nombre&#x27;)?.invalid &amp;&amp; (formLogin.get(&#x27;Nombre&#x27;)?.dirty || formLogin.get(&#x27;Nombre&#x27;)?.touched)&quot;&gt;
+                                &lt;div class&#x3D;&quot;control-error&quot; *ngIf&#x3D;&quot;formLogin.get(&#x27;Nombre&#x27;)?.errors?.[&#x27;required&#x27;]&quot;&gt;El campo Nombre es requerido.&lt;/div&gt;
+                                &lt;div class&#x3D;&quot;control-error&quot; *ngIf&#x3D;&quot;formLogin.get(&#x27;Nombre&#x27;)?.errors?.[&#x27;minlength&#x27;]&quot;&gt;El campo Nombre debe ser mayor a 3 caracteres&lt;/div&gt;
+                            &lt;/div&gt;
+                        
+                        &lt;/div&gt;
+                        &lt;div class&#x3D;&quot;m-0 p-0 mt-2 p-3&quot;&gt;
+                            &lt;label for&#x3D;&quot;email&quot;&gt;Correo electrónico:&lt;/label&gt;
+                            &lt;input type&#x3D;&quot;email&quot; id&#x3D;&quot;email&quot; formControlName&#x3D;&quot;email&quot; class&#x3D;&quot;form-control rounded-pill bg-azure-web mt-2&quot;&gt;
+                            
+                            &lt;div *ngIf&#x3D;&quot;formLogin.get(&#x27;email&#x27;)?.touched&quot; class&#x3D;&quot;control-error&quot;&gt;
+                              &lt;div *ngIf&#x3D;&quot;formLogin.get(&#x27;email&#x27;)?.hasError(&#x27;required&#x27;)&quot;&gt;El campo Email es requerido.&lt;/div&gt;
+                              &lt;div *ngIf&#x3D;&quot;formLogin.get(&#x27;email&#x27;)?.value !&#x3D;&#x3D; &#x27;&#x27; &amp;&amp; formLogin.get(&#x27;email&#x27;)?.hasError(&#x27;emailInvalid&#x27;)&quot;&gt;Correo no válido.&lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div class&#x3D;&quot;m-0 p-0 mt-2 p-3&quot;&gt;
+                            &lt;label for&#x3D;&quot;telefono&quot;&gt;Teléfono:&lt;/label&gt;
+                            &lt;input type&#x3D;&quot;telefono&quot; id&#x3D;&quot;telefono&quot; pattern&#x3D;&quot;^[0-9]+$&quot; formControlName&#x3D;&quot;telefono&quot; class&#x3D;&quot;form-control rounded-pill bg-azure-web mt-2&quot;&gt;
+                            &lt;div *ngIf&#x3D;&quot;formLogin.get(&#x27;telefono&#x27;)?.invalid &amp;&amp; (formLogin.get(&#x27;telefono&#x27;)?.dirty || formLogin.get(&#x27;telefono&#x27;)?.touched)&quot;&gt;
+                                &lt;div class&#x3D;&quot;control-error&quot; *ngIf&#x3D;&quot;formLogin.get(&#x27;telefono&#x27;)?.errors?.[&#x27;required&#x27;]&quot;&gt;Se requiere un número telefónico&lt;/div&gt;
+                                &lt;div class&#x3D;&quot;control-error&quot; *ngIf&#x3D;&quot;formLogin.get(&#x27;telefono&#x27;)?.errors?.[&#x27;minlength&#x27;]&quot;&gt;El teléfono debe tener 10 números&lt;/div&gt;
+                                &lt;div class&#x3D;&quot;control-error&quot; *ngIf&#x3D;&quot;formLogin.get(&#x27;telefono&#x27;)?.errors?.[&#x27;maxlength&#x27;]&quot;&gt;El teléfono debe tener 10 números&lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div class&#x3D;&quot;m-0 p-0 mt-2 p-3&quot;&gt;
+                        &lt;label for&#x3D;&quot;fotoPerfil&quot;&gt;Foto de perfil:&lt;/label&gt;
+                        &lt;input type&#x3D;&quot;file&quot; id&#x3D;&quot;fotoPerfil&quot; name&#x3D;&quot;fotoPerfil&quot; accept&#x3D;&quot;image/*&quot; formControlName&#x3D;&quot;fotoPerfil&quot; (change)&#x3D;&quot;onFileChange($event)&quot; class&#x3D;&quot;form-control rounded-pill bg-azure-web mt-2&quot; /&gt;
+                        &lt;div *ngIf&#x3D;&quot;formLogin.get(&#x27;fotoPerfil&#x27;)?.invalid &amp;&amp; (formLogin.get(&#x27;fotoPerfil&#x27;)?.dirty || formLogin.get(&#x27;fotoPerfil&#x27;)?.touched)&quot;&gt;
+                          &lt;div class&#x3D;&quot;control-error&quot; *ngIf&#x3D;&quot;formLogin.get(&#x27;fotoPerfil&#x27;)?.errors?.[&#x27;required&#x27;]&quot;&gt;Se requiere una foto de perfil&lt;/div&gt;
+                          &lt;div class&#x3D;&quot;control-error&quot; *ngIf&#x3D;&quot;formLogin.get(&#x27;fotoPerfil&#x27;)?.errors?.[&#x27;pattern&#x27;]&quot;&gt;El archivo seleccionado no es una imagen válida&lt;/div&gt;
+                          &lt;div class&#x3D;&quot;control-error&quot; *ngIf&#x3D;&quot;formLogin.get(&#x27;fotoPerfil&#x27;)?.errors?.[&#x27;dimensions&#x27;]&quot;&gt;La imagen debe tener el mismo ancho y alto&lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;form [formGroup]&#x3D;&quot;formLogin&quot; (ngSubmit)&#x3D;&quot;onSubmit()&quot;&gt;
+                        &lt;div class&#x3D;&quot;m-0 p-0 mt-2 p-3&quot;&gt;
+                          &lt;label for&#x3D;&quot;password&quot;&gt;Contraseña:&lt;/label&gt;
+                          &lt;input type&#x3D;&quot;password&quot; id&#x3D;&quot;password&quot; formControlName&#x3D;&quot;password&quot; [(ngModel)]&#x3D;&quot;pass&quot; class&#x3D;&quot;form-control rounded-pill bg-azure-web mt-2&quot;&gt;
+                          &lt;div *ngIf&#x3D;&quot;formLogin.get(&#x27;password&#x27;)?.touched &amp;&amp; formLogin.get(&#x27;password&#x27;)?.invalid&quot;&gt;
+                            &lt;div class&#x3D;&quot;control-error&quot; *ngIf&#x3D;&quot;formLogin.get(&#x27;password&#x27;)?.errors?.[&#x27;required&#x27;]&quot;&gt;Se requiere una contraseña&lt;/div&gt;
+                            &lt;div class&#x3D;&quot;control-error&quot; *ngIf&#x3D;&quot;formLogin.get(&#x27;password&#x27;)?.errors?.[&#x27;minlength&#x27;]&quot;&gt;La contraseña debe tener al menos 8 caracteres&lt;/div&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                      
+                        &lt;div class&#x3D;&quot;m-0 p-0 mt-2 p-3&quot;&gt;
+                          &lt;label for&#x3D;&quot;confirmPassword&quot;&gt;Confirmar Contraseña:&lt;/label&gt;
+                          &lt;input type&#x3D;&quot;password&quot; id&#x3D;&quot;confirmPassword&quot; formControlName&#x3D;&quot;confirmPassword&quot; [(ngModel)]&#x3D;&quot;pass2&quot; class&#x3D;&quot;form-control rounded-pill bg-azure-web mt-2&quot;&gt;
+                          &lt;div *ngIf&#x3D;&quot;formLogin.get(&#x27;confirmPassword&#x27;)?.touched &amp;&amp; formLogin.get(&#x27;confirmPassword&#x27;)?.invalid&quot;&gt;
+                            &lt;div class&#x3D;&quot;control-error&quot; *ngIf&#x3D;&quot;formLogin.get(&#x27;confirmPassword&#x27;)?.errors?.[&#x27;required&#x27;]&quot;&gt;Se requiere confirmar la contraseña&lt;/div&gt;
+                            &lt;div class&#x3D;&quot;control-error&quot; *ngIf&#x3D;&quot;formLogin.get(&#x27;confirmPassword&#x27;)?.errors?.[&#x27;passwordsNotMatch&#x27;]&quot;&gt;Las contraseñas no coinciden&lt;/div&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                      
+                        &lt;div class&#x3D;&quot;d-flex justify-content-center m-0 p-0 mt-3 p-3&quot;&gt;
+                          &lt;button type&#x3D;&quot;submit&quot; [disabled]&#x3D;&quot;formLogin.invalid&quot; class&#x3D;&quot;btn btn-primary rounded-pill w-50 text-white&quot;&gt;Crear cuenta&lt;/button&gt;
+                        &lt;/div&gt;
+                      &lt;/form&gt;
+                                                                            
+                &lt;/form&gt;
+                &lt;div class&#x3D;&quot;m-0 p-0 p-3 d-flex justify-content-center&quot;&gt;
+                    &lt;p&gt;¿Ya tienes cuenta? &lt;span &gt;&lt;a href&#x3D;&quot;/login&quot;&gt;Inicia sesión aquí&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col-3&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./register.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">#cajaExterior {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.rounded-pill {
+    border-radius: 20px;
+  }
+
+#registrar-url{
+    text-decoration: none;
+}
+input.ng-invalid.ng-touched {
+  border: solid 2px rgb(223, 107, 87) !important;
+}
+
+input.ng-valid {
+  border: solid 2px #3cc53d !important;
+}
+
+.control-error{
+  color: rgb(223, 107, 87);
+  font-size: 12px;
+}
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><head>    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter"></head><div class="row m-0 p-0 bg-secondary" id="cajaExterior">    <div class="col-3"></div>    <div class="col-6 border border-azure-web mt-5 mb-5 bg-white rounded-5">        <div class="row">            <div class="col-12 m-0 p-0">                <div  style="text-align: center;">                    <h4 class="m-0 p-0 mt-3 p-3 fw-bold" style="font-family: \'Inter\';">Regístrate</h4>                </div>                <form *ngIf="formLogin" [formGroup]="formLogin" (ngSubmit)="onSubmit()" class="mb-4">                    <div *ngIf="imageSrc!=\'\'">                        <div class="row">                            <div class="col-8 m-0 p-0">                                <div class="m-0 p-0 mt-2 p-3">                                    <label for="Nombre">Nombre:</label>                                    <input type="text" id="Nombre" pattern="^[A-Z][a-z]*$" formControlName="Nombre" class="form-control rounded-pill bg-azure-web mt-2" >                                                                    <div *ngIf="formLogin.get(\'Nombre\')?.invalid && (formLogin.get(\'Nombre\')?.dirty || formLogin.get(\'Nombre\')?.touched)">                                        <div class="control-error" *ngIf="formLogin.get(\'Nombre\')?.errors?.[\'required\']">El campo Nombre es requerido.</div>                                        <div class="control-error" *ngIf="formLogin.get(\'Nombre\')?.errors?.[\'minlength\']">No es un Nombre válido</div>                                    </div>                                                                </div>                                <div class="m-0 p-0 mt-2 p-3">                                    <label for="email">Correo electrónico:</label>                                    <input type="email" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" formControlName="email" class="form-control rounded-pill bg-azure-web mt-2" >                                                                    <div *ngIf="formLogin.get(\'email\')?.invalid && (formLogin.get(\'email\')?.dirty || formLogin.get(\'email\')?.touched)">                                        <div class="control-error" *ngIf="formLogin.get(\'email\')?.errors?.[\'required\']">El campo Email es requerido.</div>                                        <div class="control-error" *ngIf="formLogin.get(\'email\')?.errors?.[\'email\']">No es un email válido</div>                                    </div>                                                                </div>                                <div class="m-0 p-0 mt-2 p-3">                                    <label for="telefono">Teléfono:</label>                                    <input type="telefono" id="telefono" pattern="^[0-9]+$" formControlName="telefono" class="form-control rounded-pill bg-azure-web mt-2">                                    <div *ngIf="formLogin.get(\'telefono\')?.invalid && (formLogin.get(\'telefono\')?.dirty || formLogin.get(\'telefono\')?.touched)">                                        <div class="control-error" *ngIf="formLogin.get(\'telefono\')?.errors?.[\'required\']">Se requiere un número telefónico</div>                                        <div class="control-error" *ngIf="formLogin.get(\'telefono\')?.errors?.[\'minlength\']">El teléfono debe tener 10 números</div>                                        <div class="control-error" *ngIf="formLogin.get(\'telefono\')?.errors?.[\'maxlength\']">El teléfono debe tener 10 números</div>                                    </div>                                </div>                            </div>                            <div class="col-4 m-0 p-0">                                <div class="m-0 p-0 mt-2 p-3">                                    <img [src]="imageSrc" *ngIf="imageSrc" style="width: 80%;" alt="Foto de perfil" />                                </div>                            </div>                        </div>                    </div>                    <div *ngIf="imageSrc==\'\'">                        <div class="m-0 p-0 mt-2 p-3">                            <label for="Nombre">Nombre:</label>                            <input type="text" id="Nombre" pattern="^[A-Za-záéíóúÁÉÍÓÚñÑüÜ\s]+$" formControlName="Nombre" class="form-control rounded-pill bg-azure-web mt-2" >                                                    <div *ngIf="formLogin.get(\'Nombre\')?.invalid && (formLogin.get(\'Nombre\')?.dirty || formLogin.get(\'Nombre\')?.touched)">                                <div class="control-error" *ngIf="formLogin.get(\'Nombre\')?.errors?.[\'required\']">El campo Nombre es requerido.</div>                                <div class="control-error" *ngIf="formLogin.get(\'Nombre\')?.errors?.[\'minlength\']">El campo Nombre debe ser mayor a 3 caracteres</div>                            </div>                                                </div>                        <div class="m-0 p-0 mt-2 p-3">                            <label for="email">Correo electrónico:</label>                            <input type="email" id="email" formControlName="email" class="form-control rounded-pill bg-azure-web mt-2">                                                        <div *ngIf="formLogin.get(\'email\')?.touched" class="control-error">                              <div *ngIf="formLogin.get(\'email\')?.hasError(\'required\')">El campo Email es requerido.</div>                              <div *ngIf="formLogin.get(\'email\')?.value !== \'\' && formLogin.get(\'email\')?.hasError(\'emailInvalid\')">Correo no válido.</div>                            </div>                        </div>                        <div class="m-0 p-0 mt-2 p-3">                            <label for="telefono">Teléfono:</label>                            <input type="telefono" id="telefono" pattern="^[0-9]+$" formControlName="telefono" class="form-control rounded-pill bg-azure-web mt-2">                            <div *ngIf="formLogin.get(\'telefono\')?.invalid && (formLogin.get(\'telefono\')?.dirty || formLogin.get(\'telefono\')?.touched)">                                <div class="control-error" *ngIf="formLogin.get(\'telefono\')?.errors?.[\'required\']">Se requiere un número telefónico</div>                                <div class="control-error" *ngIf="formLogin.get(\'telefono\')?.errors?.[\'minlength\']">El teléfono debe tener 10 números</div>                                <div class="control-error" *ngIf="formLogin.get(\'telefono\')?.errors?.[\'maxlength\']">El teléfono debe tener 10 números</div>                            </div>                        </div>                    </div>                    <div class="m-0 p-0 mt-2 p-3">                        <label for="fotoPerfil">Foto de perfil:</label>                        <input type="file" id="fotoPerfil" name="fotoPerfil" accept="image/*" formControlName="fotoPerfil" (change)="onFileChange($event)" class="form-control rounded-pill bg-azure-web mt-2" />                        <div *ngIf="formLogin.get(\'fotoPerfil\')?.invalid && (formLogin.get(\'fotoPerfil\')?.dirty || formLogin.get(\'fotoPerfil\')?.touched)">                          <div class="control-error" *ngIf="formLogin.get(\'fotoPerfil\')?.errors?.[\'required\']">Se requiere una foto de perfil</div>                          <div class="control-error" *ngIf="formLogin.get(\'fotoPerfil\')?.errors?.[\'pattern\']">El archivo seleccionado no es una imagen válida</div>                          <div class="control-error" *ngIf="formLogin.get(\'fotoPerfil\')?.errors?.[\'dimensions\']">La imagen debe tener el mismo ancho y alto</div>                        </div>                    </div>                    <form [formGroup]="formLogin" (ngSubmit)="onSubmit()">                        <div class="m-0 p-0 mt-2 p-3">                          <label for="password">Contraseña:</label>                          <input type="password" id="password" formControlName="password" [(ngModel)]="pass" class="form-control rounded-pill bg-azure-web mt-2">                          <div *ngIf="formLogin.get(\'password\')?.touched && formLogin.get(\'password\')?.invalid">                            <div class="control-error" *ngIf="formLogin.get(\'password\')?.errors?.[\'required\']">Se requiere una contraseña</div>                            <div class="control-error" *ngIf="formLogin.get(\'password\')?.errors?.[\'minlength\']">La contraseña debe tener al menos 8 caracteres</div>                          </div>                        </div>                                              <div class="m-0 p-0 mt-2 p-3">                          <label for="confirmPassword">Confirmar Contraseña:</label>                          <input type="password" id="confirmPassword" formControlName="confirmPassword" [(ngModel)]="pass2" class="form-control rounded-pill bg-azure-web mt-2">                          <div *ngIf="formLogin.get(\'confirmPassword\')?.touched && formLogin.get(\'confirmPassword\')?.invalid">                            <div class="control-error" *ngIf="formLogin.get(\'confirmPassword\')?.errors?.[\'required\']">Se requiere confirmar la contraseña</div>                            <div class="control-error" *ngIf="formLogin.get(\'confirmPassword\')?.errors?.[\'passwordsNotMatch\']">Las contraseñas no coinciden</div>                          </div>                        </div>                                              <div class="d-flex justify-content-center m-0 p-0 mt-3 p-3">                          <button type="submit" [disabled]="formLogin.invalid" class="btn btn-primary rounded-pill w-50 text-white">Crear cuenta</button>                        </div>                      </form>                                                                                            </form>                <div class="m-0 p-0 p-3 d-flex justify-content-center">                    <p>¿Ya tienes cuenta? <span ><a href="/login">Inicia sesión aquí</a></span></p>                </div>            </div>        </div>    </div>    <div class="col-3"></div></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BodyBuilderComponent', 'selector': 'app-body-builder'},{'name': 'BodyElementComponent', 'selector': 'app-body-element'},{'name': 'CrearSitioComponent', 'selector': 'app-crear-sitio'},{'name': 'FooterLienzoComponent', 'selector': 'app-footer-lienzo'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'ImageComponent', 'selector': 'app-image'},{'name': 'ImagenLienzoComponent', 'selector': 'app-imagen-lienzo'},{'name': 'LienzoPaginaComponent', 'selector': 'app-lienzo-pagina'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainLayoutComponent', 'selector': 'app-main-layout'},{'name': 'MainLayoutComponent', 'selector': 'app-main-layout'},{'name': 'MenuOptionComponent', 'selector': 'app-menu-option'},{'name': 'MiCuentaComponent', 'selector': 'app-mi-cuenta'},{'name': 'MisSitiosComponent', 'selector': 'app-mis-sitios'},{'name': 'RankingComponent', 'selector': 'app-ranking'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SitiosComponent', 'selector': 'app-sitios'},{'name': 'SuperadministradorCuentaUsuarioComponent', 'selector': 'app-superadministrador-cuenta-usuario'},{'name': 'SuperAdminSitiosComponent', 'selector': 'app-super-admin-sitios'},{'name': 'TextComponent', 'selector': 'app-text'},{'name': 'TextoLienzoComponent', 'selector': 'app-texto-lienzo'},{'name': 'TimelineComponent', 'selector': 'app-timeline'},{'name': 'TituloLienzoComponent', 'selector': 'app-titulo-lienzo'},{'name': 'VideoComponent', 'selector': 'app-video'},{'name': 'VideoLienzoComponent', 'selector': 'app-video-lienzo'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'RegisterComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'RegisterComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
