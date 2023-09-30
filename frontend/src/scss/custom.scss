@@ -1,12 +1,25 @@
 $azure-web: #D4E8E9;
 $primary: #00ADB5;
+$btn-pink: #FF477E;
+$nav-pink: #FF5C8A;
+$fondo-pink:#FAE0E4;
+$text-pink: #1D192B;
+$icon-pink: #602437;
+$navegacion-pink: #FFF5F6;
 
 
 $theme-colors: (
     "azure-web": $azure-web,
     "danger": #ca2727,
     "primary": $primary,
-    "secondary": #E2ECEC
+    "secondary": #E2ECEC,
+    "btn-pink": $btn-pink,
+    "nav-pink": $nav-pink,
+    "fondo-pink":$fondo-pink,
+    "text-pink" : $text-pink,
+    "icon-pink" : $icon-pink,
+    "navegacion-pink" : $navegacion-pink, 
+
 );
 
 
