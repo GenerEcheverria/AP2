@@ -13,10 +13,14 @@ return new class extends Migration
     {
         Schema::create('diary_page', function (Blueprint $table) {
             $table->bigIncrements('idPage');
-            $table->integer('idDiary');
+            $table->unsignedBigInteger('idPatient');
             $table->date('date');
             $table->text('text');
             $table->timestamps();
+
+            $table->foreign('idPatient')->references('idPatient')->on('patients')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 

@@ -17,15 +17,18 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->integer('age');
-            $table->enum('sex', ['Man','Woman']);
+            $table->enum('sex', ['Mujer','Hombre']);
             $table->integer('phone');
             $table->string('email')->unique();
             $table->string('password');
             $table->enum('role',['Doctor','Patient']);
-            $table->integer('idPatient')->nullable();
+            $table->unsignedBigInteger('idPatient')->nullable();
             $table->unsignedBigInteger('idDoctor')->nullable();
             $table->timestamps();
 
+            $table->foreign('idPatient')->references('idPatient')->on('patients')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->foreign('idDoctor')->references('idDoctor')->on('doctors')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
