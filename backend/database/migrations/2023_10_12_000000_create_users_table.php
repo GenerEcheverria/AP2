@@ -23,8 +23,12 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->enum('role',['Doctor','Patient']);
             $table->integer('idPatient')->nullable();
-            $table->integer('idDoctor')->nullable();
+            $table->unsignedBigInteger('idDoctor')->nullable();
             $table->timestamps();
+
+            $table->foreign('idDoctor')->references('idDoctor')->on('doctors')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 
