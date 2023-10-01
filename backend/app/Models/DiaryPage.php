@@ -16,5 +16,5 @@ class DiaryPage extends Model
         'text',
     ];
 
-    protected $table = 'doctors';
+    protected $table = 'diary_page';
 }
