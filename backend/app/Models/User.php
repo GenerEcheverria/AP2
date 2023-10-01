@@ -15,11 +15,14 @@ class User extends Authenticatable implements JWTSubject
 
     protected $fillable = [
         'name',
+        'age',
+        'sex',
+        'phone',
         'email',
         'password',
         'role',
-        'phone',
-        'photo'
+        'idPacient',
+        'idDoctor'
     ];
 
     protected $hidden = [
@@ -44,13 +47,5 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
-    }
-
-    /**
-     * Get the sites associated with the user.
-     */
-    public function sites()
-    {
-        return $this->hasMany(Site::class, 'idUser');
     }
 }
