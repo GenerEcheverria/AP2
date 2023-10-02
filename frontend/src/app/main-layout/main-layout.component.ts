@@ -12,6 +12,7 @@ import { AuthService } from '../services/auth.service';
 export class MainLayoutComponent implements OnInit{
   protected name!: string;
   protected photo!: string;
+  protected idPregnant!: string;
 
   constructor(private authService: AuthService){}
   

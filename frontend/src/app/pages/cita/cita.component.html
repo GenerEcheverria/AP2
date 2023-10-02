@@ -1,0 +1,22 @@
+<div class="bg-fondo-pink mx-5 text-text-pink">
+  <form [formGroup]="citaForm" (ngSubmit)="onSubmit()">
+    <p class="fs-3">Agende una cita</p>
+    <div class="form-group pt-4">
+      <label for="IdDoctor">Seleccione a su médico</label>
+      <select class="form-control" id="IdDoctor" formControlName="IdDoctor">
+        <option *ngFor="let doctor of doctores" [value]="doctor">{{ doctor }}</option>
+      </select> 
+    </div>
+    <div class="form-group pt-4">
+      <label for="Date">Fecha</label>
+      <input type="date" class="form-control" id="Date" formControlName="Date">
+    </div>
+    <div class="form-group pt-4">
+      <label for="Time">Hora</label>
+      <input type="time" class="form-control" id="Time" formControlName="Time">
+    </div>
+    <div class="pt-4">
+      <button type="submit" class="btn bg-btn-pink text-white ">Guardar</button>
+    </div>
+  </form>
+</div>
