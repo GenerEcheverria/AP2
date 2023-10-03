@@ -17,7 +17,8 @@ class UserSeeder extends Seeder
         User::create([
             'name' => 'Gener Echeverria',
             "email"=>"gener.echeverria@gmail.com",
-            'password' => '$2y$10$06bfQ6iUQeaZn6v1jPFfBexFI3nT1AC94oktN6BAIlr4t7x5jteJq',
+            // Miembarazo1234
+            'password' => '$2y$10$iWAjMLJgMgSARb/ffQOy8.8OU8Qzda5TjqIhLz5PzEFSQsEalT6Vu',
             "role"=>"admin",
             "phone"=> "9991732101",
             "photo"=>"../../../assets/users/generceo.png"
