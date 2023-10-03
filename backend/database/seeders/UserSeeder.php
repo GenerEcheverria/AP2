@@ -16,12 +16,17 @@ class UserSeeder extends Seeder
 
         User::create([
             'name' => 'Gener Echeverria',
+            "age" => 26,
+            "sex" => "Hombre",
+            "phone" => "9991732101",
             "email"=>"gener.echeverria@gmail.com",
             // Miembarazo1234
             'password' => '$2y$10$iWAjMLJgMgSARb/ffQOy8.8OU8Qzda5TjqIhLz5PzEFSQsEalT6Vu',
-            "role"=>"admin",
-            "phone"=> "9991732101",
-            "photo"=>"../../../assets/users/generceo.png"
+            "role"=>"Doctor",
+            "idPatient" => null,
+            "idDoctor" => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
     }
 }
