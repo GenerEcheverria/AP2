@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
+import { CitaService } from '../../services/cita.service';
 
 @Component({
   selector: 'app-cita',
@@ -10,33 +11,32 @@ import { AuthService } from '../../services/auth.service';
 export class CitaComponent implements OnInit {
   citaForm: FormGroup;
   doctores: string[] = ["Gener", "Raul"];
-  idPregnant: string = "";
+  idPatient: string = "";
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private citaService: CitaService) {
     this.citaForm = this.fb.group({
-      IdDoctor: [''],
-      IdPregnant:[],
-      Date: ['',],
-      Time: ['']
+      idDoctor: [''],
+      idPatient:[],
+      date: ['',],
+      time: ['']
     });
   }
 
   ngOnInit(): void {
     this.getUserInfo();
-    
-}
+  }
 
   onSubmit() {
-    console.log(this.citaForm + "id preñada:");
-    console.log(this.citaForm);
+    let informacionCita = JSON.stringify(this.citaForm.value);
+    this.citaService.crearCita(informacionCita);
   }
 
   private getUserInfo(){
     this.authService.me().subscribe(data => {
-      this.idPregnant = data.id;
-      console.log("este valor es de pregnant cuando hace get userinfo"+this.idPregnant);
+      this.idPatient = data.id;
+      console.log("este valor es de pregnant cuando hace get userinfo"+this.idPatient);
       this.citaForm.patchValue({
-        IdPregnant: this.idPregnant
+        idPatient: this.idPatient
       });
     })
   }
