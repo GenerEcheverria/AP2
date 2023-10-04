@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CitaService {
-  url: string = 'http://localhost:8000/api/auth';
+  url: string = 'http://localhost:8000/api/appointment';
   
   constructor(private http: HttpClient) { }
 
@@ -16,6 +16,7 @@ export class CitaService {
   }
 
   crearCita(informacionCita: string){
-    return this.http.post(this.url + '/cita', { informacionCita } )
+    console.log("Estoy en el servicio")
+    return this.http.post(this.url + '/cita', {informacionCita}, this.httpOptions )
   }
 }

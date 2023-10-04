@@ -52,6 +52,14 @@ Route::group([
     Route::delete('users/{id}', 'App\Http\Controllers\UserController@destroy');
 });
 
+Route::group([
+    'middleware' => 'api',
+    'prefix' => 'appointment'
+], function ($router) {
+    // Endpoint para crear cita usando id de user
+    Route::post('cita/', 'App\Http\Controllers\AppoinmentController@createAppointment');
+});
+
 // Endpoint para obtener los datos del usuario autenticado
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
