@@ -19,8 +19,8 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       {path: '', redirectTo: '', pathMatch: 'full'},
-      { path: 'mi-cuenta', component: MiCuentaComponent, canActivate: [RoleGuard], data: { roles: ['admin'] }},
-      { path: 'cita', component: CitaComponent, canActivate: [RoleGuard], data: { roles: ['admin'] }},
+      { path: 'mi-cuenta', component: MiCuentaComponent, canActivate: [RoleGuard], data: { roles: ['Doctor'] }},
+      { path: 'cita', component: CitaComponent, canActivate: [RoleGuard], data: { roles: ['Doctor'] }},
       {path: '**', redirectTo: '', pathMatch: 'full'},
     ]
   }
