@@ -19,7 +19,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login', 'register', 'checkToken']]);
+        $this->middleware('auth:api', ['except' => ['login', 'registerPatient', 'checkToken']]);
     }
 
     /**
@@ -44,15 +44,15 @@ class AuthController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function register(Request $request)
+    public function registerPatient(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
+            'age' => 'required',
+            'sex' => 'required',
+            'phone' => 'required|string|min:10|max:10',
             'email' => 'required|string|email|max:100|unique:users',
             'password' => 'required|string|min:6',
-            'role' => 'required|string',
-            'phone' => 'required',
-            'photo' => 'required|string',
         ]);
         if ($validator->fails()) {
             return response()->json($validator->errors()->toJson(), 400);
@@ -61,6 +61,7 @@ class AuthController extends Controller
             $validator->validate(),
             [
                 'password' => bcrypt($request->password),
+                'role' => 'Patient',
             ]
         ));
         return response()->json([
