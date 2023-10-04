@@ -4,15 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use App\Models\MedicalRecord;
+use App\Models\Patient;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
+
 
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthController extends Controller
 {
-     /**
+    /**
      * Create a new AuthController instance.
      *
      * @return void
@@ -44,31 +48,63 @@ class AuthController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\JsonResponse
      */
+
     public function registerPatient(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'age' => 'required',
-            'sex' => 'required',
-            'phone' => 'required|string|min:10|max:10',
-            'email' => 'required|string|email|max:100|unique:users',
-            'password' => 'required|string|min:6',
-        ]);
-        if ($validator->fails()) {
-            return response()->json($validator->errors()->toJson(), 400);
+        // Iniciar una transacción
+        DB::beginTransaction();
+        try {
+            $validator = Validator::make($request->all(), [
+                'name' => 'required',
+                'age' => 'required',
+                'sex' => 'required',
+                'phone' => 'required|string|min:10|max:10',
+                'email' => 'required|string|email|max:100|unique:users',
+                'password' => 'required|string|min:6',
+                //Patient data
+                'curp' => 'string',
+                "cStatus" => 'required|string',
+                "ocup" => 'string',
+                "state" => 'required|string',
+                "munic" => 'required|string',
+                "locat" => 'required|string',
+                "address" => 'string'
+            ]);
+
+            if ($validator->fails()) {
+                DB::rollBack();
+                return response()->json($validator->errors()->toJson(), 400);
+            }
+
+            $medicalRecord = MedicalRecord::create();
+            $patient = Patient::create(array_merge(
+                $validator->validate(),
+                [
+                    'idMedRec' => $medicalRecord->id
+                ]
+            ));
+            $user = User::create(array_merge(
+                $validator->validate(),
+                [
+                    'password' => bcrypt($request->password),
+                    'role' => 'Patient',
+                    'idPatient' => $patient->id
+                ]
+            ));
+            DB::commit();
+            return response()->json([
+                'message' => 'Successfully created',
+                'user' => $user,
+                'patient' => $patient,
+                'medical record' => $medicalRecord
+            ], 201);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response()->json(['message' => 'Error creating the patient', 'error' => $e->getMessage()], 500);
         }
-        $user = User::create(array_merge(
-            $validator->validate(),
-            [
-                'password' => bcrypt($request->password),
-                'role' => 'Patient',
-            ]
-        ));
-        return response()->json([
-            'message' => 'Successfully created',
-            'user' => $user
-        ], 201);
+        
     }
+
 
     /**
      * Get the authenticated user.
@@ -112,13 +148,13 @@ class AuthController extends Controller
     protected function respondWithToken($token)
     {
         $user = auth()->user();
-        $role = $user->role; 
+        $role = $user->role;
 
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth()->factory()->getTTL() * 60,
-            'role' => $role 
+            'role' => $role
         ]);
     }
 

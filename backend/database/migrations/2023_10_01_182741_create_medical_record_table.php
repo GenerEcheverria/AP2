@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('medical_record', function (Blueprint $table) {
             $table->bigIncrements('idMedRec');
-            $table->integer('number');
-            $table->text('background');
-            $table->text('phyExam');
-            $table->text('diagnostic');
-            $table->text('treatment');
-            $table->text('results');
-            $table->text('personalData');
+            $table->integer('number')->nullable();
+            $table->text('background')->nullable();
+            $table->text('phyExam')->nullable();
+            $table->text('diagnostic')->nullable();
+            $table->text('treatment')->nullable();
+            $table->text('results')->nullable();
+            $table->text('personalData')->nullable();
             $table->timestamps();
         });
     }
