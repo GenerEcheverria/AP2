@@ -21,7 +21,7 @@ Route::group([
     Route::post('login', 'App\Http\Controllers\AuthController@login');
 
     // Endpoint para registrar un usuario
-    Route::post('register', 'App\Http\Controllers\AuthController@register');
+    Route::post('register-patient', 'App\Http\Controllers\AuthController@registerPatient');
 
     // Endpoint para cerrar sesión
     Route::post('logout', 'App\Http\Controllers\AuthController@logout');
