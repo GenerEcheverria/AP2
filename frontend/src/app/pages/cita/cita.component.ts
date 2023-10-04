@@ -10,7 +10,7 @@ import { CitaService } from '../../services/cita.service';
 })
 export class CitaComponent implements OnInit {
   citaForm: FormGroup;
-  doctores: string[] = ["Gener", "Raul"];
+  doctores: string[] = ["1"];
   idPatient: string = "";
 
   constructor(private fb: FormBuilder, private authService: AuthService, private citaService: CitaService) {
@@ -28,7 +28,10 @@ export class CitaComponent implements OnInit {
 
   onSubmit() {
     let informacionCita = JSON.stringify(this.citaForm.value);
-    this.citaService.crearCita(informacionCita);
+    console.log("Ya voy a mandar la info");
+    this.citaService.crearCita(informacionCita).subscribe(data => {
+      console.log(data);
+    })
   }
 
   private getUserInfo(){
