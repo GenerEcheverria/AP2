@@ -114,6 +114,9 @@ class AuthController extends Controller
         $role = $user->role; 
 
         return response()->json([
+            'idUser' => $user->id,
+            'idPatient' => $user->idPatient,
+            'idDoctor' => $user->idDoctor,
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth()->factory()->getTTL() * 60,

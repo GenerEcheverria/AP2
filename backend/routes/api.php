@@ -58,6 +58,7 @@ Route::group([
 ], function ($router) {
     // Endpoint para crear cita usando id de user
     Route::post('cita/', 'App\Http\Controllers\AppoinmentController@createAppointment');
+    Route::get('availableTime/{dateSelectedInfo}', 'App\Http\Controllers\AppoinmentController@getAvailableTimeByIdDoctor');
 });
 
 // Endpoint para obtener los datos del usuario autenticado

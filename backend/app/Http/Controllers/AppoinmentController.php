@@ -29,4 +29,22 @@ class AppoinmentController extends Controller
         // Puedes devolver una respuesta JSON para indicar que la cita se ha creado exitosamente
         return response()->json(['message' => 'Cita creada con éxito'], 201);
     }
+
+    public function getAvailableTimeByIdDoctor(string $dateSelectedInfo)
+    {
+        $dateTimeSelected = json_decode($dateSelectedInfo, true);
+        
+        $horarios = Appoinment::where('idDoctor', $dateTimeSelected['idDoc'])
+            ->where('date', $dateTimeSelected['dateValue'])
+            ->select('time as hora')
+            ->get();
+
+        $horasOcupadas = [];
+
+        foreach ($horarios as $horario) {
+            $horasOcupadas[] = $horario['hora'];
+        }
+    
+        return $horasOcupadas;
+    }
 }

@@ -22,6 +22,9 @@ export class SidebarComponent {
   logout(){
     this.authService.logout().subscribe(
       (response) => {
+        localStorage.removeItem('idDoctor');
+        localStorage.removeItem('idPatient');
+        localStorage.removeItem('idUser');
         localStorage.removeItem('token');
         localStorage.removeItem('role');
         this.router.navigate(['/login']);
