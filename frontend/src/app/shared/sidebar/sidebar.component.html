@@ -1,13 +1,13 @@
-  <div class="container bg-secondary">
+  <div class="container bg-navegacion-pink text-text-pink mt-4">
     <div class="px-0">
       <div
         class="d-flex flex-column align-items-center align-items-sm-start px-3 vh-100"
       >
         <br>
-        <span class="fs-5 d-none d-sm-inline pt-5">Menú</span>
+
         <ul
           *ngIf="role=='admin'"
-          class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
+          class="nav nav-pills pt-5 flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
           id="menu"
         >
           <li >
@@ -45,8 +45,8 @@
             ></app-menu-option>
           </li>
         </ul>
-        <div class="d-flex justify-content-center mb-4 ms-3">
-            <button (click)="logout()" class="btn btn-primary rounded-pill  text-white">Cerrar sesión</button>
+        <div class="d-flex justify-content-center mb-5 ms-3">
+            <button (click)="logout()" class="btn bg-btn-pink rounded-pill  text-white">Cerrar sesión</button>
         </div>  
       </div>
     </div>

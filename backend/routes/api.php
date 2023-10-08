@@ -21,7 +21,7 @@ Route::group([
     Route::post('login', 'App\Http\Controllers\AuthController@login');
 
     // Endpoint para registrar un usuario
-    Route::post('register', 'App\Http\Controllers\AuthController@register');
+    Route::post('register-patient', 'App\Http\Controllers\AuthController@registerPatient');
 
     // Endpoint para cerrar sesión
     Route::post('logout', 'App\Http\Controllers\AuthController@logout');
@@ -50,6 +50,14 @@ Route::group([
 
     // Endpoint para eliminar un usuario específico por ID
     Route::delete('users/{id}', 'App\Http\Controllers\UserController@destroy');
+});
+
+Route::group([
+    'middleware' => 'api',
+    'prefix' => 'appointment'
+], function ($router) {
+    // Endpoint para crear cita usando id de user
+    Route::post('cita/', 'App\Http\Controllers\AppoinmentController@createAppointment');
 });
 
 // Endpoint para obtener los datos del usuario autenticado

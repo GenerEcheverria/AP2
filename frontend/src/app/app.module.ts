@@ -14,6 +14,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { DatePipe } from '@angular/common';
+import { CitaComponent } from './pages/cita/cita.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { DatePipe } from '@angular/common';
     SidebarComponent,
     MenuOptionComponent,
     RegisterComponent,
+    CitaComponent,
   ],
   imports: [
     BrowserModule,
