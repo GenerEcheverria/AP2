@@ -14,12 +14,12 @@ return new class extends Migration
         Schema::create('medical_records', function (Blueprint $table) {
             $table->increments('idMedRec');
             $table->unsignedInteger('idPatient');
-            $table->integer('number');
-            $table->text('background');
-            $table->text('phyExam');
-            $table->text('diagnostic');
-            $table->text('treatment');
-            $table->text('results');
+            $table->integer('number')->nullable();
+            $table->text('background')->nullable();
+            $table->text('phyExam')->nullable();
+            $table->text('diagnostic')->nullable();
+            $table->text('treatment')->nullable();
+            $table->text('results')->nullable();
             $table->timestamps();
 
             $table->foreign('idPatient')->references('idPatient')->on('patients')

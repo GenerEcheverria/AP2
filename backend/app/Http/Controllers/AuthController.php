@@ -56,18 +56,17 @@ class AuthController extends Controller
         try {
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
-                'age' => 'required',
                 'sex' => 'required',
                 'phone' => 'required|string|min:10|max:10',
                 'email' => 'required|string|email|max:100|unique:users',
                 'password' => 'required|string|min:6',
-                //Patient data
+                'age' => 'required|integer',
                 'curp' => 'string',
-                "cStatus" => 'required|string',
-                "ocup" => 'string',
+                "maritalStatus" => 'required|string',
+                "occupation" => 'required|string',
                 "state" => 'required|string',
-                "munic" => 'required|string',
-                "locat" => 'required|string',
+                "municipality" => 'required|string',
+                "locality" => 'required|string',
                 "address" => 'string'
             ]);
 
@@ -76,21 +75,32 @@ class AuthController extends Controller
                 return response()->json($validator->errors()->toJson(), 400);
             }
 
-            $medicalRecord = MedicalRecord::create();
-            $patient = Patient::create(array_merge(
-                $validator->validate(),
+            $validatedData = $validator->validated();
+
+            $user = User::create([
+                'name' => $validatedData['name'],
+                'sex' => $validatedData['sex'],
+                'phone' => $validatedData['phone'],
+                'email' => $validatedData['email'],
+                'password' => bcrypt($request->password),
+                'role' => 'Patient',
+            ]);
+            $patient = Patient::create(
                 [
-                    'idMedRec' => $medicalRecord->id
+                    'idUser' => $user->id,
+                    'age' => $validatedData['age'],
+                    'curp' => $validatedData['curp'],
+                    'maritalStatus' => $validatedData['maritalStatus'],
+                    'occupation' => $validatedData['occupation'],
+                    'state' => $validatedData['state'],
+                    'municipality' => $validatedData['municipality'],
+                    'locality' => $validatedData['locality'],
+                    'address' => $validatedData['address'],
                 ]
-            ));
-            $user = User::create(array_merge(
-                $validator->validate(),
-                [
-                    'password' => bcrypt($request->password),
-                    'role' => 'Patient',
-                    'idPatient' => $patient->id
-                ]
-            ));
+            );
+            $medicalRecord = MedicalRecord::create([
+                'idPatient' => $patient->id
+            ]);
             DB::commit();
             return response()->json([
                 'message' => 'Successfully created',
@@ -102,7 +112,6 @@ class AuthController extends Controller
             DB::rollBack();
             return response()->json(['message' => 'Error creating the patient', 'error' => $e->getMessage()], 500);
         }
-        
     }
 
 

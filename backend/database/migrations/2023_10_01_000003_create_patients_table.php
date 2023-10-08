@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('patients', function (Blueprint $table) {
             $table->increments('idPatient');
             $table->unsignedBigInteger('idUser');
-            $table->unsignedInteger('age');
+            $table->integer('age');
             $table->string('curp');
             $table->enum('maritalStatus', ['Soltera', 'Casada', 'Divorciada', 'Viuda', 'Unión libre']);
             $table->string('occupation');
             $table->string('state');
             $table->string('municipality');
-            $table->string('locatlity');
+            $table->string('locality');
             $table->string('address');
             $table->timestamps();
 
