@@ -11,8 +11,9 @@ class Doctor extends Model
 
     protected $fillable = [
         'idDoctor',
-        'iCard',
-        'idCroom',
+        'idUser',
+        'license',
+        'idOffice',
     ];
 
     protected $table = 'doctors';

@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('appointments', function (Blueprint $table) {
             $table->bigIncrements('idAppointment');
-            $table->unsignedBigInteger('idPatient');
-            $table->unsignedBigInteger('idDoctor');
+            $table->unsignedInteger('idPatient');
+            $table->unsignedInteger('idDoctor');
             $table->date('date');
             $table->time('time');
             $table->text('summary');

@@ -15,14 +15,11 @@ class User extends Authenticatable implements JWTSubject
 
     protected $fillable = [
         'name',
-        'age',
         'sex',
         'phone',
         'email',
         'password',
         'role',
-        'idPacient',
-        'idDoctor'
     ];
 
     protected $hidden = [
@@ -49,8 +46,4 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
-    public function doctor()
-    {
-        return $this->belongsTo(Doctor::class, 'idDoctor');
-    }
 }
