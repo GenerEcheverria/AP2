@@ -15,16 +15,26 @@ class UserSeeder extends Seeder
     {
 
         User::create([
+            'id' => 1,
             'name' => 'Gener Echeverria',
-            "age" => 26,
             "sex" => "Hombre",
             "phone" => "9991732101",
             "email"=>"gener.echeverria@gmail.com",
             // Miembarazo1234
             'password' => '$2y$10$iWAjMLJgMgSARb/ffQOy8.8OU8Qzda5TjqIhLz5PzEFSQsEalT6Vu',
             "role"=>"Doctor",
-            "idPatient" => null,
-            "idDoctor" => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        User::create([
+            'id' => 2,
+            'name' => 'Raul Villanueva',
+            "sex" => "Hombre",
+            "phone" => "9981732101",
+            "email"=>"raul.villanueva@gmail.com",
+            // Miembarazo1234
+            'password' => '$2y$10$iWAjMLJgMgSARb/ffQOy8.8OU8Qzda5TjqIhLz5PzEFSQsEalT6Vu',
+            "role"=>"Doctor",
             'created_at' => now(),
             'updated_at' => now(),
         ]);
