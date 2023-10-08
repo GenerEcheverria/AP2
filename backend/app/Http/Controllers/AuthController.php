@@ -51,57 +51,20 @@ class AuthController extends Controller
 
     public function registerPatient(Request $request)
     {
-        // Iniciar una transacción
         DB::beginTransaction();
+
         try {
-            $validator = Validator::make($request->all(), [
-                'name' => 'required',
-                'sex' => 'required',
-                'phone' => 'required|string|min:10|max:10',
-                'email' => 'required|string|email|max:100|unique:users',
-                'password' => 'required|string|min:6',
-                'age' => 'required|integer',
-                'curp' => 'string',
-                "maritalStatus" => 'required|string',
-                "occupation" => 'required|string',
-                "state" => 'required|string',
-                "municipality" => 'required|string',
-                "locality" => 'required|string',
-                "address" => 'string'
-            ]);
+            $validatedData = $this->validatePatientData($request);
 
-            if ($validator->fails()) {
-                DB::rollBack();
-                return response()->json($validator->errors()->toJson(), 400);
-            }
+            $user = User::create($validatedData);
+            $user->update(['role' => 'Patient']);
 
-            $validatedData = $validator->validated();
+            $patient = $user->patient()->create($validatedData);
 
-            $user = User::create([
-                'name' => $validatedData['name'],
-                'sex' => $validatedData['sex'],
-                'phone' => $validatedData['phone'],
-                'email' => $validatedData['email'],
-                'password' => bcrypt($request->password),
-                'role' => 'Patient',
-            ]);
-            $patient = Patient::create(
-                [
-                    'idUser' => $user->id,
-                    'age' => $validatedData['age'],
-                    'curp' => $validatedData['curp'],
-                    'maritalStatus' => $validatedData['maritalStatus'],
-                    'occupation' => $validatedData['occupation'],
-                    'state' => $validatedData['state'],
-                    'municipality' => $validatedData['municipality'],
-                    'locality' => $validatedData['locality'],
-                    'address' => $validatedData['address'],
-                ]
-            );
-            $medicalRecord = MedicalRecord::create([
-                'idPatient' => $patient->id
-            ]);
+            $medicalRecord = $this->createMedicalRecord($patient);
+
             DB::commit();
+
             return response()->json([
                 'message' => 'Successfully created',
                 'user' => $user,
@@ -110,9 +73,42 @@ class AuthController extends Controller
             ], 201);
         } catch (\Exception $e) {
             DB::rollBack();
+
             return response()->json(['message' => 'Error creating the patient', 'error' => $e->getMessage()], 500);
         }
     }
+
+    private function validatePatientData(Request $request)
+    {
+        return $request->validate([
+            'name' => 'required',
+            'sex' => 'required',
+            'phone' => 'required|string|min:10|max:10',
+            'email' => 'required|string|email|max:100|unique:users',
+            'password' => 'required|string|min:6',
+            'age' => 'required|integer',
+            'curp' => 'string',
+            'maritalStatus' => 'required|string',
+            'occupation' => 'required|string',
+            'state' => 'required|string',
+            'municipality' => 'required|string',
+            'locality' => 'required|string',
+            'address' => 'string'
+        ]);
+    }
+
+    private function createMedicalRecord(Patient $patient)
+    {
+        return MedicalRecord::create([
+            'idPatient' => $patient->id
+        ]);
+    }
+
+
+
+
+
+
 
 
     /**
