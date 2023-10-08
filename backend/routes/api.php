@@ -61,6 +61,13 @@ Route::group([
     Route::get('availableTime/{dateSelectedInfo}', 'App\Http\Controllers\AppoinmentController@getAvailableTimeByIdDoctor');
 });
 
+Route::group([
+    'middleware' => 'api',
+    'prefix' => 'doctor'
+], function ($router) {
+    Route::get('doctores/', 'App\Http\Controllers\DoctorController@getDoctores');
+});
+
 // Endpoint para obtener los datos del usuario autenticado
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
