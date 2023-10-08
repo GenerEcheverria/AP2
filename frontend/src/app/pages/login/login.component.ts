@@ -61,6 +61,9 @@ export class LoginComponent implements OnInit {
     } 
     this.authService.login(user.email, user.password).subscribe(
       (response) => {
+        localStorage.setItem('idUser', response.idUser);
+        localStorage.setItem('idPatient', response.idDoctor);
+        localStorage.setItem('idDoctor', response.idPatient);
         localStorage.setItem('token', response.access_token);
         this.authService.setUserRoles(response.role);
         if (response.role === 'Doctor') {

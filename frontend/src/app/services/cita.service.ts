@@ -16,7 +16,11 @@ export class CitaService {
   }
 
   crearCita(informacionCita: string){
-    console.log("Estoy en el servicio")
     return this.http.post(this.url + '/cita', {informacionCita}, this.httpOptions )
+  }
+
+  availableTime(dateSelectedInfo: string){
+    console.log("Voy a consultar los horarios")
+    return this.http.get(this.url + '/availableTime/'+dateSelectedInfo, this.httpOptions)
   }
 }
