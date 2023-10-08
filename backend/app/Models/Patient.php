@@ -12,6 +12,7 @@ class Patient extends Model
     protected $fillable = [
         'idPatient',
         'idUser',
+        'age',
         'curp',
         'maritalStatus',
         'occupation',
@@ -22,4 +23,9 @@ class Patient extends Model
     ];
 
     protected $table = 'patients';
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'idUser');
+    }
 }

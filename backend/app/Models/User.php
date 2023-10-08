@@ -26,6 +26,11 @@ class User extends Authenticatable implements JWTSubject
         'password',
     ];
 
+    public function patient()
+    {
+        return $this->hasOne(Patient::class, 'idUser');
+    }
+
       /**
      * Get the identifier that will be stored in the subject claim of the JWT.
      *
