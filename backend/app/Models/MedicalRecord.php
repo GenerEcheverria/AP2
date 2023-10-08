@@ -11,14 +11,14 @@ class MedicalRecord extends Model
 
     protected $fillable = [
         'idMedRec',
+        'idPatient',
         'number',
         'background',
         'phyExam',
         'diagnostic',
         'treatment',
         'result',
-        'personalData',
     ];
 
-    protected $table = 'medical_record';
+    protected $table = 'medical_records';
 }

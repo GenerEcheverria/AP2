@@ -11,15 +11,14 @@ class Patient extends Model
 
     protected $fillable = [
         'idPatient',
+        'idUser',
         'curp',
-        'cStatus',
-        'ocup',
+        'maritalStatus',
+        'occupation',
         'state',
-        'munic',
-        'locat',
+        'municipality',
+        'locality',
         'address',
-        'idMedRec',
-        'idDiary',
     ];
 
     protected $table = 'patients';
