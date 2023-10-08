@@ -11,15 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('diary_page', function (Blueprint $table) {
-            $table->bigIncrements('idPage');
-            $table->unsignedBigInteger('idPatient');
-            $table->date('date');
-            $table->text('text');
+        Schema::create('doctors', function (Blueprint $table) {
+            $table->increments('idDoctor');
+            $table->unsignedBigInteger('idUser');
+            $table->string('license');
+            $table->unsignedInteger('idOffice');
             $table->timestamps();
 
-            $table->foreign('idPatient')->references('idPatient')->on('patients')
+            $table->foreign('idUser')->references('id')->on('users')
                 ->onDelete('cascade')
+                ->onUpdate('cascade');
+            $table->foreign('idOffice')->references('idOffice')->on('offices')
                 ->onUpdate('cascade');
         });
     }
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('diary_page');
+        Schema::dropIfExists('doctors');
     }
 };

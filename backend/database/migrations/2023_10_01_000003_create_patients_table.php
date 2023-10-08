@@ -12,18 +12,19 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('patients', function (Blueprint $table) {
-            $table->bigIncrements('idPatient');
+            $table->increments('idPatient');
+            $table->unsignedBigInteger('idUser');
+            $table->unsignedInteger('age');
             $table->string('curp');
-            $table->enum('cStatus', ['Soltera', 'Casada', 'Divorciada', 'Viuda', 'Unión libre']);
-            $table->string('ocup');
+            $table->enum('maritalStatus', ['Soltera', 'Casada', 'Divorciada', 'Viuda', 'Unión libre']);
+            $table->string('occupation');
             $table->string('state');
-            $table->string('munic');
-            $table->string('locat');
+            $table->string('municipality');
+            $table->string('locatlity');
             $table->string('address');
-            $table->unsignedBigInteger('idMedRec');
             $table->timestamps();
 
-            $table->foreign('idMedRec')->references('idMedRec')->on('medical_record')
+            $table->foreign('idUser')->references('id')->on('users')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });

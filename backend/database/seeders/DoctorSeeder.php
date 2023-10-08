@@ -14,8 +14,17 @@ class DoctorSeeder extends Seeder
     {
         DB::table("doctors")->insert([
             'idDoctor' => 1,
-            'iCard' => "A1234",
-            'idCroom' => 1,
+            'idUser' => 1,
+            'license' => "A1234",
+            'idOffice' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        DB::table("doctors")->insert([
+            'idDoctor' => 2,
+            'idUser' => 2,
+            'license' => "B1234",
+            'idOffice' => 2,
             'created_at' => now(),
             'updated_at' => now(),
         ]);

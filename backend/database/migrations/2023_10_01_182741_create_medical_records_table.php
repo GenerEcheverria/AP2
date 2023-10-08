@@ -11,20 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('appointments', function (Blueprint $table) {
-            $table->bigIncrements('idAppointment');
+        Schema::create('medical_records', function (Blueprint $table) {
+            $table->increments('idMedRec');
             $table->unsignedInteger('idPatient');
-            $table->unsignedInteger('idDoctor');
-            $table->date('date');
-            $table->time('time');
-            $table->text('summary');
-            $table->text('prescription');
+            $table->integer('number');
+            $table->text('background');
+            $table->text('phyExam');
+            $table->text('diagnostic');
+            $table->text('treatment');
+            $table->text('results');
             $table->timestamps();
 
             $table->foreign('idPatient')->references('idPatient')->on('patients')
-                ->onUpdate('cascade');
-            $table->foreign('idDoctor')->references('idDoctor')->on('doctors')
-                ->onUpdate('cascade');
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
         });
     }
 
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('appointments');
+        Schema::dropIfExists('medical_records');
     }
 };

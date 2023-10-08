@@ -11,10 +11,9 @@ class DiaryPage extends Model
 
     protected $fillable = [
         'idPage',
-        'idDiary',
-        'date',
+        'idPatient',
         'text',
     ];
 
-    protected $table = 'diary_page';
+    protected $table = 'diary_pages';
 }

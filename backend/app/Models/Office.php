@@ -10,10 +10,10 @@ class Room extends Model
     use HasFactory;
 
     protected $fillable = [
-        'idCroom',
-        'cRoom',
+        'idOffice',
+        'name',
         'area',
     ];
 
-    protected $table = 'doctors';
+    protected $table = 'offices';
 }
