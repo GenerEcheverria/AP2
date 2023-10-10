@@ -59,6 +59,15 @@ Route::group([
     // Endpoint para crear cita usando id de user
     Route::post('cita/', 'App\Http\Controllers\AppoinmentController@createAppointment');
     Route::get('availableTime/{dateSelectedInfo}', 'App\Http\Controllers\AppoinmentController@getAvailableTimeByIdDoctor');
+    Route::get('getCitasPacintesById/{idPaciente}', 'App\Http\Controllers\AppoinmentController@getCitasPacintesById');
+});
+
+Route::group([
+    'middleware' => 'api',
+    'prefix' => 'diario'
+], function ($router) {
+    // Endpoint para crear cita usando id de user
+    Route::get('getHojasDiarioById/{idPaciente}', 'App\Http\Controllers\DiaryPageController@getHojasDiarioById');
 });
 
 Route::group([
@@ -66,6 +75,14 @@ Route::group([
     'prefix' => 'doctor'
 ], function ($router) {
     Route::get('doctores/', 'App\Http\Controllers\DoctorController@getDoctores');
+});
+
+Route::group([
+    'middleware' => 'api',
+    'prefix' => 'paciente'
+], function ($router) {
+    Route::get('pacientes/{_idDoc}', 'App\Http\Controllers\PatientController@getPacientesByIdDoc');
+    Route::get('info-paciente/{idPaciente}', 'App\Http\Controllers\PatientController@getMedicalInfoById');
 });
 
 // Endpoint para obtener los datos del usuario autenticado
