@@ -19,8 +19,11 @@ export class CitaService {
     return this.http.post(this.url + '/cita', {informacionCita}, this.httpOptions )
   }
 
+  getCitasPacienteById(idPaciente: string){
+    return this.http.get(this.url + '/getCitasPacintesById/'+idPaciente, this.httpOptions)
+  }
+
   availableTime(dateSelectedInfo: string){
-    console.log("Voy a consultar los horarios")
     return this.http.get(this.url + '/availableTime/'+dateSelectedInfo, this.httpOptions)
   }
 }

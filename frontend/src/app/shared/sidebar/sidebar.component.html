@@ -1,47 +1,47 @@
-  <div class="container bg-navegacion-pink text-text-pink mt-4">
-    <div class="px-0">
+  <div class="container bg-navegacion-pink text-text-pink mt-4 px-0">
+    <div class="px-3">
       <div
-        class="d-flex flex-column align-items-center align-items-sm-start px-3 vh-100"
+        class="d-flex flex-column align-items-center align-items-sm-start  vh-100"
       >
         <br>
-
         <ul
-          *ngIf="role=='admin'"
+          *ngIf="role=='Doctor'" 
           class="nav nav-pills pt-5 flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
           id="menu"
         >
           <li >
+            <!-- Aqui hay que poner el link hacia el dashboard del doctor (en [link])-->
             <app-menu-option
-              [titulo]="'Mis sitios'"
-              [link]="'misSitios'"
+              [titulo]="'Menu'"
+              [link]="''"
               [icon]="'bi-house'"
             ></app-menu-option>
           </li>
           <li>
             <app-menu-option
-              [titulo]="'Ranking'"
-              [link]="'ranking'"
-              [icon]="'bi-list-stars'"
+              [titulo]="'Expedientes'"
+              [link]="'expediente'"
+              [icon]="'bi bi-folder'"
             ></app-menu-option>
           </li>
           <li>
             <app-menu-option
-              [titulo]="'Mi cuenta'"
+              [titulo]="'Perfil'"
               [link]="'mi-cuenta'"
-              [icon]="'bi-person-circle'"
+              [icon]="'bi-person'"
             ></app-menu-option>
           </li>
         </ul>
         <ul
-          *ngIf="role=='superadmin'"
+          *ngIf="role=='Patient'"
           class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
           id="menu"
         >
           <li>
             <app-menu-option
-              [titulo]="'Usuarios'"
-              [link]="'sasitios'"
-              [icon]="'bi-person-circle'"
+              [titulo]="'Citas'"
+              [link]="'cita'"
+              [icon]="'bi-list-stars'"
             ></app-menu-option>
           </li>
         </ul>

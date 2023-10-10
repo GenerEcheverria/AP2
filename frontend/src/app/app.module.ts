@@ -15,6 +15,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { DatePipe } from '@angular/common';
 import { CitaComponent } from './pages/cita/cita.component';
+import { ExpedientesComponent } from './pages/expedientes/expedientes.component';
+import { DatosEmbarazadaComponent } from './pages/expedientes/components/datos-embarazada/datos-embarazada.component';
+import { InformacionCitaComponent } from './pages/expedientes/components/informacion-cita/informacion-cita.component';
+import { InformacionMedicaPacienteComponent } from './pages/expedientes/components/informacion-medica-paciente/informacion-medica-paciente.component';
+import { InformacionDiarioPacienteComponent } from './pages/expedientes/components/informacion-diario-paciente/informacion-diario-paciente.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +32,11 @@ import { CitaComponent } from './pages/cita/cita.component';
     MenuOptionComponent,
     RegisterComponent,
     CitaComponent,
+    ExpedientesComponent,
+    DatosEmbarazadaComponent,
+    InformacionCitaComponent,
+    InformacionMedicaPacienteComponent,
+    InformacionDiarioPacienteComponent,
   ],
   imports: [
     BrowserModule,

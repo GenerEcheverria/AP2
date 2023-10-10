@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Appoinment;
+use Illuminate\Support\Facades\DB;
 
 class AppoinmentController extends Controller
 {
@@ -46,5 +47,20 @@ class AppoinmentController extends Controller
         }
     
         return $horasOcupadas;
+    }
+
+    public function getCitasPacintesById(string $idPaciente){
+        $resultados = DB::table('appointments')
+        ->select(
+            'appointments.idAppointment as idCita',
+            'appointments.date as fecha',
+            'appointments.time as hora',
+            'appointments.summary',
+            'appointments.prescription'
+        )
+        ->where('appointments.idPatient', '=', $idPaciente)
+        ->get();
+
+        return $resultados;
     }
 }

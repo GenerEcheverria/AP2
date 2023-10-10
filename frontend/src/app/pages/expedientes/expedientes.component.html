@@ -1,0 +1,55 @@
+<div class="row">
+    <div class="col-6">
+        <div class="form-group mb-4">
+            <h5 class="mb-2 text-icon-pink">Seleccione una paciente</h5>
+            <select class="form-select mt-2" [(ngModel)]="pacienteSeleccionada" (change)="getInfoPaciente()" >
+              <option *ngFor="let paciente of pacientes" [ngValue]="paciente">{{ paciente.nombre }}</option>
+            </select>
+        </div>
+        <div class="mb-4">
+            <h5 class="text-icon-pink">Datos generales de la paciente</h5>
+            <div *ngIf="pacienteSeleccionada !== undefined" class="p-3 mt-2 bg-white rounded-3">
+                <app-datos-embarazada
+                    [nombre]= "pacienteSeleccionada.nombre"
+                    [edad]="pacienteSeleccionada.edad"
+                    [curp]="pacienteSeleccionada.curp"
+                    [estadoCivil]="pacienteSeleccionada.estadoCivil"
+                    [ocupacion]="pacienteSeleccionada.ocupacion"
+                    [estado]="pacienteSeleccionada.estado"
+                    [municipio]="pacienteSeleccionada.municipio"
+                    [localidad]="pacienteSeleccionada.localidad"
+                    [direccion]="pacienteSeleccionada.direccion"
+                ></app-datos-embarazada>
+            </div>
+        </div>
+        <div class="mb-4">
+            <h5 class="text-icon-pink">Próximas citas de la paciente</h5>
+            <div class="p-3 mt-2 bg-white rounded-3" *ngFor="let cita of citas">
+                <app-informacion-cita
+                    [dia]="cita.fecha"
+                    [hora]="cita.hora"
+                ></app-informacion-cita>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="mb-4">
+            <h5 class="text-icon-pink">Notas Médicas de la paciente</h5>
+            <div class="p-3 mt-2 bg-white rounded-3" *ngFor="let cita of citas">
+                <app-informacion-medica-paciente
+                    [fecha]="cita.fecha"
+                    [titulo]="cita.summary"
+                ></app-informacion-medica-paciente>
+            </div>
+        </div>
+        <div class="mb-4">
+            <h5 class="text-icon-pink">Diario de la paciente</h5>
+            <div class="p-3 mt-2 bg-white rounded-3" *ngFor="let hoja of diario">
+                <app-informacion-diario-paciente
+                    [fechaDiario]="hoja.fecha"
+                    [tituloDiario]="hoja.title"
+                ></app-informacion-diario-paciente>
+            </div>
+        </div>
+    </div>
+</div>
