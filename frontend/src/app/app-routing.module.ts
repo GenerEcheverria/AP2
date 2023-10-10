@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './pages/register/register.component';
 import { MiCuentaComponent } from "./pages/mi-cuenta/mi-cuenta.component";
 import { CitaComponent } from './pages/cita/cita.component';
+import { ExpedientesComponent } from './pages/expedientes/expedientes.component';
 import { AuthGuard } from './guards/auth.guard';
 import { RoleGuard } from './guards/role.guard';
 
@@ -19,8 +20,9 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       {path: '', redirectTo: '', pathMatch: 'full'},
-      { path: 'mi-cuenta', component: MiCuentaComponent, canActivate: [RoleGuard], data: { roles: ['Doctor'] }},
-      { path: 'cita', component: CitaComponent, canActivate: [RoleGuard], data: { roles: ['Doctor'] }},
+      {path: 'mi-cuenta', component: MiCuentaComponent, canActivate: [RoleGuard], data: { roles: ['Doctor'] }},
+      {path: 'cita', component: CitaComponent, canActivate: [RoleGuard], data: { roles: ['Patient'] }},
+      {path: 'expediente', component: ExpedientesComponent, canActivate: [RoleGuard], data: { roles: ['Doctor'] }},
       {path: '**', redirectTo: '', pathMatch: 'full'},
     ]
   }
