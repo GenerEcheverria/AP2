@@ -12,6 +12,7 @@ class DiaryPage extends Model
     protected $fillable = [
         'idPage',
         'idPatient',
+        'title',
         'text',
     ];
 

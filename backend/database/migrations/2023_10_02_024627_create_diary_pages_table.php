@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('diary_pages', function (Blueprint $table) {
             $table->increments('idPage');
             $table->unsignedInteger('idPatient');
+            $table->string('title');
             $table->text('text');
             $table->timestamps();
 
