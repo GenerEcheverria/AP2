@@ -21,7 +21,7 @@ class PatientController extends Controller
             'patients.occupation AS ocupacion',
             'patients.state AS estado',
             'patients.municipality AS municipio',
-            'patients.locatlity AS localidad',
+            'patients.locality AS localidad',
             'patients.address AS direccion'
         )
         ->where('appointments.idDoctor', '=', $_idDoc)
