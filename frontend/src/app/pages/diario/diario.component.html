@@ -1,0 +1,46 @@
+<div class="alert alert-verdeSuccess mx-5" role="alert" *ngIf="showSuccessAlert">
+    <div class="row">
+        <div class="col-6">
+            La página ha sido agregada a su diario
+        </div>
+        <div class="col-6 d-flex justify-content-end">
+            <button type="button" class="btn-close" (click)="hideAlert()"></button>
+        </div>
+    </div>
+</div>
+
+<h3 class="text-icon-pink mx-5">Bienvenida a Mi Diario</h3>
+<h5 class="mx-5">En esta sección podrá escribir comentarios u observaciones sobre su embarazo.</h5>
+<br>
+<div class="bg-fondo-pink mx-5 px-5 py-3 border border-icon-pink border-5">
+    <form [formGroup]="diarioForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <input  
+            type="text" 
+            name="titulo" 
+            id="titulo"
+            placeholder="Escribe un título"
+            formControlName="titulo"
+            class="form-control">
+      </div>
+      <div class="form-group pt-4">
+        <textarea 
+            name="comentario" 
+            id="comentario"
+            placeholder="Escribe tu comentario u observación"
+            formControlName="comentario"
+            rows="7"
+            class="form-control">
+        </textarea>
+      </div>
+      <div class="pt-4 d-flex justify-content-end">
+          <button type="submit" class="btn bg-btn-pink text-white">Crear página</button>
+      </div>
+    </form>
+</div>
+
+
+
+
+
+  

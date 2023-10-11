@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Appoinment;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
 class AppoinmentController extends Controller
@@ -13,21 +14,23 @@ class AppoinmentController extends Controller
         $informacionCita = $request->input('informacionCita');
 
         $data = json_decode($informacionCita, true);
-        
-        // Crea una nueva cita en la base de datos usando los datos del JSON
+
+        $idPatient = User::select('patients.idPatient')
+            ->join('patients', 'users.id', '=', 'patients.idUser')
+            ->where('users.id', $data['idPatient'] )
+            ->get();
+
         $appointment = new Appoinment([
             'idDoctor' => $data['idDoctor'],
-            'idPatient' => $data['idPatient'],
+            'idPatient' => $idPatient[0]['idPatient'],
             'date' => $data['date'],
             'time' => $data['time'],
             'summary' => "",
             'prescription' => "",
         ]);
 
-        // Guarda la cita en la base de datos
         $appointment->save();
 
-        // Puedes devolver una respuesta JSON para indicar que la cita se ha creado exitosamente
         return response()->json(['message' => 'Cita creada con éxito'], 201);
     }
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\DiaryPage;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
 class DiaryPageController extends Controller
@@ -15,5 +16,25 @@ class DiaryPageController extends Controller
         ->get();
 
         return $diaryPages;
+    }
+
+    public function crearPaginaDiario(Request $request){
+        $informacionDiario = $request->input('informacionDiario');
+        $dataPaginaDiario = json_decode($informacionDiario, true);
+
+        $idPatient = User::select('patients.idPatient')
+            ->join('patients', 'users.id', '=', 'patients.idUser')
+            ->where('users.id', $dataPaginaDiario['idUser'] )
+            ->get();
+
+        $paginaDiario = new DiaryPage([
+            'idPatient' => $idPatient[0]['idPatient'],
+            'title' => $dataPaginaDiario['titulo'],
+            'text' => $dataPaginaDiario['comentario'],
+        ]);
+
+        $paginaDiario->save();
+
+        return response()->json(['message' => 'La página ha sido agregada a su diario'], 201);
     }
 }
