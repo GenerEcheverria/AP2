@@ -1,5 +1,15 @@
 <div class="bg-fondo-pink text-text-pink mx-5 px-5">
   <form class="mx-5 px-5" [formGroup]="citaForm" (ngSubmit)="onSubmit()">
+    <div class="alert alert-verdeSuccess" role="alert" *ngIf="showSuccessAlert">
+      <div class="row">
+          <div class="col-6">
+              La cita fue agendada
+          </div>
+          <div class="col-6 d-flex justify-content-end">
+              <button type="button" class="btn-close" (click)="hideAlert()"></button>
+          </div>
+      </div>
+    </div>
     <p class="fs-3">Agende una cita</p>
     <div class="form-group pt-4">
       <label for="doctor">Selecciones un doctor</label>

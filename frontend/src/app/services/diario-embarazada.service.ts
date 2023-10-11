@@ -18,4 +18,7 @@ export class DiarioEmbarazadaService {
     return this.http.get(this.url + '/getHojasDiarioById/'+idPaciente, this.httpOptions)
   }
 
+  crearPaginaDiario(informacionDiario: string) { 
+    return this.http.post(this.url + '/paginaDiario', {informacionDiario}, this.httpOptions )
+  }
 }

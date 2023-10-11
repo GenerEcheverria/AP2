@@ -68,6 +68,8 @@ Route::group([
 ], function ($router) {
     // Endpoint para crear cita usando id de user
     Route::get('getHojasDiarioById/{idPaciente}', 'App\Http\Controllers\DiaryPageController@getHojasDiarioById');
+    Route::post('paginaDiario/', 'App\Http\Controllers\DiaryPageController@crearPaginaDiario');
+    
 });
 
 Route::group([

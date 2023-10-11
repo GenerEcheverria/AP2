@@ -16,6 +16,7 @@ export class CitaComponent implements OnInit{
   '15:00:00', '15:30:00'];
   horasNoOcupadas!: string[];
   doctores!: any[];
+  showSuccessAlert = false;
   
   constructor(private fb: FormBuilder, private citaService: CitaService, private doctorService: DoctorService) {
     this.citaForm = this.fb.group({
@@ -29,7 +30,9 @@ export class CitaComponent implements OnInit{
   onSubmit() {
     let informacionCita = JSON.stringify(this.citaForm.value);
     this.citaService.crearCita(informacionCita).subscribe(data => {
-      //rutear a dashboard de paciente
+      this.showAlert()
+      this.citaForm.get('date')?.reset('');
+      this.citaForm.get('time')?.reset('');
     })
   }
 
@@ -57,5 +60,12 @@ export class CitaComponent implements OnInit{
     )
   }
 
+  showAlert() {
+    this.showSuccessAlert = true;
+  }
+
+  hideAlert() {
+    this.showSuccessAlert = false;
+  }
   
 }
