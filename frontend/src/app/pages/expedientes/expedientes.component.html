@@ -36,20 +36,74 @@
         <div class="mb-4">
             <h5 class="text-icon-pink">Notas Médicas de la paciente</h5>
             <div class="p-3 mt-2 bg-white rounded-3" *ngFor="let cita of citas">
-                <app-informacion-medica-paciente
-                    [fecha]="cita.fecha"
-                    [titulo]="cita.summary"
-                ></app-informacion-medica-paciente>
+                <div class="row">
+                    <div class="col-9">
+                        <app-informacion-medica-paciente
+                            [fecha]="cita.fecha"
+                            [titulo]="cita.summary"
+                        ></app-informacion-medica-paciente>
+                    </div>
+                    <div class="col-3 d-flex align-items-center">
+                        <button class="btn bg-btn-pink rounded-pill text-white" (click)="openModalCita(cita)" data-bs-toggle="modal" data-bs-target="#modalNotaMedica">Abrir</button>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="mb-4">
             <h5 class="text-icon-pink">Diario de la paciente</h5>
             <div class="p-3 mt-2 bg-white rounded-3" *ngFor="let hoja of diario">
-                <app-informacion-diario-paciente
-                    [fechaDiario]="hoja.fecha"
-                    [tituloDiario]="hoja.title"
-                ></app-informacion-diario-paciente>
+                <div class="row">
+                    <div class="col-9">
+                        <app-informacion-diario-paciente
+                        [fechaDiario]="hoja.fecha"
+                        [tituloDiario]="hoja.title"
+                        ></app-informacion-diario-paciente>
+                    </div>
+                    <div class="col-3 d-flex align-items-center">
+                        <button class="btn bg-btn-pink rounded-pill text-white" (click)="openModal(hoja)" data-bs-toggle="modal" data-bs-target="#modalDiario">Abrir</button>
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalDiario" tabindex="-1" [ngClass]="{'show': modalVisible}" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-icon-pink" id="exampleModalLabel">{{ hojaSeleccionada?.title }}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <span class="fw-bold">Fecha:</span>
+            <p>{{ hojaSeleccionada?.fecha }}</p>
+            <span class="fw-bold">Más información:</span>
+            <p>{{ hojaSeleccionada?.informacion }}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn bg-btn-pink rounded-pill text-white" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalNotaMedica" tabindex="-1" [ngClass]="{'show': modalVisibleCita}" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-icon-pink" id="exampleModalLabel">{{ citaElegida?.summary }}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <span class="fw-bold">Fecha:</span>
+            <p>{{ citaElegida?.fecha }}</p>
+            <span class="fw-bold">Más información:</span>
+            <p>{{ citaElegida?.prescription }}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn bg-btn-pink rounded-pill text-white" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
     </div>
 </div>

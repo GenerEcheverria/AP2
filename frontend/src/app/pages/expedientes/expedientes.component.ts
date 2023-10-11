@@ -18,9 +18,27 @@ export class ExpedientesComponent implements OnInit {
   diario!: DiarioEmbarazada[];
   infoPaciente!: any[];
   citaSeleccionada!: Cita;
-
+  hojaSeleccionada: any;
+  modalVisible: boolean = false;
+  citaElegida: any;
+  modalVisibleCita: boolean = false;
 
   constructor(private pacienteService:PacienteService, private citaPaciente: CitaService, private diarioEmbarazadaService: DiarioEmbarazadaService ){ }
+
+  openModal(hoja: any) {
+    this.hojaSeleccionada = hoja;
+    this.modalVisible = true;
+  }
+
+  openModalCita(cita: any) {
+    this.citaElegida = cita;
+    this.modalVisibleCita = true;
+  }
+
+ 
+  closeModal() {
+    this.modalVisible = false;
+  }
 
   ngOnInit(): void {
     let _idDoc = localStorage.getItem('idUser');
