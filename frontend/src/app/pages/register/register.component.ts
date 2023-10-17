@@ -20,7 +20,7 @@ export class RegisterComponent {
   /**
    * Formulario de registro.
    */
-  public formLogin!: FormGroup;
+  public formRegisterPatient!: FormGroup;
 
    /**
    * Contraseña ingresada por el usuario.
@@ -49,11 +49,10 @@ export class RegisterComponent {
    * Se configura el formulario de registro con las validaciones correspondientes.
    */
   ngOnInit(): void {
-    this.formLogin = this.formBuilder.group({
+    this.formRegisterPatient = this.formBuilder.group({
       Nombre: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, this.emailValidator()]],
       telefono: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
-      fotoPerfil: ['', [Validators.required, this.imageValidator.bind(this)]],
       password: ['', [Validators.required, Validators.minLength(8)]],
       confirmPassword: ['', [Validators.required]]}, { validator: this.passwordsMatchValidator }); 
   }
@@ -127,7 +126,7 @@ export class RegisterComponent {
    * Se obtienen los valores ingresados por el usuario y se realiza el registro llamando al servicio de autenticación.
    */
   onSubmit() {
-    const formUser = this.formLogin.value;
+    const formUser = this.formRegisterPatient.value;
     console.log(formUser);
     const newUser:User = {
       'name': formUser.Nombre,
@@ -135,9 +134,8 @@ export class RegisterComponent {
       'password' : this.crypto.encrypted(formUser.password),
       'role' : "admin",
       'phone': formUser.telefono,
-      'photo': "../../../assets/users/generceo.png", //aqui le deben pasar la url
     }
-    this.authService.register(newUser.name, newUser.email, newUser.password, newUser.role, newUser.phone, newUser.photo).subscribe(
+    this.authService.register(newUser.name, newUser.email, newUser.password, newUser.role, newUser.phone).subscribe(
       (response) => {
         this.router.navigate(['/login']);
       },

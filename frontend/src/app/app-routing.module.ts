@@ -10,7 +10,6 @@ import { DiarioComponent } from './pages/diario/diario.component';
 import { ExpedientesComponent } from './pages/expedientes/expedientes.component';
 import { AuthGuard } from './guards/auth.guard';
 import { RoleGuard } from './guards/role.guard';
-import { AdministradorCitasComponent } from './pages/doctor/administrador-citas/administrador-citas.component';
 
 
 const routes: Routes = [
@@ -22,10 +21,9 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       {path: '', redirectTo: '', pathMatch: 'full'},
-      {path: 'admin-citas', component: AdministradorCitasComponent, canActivate: [RoleGuard], data: { roles: ['Doctor'] }},
       {path: 'mi-cuenta', component: MiCuentaComponent, canActivate: [RoleGuard], data: { roles: ['Doctor'] }},
-      {path: 'cita', component: CitaComponent, canActivate: [RoleGuard], data: { roles: ['Patient'] }},
-      {path: 'diario', component: DiarioComponent, canActivate: [RoleGuard], data: { roles: ['Patient'] }},
+      {path: 'cita', component: CitaComponent, canActivate: [RoleGuard], data: { roles: ['Doctor'] }},
+      {path: 'diario', component: DiarioComponent, canActivate: [RoleGuard], data: { roles: ['Doctor'] }},
       {path: 'expediente', component: ExpedientesComponent, canActivate: [RoleGuard], data: { roles: ['Doctor'] }},
       {path: '**', redirectTo: '', pathMatch: 'full'},
     ]

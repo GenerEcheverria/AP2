@@ -40,11 +40,4 @@ export interface User {
    * @property {string} phone
    */
     phone: string,
-
-    /**
-   * La foto del usuario.
-   * 
-   * @property {string} photo
-   */
-    photo: string,
 }

@@ -21,7 +21,6 @@ import { InformacionCitaComponent } from './pages/expedientes/components/informa
 import { InformacionMedicaPacienteComponent } from './pages/expedientes/components/informacion-medica-paciente/informacion-medica-paciente.component';
 import { InformacionDiarioPacienteComponent } from './pages/expedientes/components/informacion-diario-paciente/informacion-diario-paciente.component';
 import { DiarioComponent } from './pages/diario/diario.component';
-import { AdministradorCitasComponent } from './pages/doctor/administrador-citas/administrador-citas.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +39,6 @@ import { AdministradorCitasComponent } from './pages/doctor/administrador-citas/
     InformacionMedicaPacienteComponent,
     InformacionDiarioPacienteComponent,
     DiarioComponent,
-    AdministradorCitasComponent,
   ],
   imports: [
     BrowserModule,
