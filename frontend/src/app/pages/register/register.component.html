@@ -115,20 +115,285 @@
                 </div>
                 <div
                   class="control-error"
-                  *ngIf="formRegisterPatient.get('telefono')?.errors?.['minlength']"
-                >
-                  El teléfono debe tener 10 números
-                </div>
-                <div
-                  class="control-error"
-                  *ngIf="formRegisterPatient.get('telefono')?.errors?.['maxlength']"
+                  *ngIf="formRegisterPatient.get('telefono')?.errors?.['minlength'] || formRegisterPatient.get('telefono')?.errors?.['maxlength']"
                 >
                   El teléfono debe tener 10 números
                 </div>
               </div>
             </div>
+            <div class="container my-2">
+              <div class="row align-items-center">
+                <label class="col-4" for="edad">Edad</label>
+                <input
+                  type="number"
+                  id="edad"
+                  formControlName="edad"
+                  class="col form-control rounded-pill bg-fondo-pink"
+                  min="1"
+                  max="120"
+                />
+              </div>
+              <div
+                class="d-flex justify-content-end"
+                *ngIf="
+                  formRegisterPatient.get('edad')?.invalid &&
+                  (formRegisterPatient.get('edad')?.dirty ||
+                    formRegisterPatient.get('edad')?.touched)
+                "
+              >
+                <div
+                  class="control-error"
+                  *ngIf="formRegisterPatient.get('edad')?.errors?.['required']"
+                >
+                  La edad es requerida
+                </div>
+                <div
+                  class="control-error"
+                  *ngIf="formRegisterPatient.get('edad')?.errors?.['min']"
+                >
+                  La edad debe ser mayor o igual a 1
+                </div>
+                <div
+                  class="control-error"
+                  *ngIf="formRegisterPatient.get('edad')?.errors?.['max']"
+                >
+                  La edad debe ser menor o igual a 120
+                </div>
+              </div>
+            </div>
+            <div class="container my-2">
+              <div class="row align-items-center">
+                <label class="col-4" for="curp">CURP</label>
+                <input
+                  type="text"
+                  id="curp"
+                  formControlName="curp"
+                  class="col form-control rounded-pill bg-fondo-pink"
+                />
+              </div>
+              <div
+                class="d-flex justify-content-end"
+                *ngIf="
+                  formRegisterPatient.get('curp')?.invalid &&
+                  (formRegisterPatient.get('curp')?.dirty ||
+                    formRegisterPatient.get('curp')?.touched)
+                "
+              >
+                <div
+                  class="control-error"
+                  *ngIf="formRegisterPatient.get('curp')?.errors?.['required']"
+                >
+                  La CURP es requerida
+                </div>
+                <div
+                  class="control-error"
+                  *ngIf="formRegisterPatient.get('curp')?.errors?.['minlength'] || formRegisterPatient.get('curp')?.errors?.['maxlength']"
+                >
+                  El CURP debe tener 18 caracteres
+                </div>
+              </div>
+            </div>
+            <div class="container my-2">
+              <div class="row align-items-center">
+                <label class="col-4" for="estadoCivil">Estado Civil</label>
+                <select
+                  id="estadoCivil"
+                  formControlName="estadoCivil"
+                  class="col form-control rounded-pill bg-fondo-pink"
+                >
+                <option value="Soltera">Soltera</option>
+                <option value="Casada">Casada</option>
+                <option value="Divorciada">Divorciada</option>
+                <option value="Viuda">Viuda</option>
+                <option value="Unión libre">Unión libre</option>
+              </select>
+              </div>
+              <div
+                class="d-flex justify-content-end"
+                *ngIf="
+                  formRegisterPatient.get('estadoCivil')?.invalid &&
+                  (formRegisterPatient.get('estadoCivil')?.dirty ||
+                    formRegisterPatient.get('estadoCivil')?.touched)
+                "
+              >
+                <div
+                  class="control-error"
+                  *ngIf="formRegisterPatient.get('estadoCivil')?.errors?.['required']"
+                >
+                  El estado civil es requerido
+                </div>
+              </div>
+            </div>
+            <div class="container my-2">
+              <div class="row align-items-center">
+                <label class="col-4" for="estado">Ocupación</label>
+                <input
+                  type="text"
+                  id="ocupacion"
+                  formControlName="ocupacion"
+                  class="col form-control rounded-pill bg-fondo-pink"
+                />
+              </div>
+              <div
+                class="d-flex justify-content-end"
+                *ngIf="
+                  formRegisterPatient.get('ocupacion')?.invalid &&
+                  (formRegisterPatient.get('ocupacion')?.dirty ||
+                    formRegisterPatient.get('ocupacion')?.touched)
+                "
+              >
+                <div
+                  class="control-error"
+                  *ngIf="formRegisterPatient.get('ocupacion')?.errors?.['required']"
+                >
+                  La ocupacion es requerida
+                </div>
+              </div>
+            </div>
+            <div class="container my-2">
+              <div class="row align-items-center">
+                <label class="col-4" for="estado">Estado</label>
+                <select
+                  id="estado"
+                  formControlName="estado"
+                  class="col form-control rounded-pill bg-fondo-pink"
+                >
+                  <option value="Aguascalientes">Aguascalientes</option>
+                  <option value="Baja California">Baja California</option>
+                  <option value="Baja California Sur">Baja California Sur</option>
+                  <option value="Campeche">Campeche</option>
+                  <option value="Chiapas">Chiapas</option>
+                  <option value="Chihuahua">Chihuahua</option>
+                  <option value="Ciudad de México">Ciudad de México</option>
+                  <option value="Coahuila">Coahuila</option>
+                  <option value="Colima">Colima</option>
+                  <option value="Durango">Durango</option>
+                  <option value="Estado de México">Estado de México</option>
+                  <option value="Guanajuato">Guanajuato</option>
+                  <option value="Guerrero">Guerrero</option>
+                  <option value="Hidalgo">Hidalgo</option>
+                  <option value="Jalisco">Jalisco</option>
+                  <option value="Michoacán">Michoacán</option>
+                  <option value="Morelos">Morelos</option>
+                  <option value="Nayarit">Nayarit</option>
+                  <option value="Nuevo León">Nuevo León</option>
+                  <option value="Oaxaca">Oaxaca</option>
+                  <option value="Puebla">Puebla</option>
+                  <option value="Querétaro">Querétaro</option>
+                  <option value="Quintana Roo">Quintana Roo</option>
+                  <option value="San Luis Potosí">San Luis Potosí</option>
+                  <option value="Sinaloa">Sinaloa</option>
+                  <option value="Sonora">Sonora</option>
+                  <option value="Tabasco">Tabasco</option>
+                  <option value="Tamaulipas">Tamaulipas</option>
+                  <option value="Tlaxcala">Tlaxcala</option>
+                  <option value="Veracruz">Veracruz</option>
+                  <option value="Yucatán">Yucatán</option>
+                  <option value="Zacatecas">Zacatecas</option>
+                </select>
+              </div>
+              <div
+                class="d-flex justify-content-end"
+                *ngIf="
+                  formRegisterPatient.get('estado')?.invalid &&
+                  (formRegisterPatient.get('estado')?.dirty ||
+                    formRegisterPatient.get('estado')?.touched)
+                "
+              >
+                <div
+                  class="control-error"
+                  *ngIf="formRegisterPatient.get('estado')?.errors?.['required']"
+                >
+                  El estado es requerido
+                </div>
+              </div>
+            </div>
+            
+            <div class="container my-2">
+              <div class="row align-items-center">
+                <label class="col-4" for="municipio">Municipio</label>
+                <input
+                  type="text"
+                  id="municipio"
+                  formControlName="municipio"
+                  class="col form-control rounded-pill bg-fondo-pink"
+                />
+              </div>
+              <div
+                class="d-flex justify-content-end"
+                *ngIf="
+                  formRegisterPatient.get('municipio')?.invalid &&
+                  (formRegisterPatient.get('municipio')?.dirty ||
+                    formRegisterPatient.get('municipio')?.touched)
+                "
+              >
+                <div
+                  class="control-error"
+                  *ngIf="formRegisterPatient.get('municipio')?.errors?.['required']"
+                >
+                  El municipio es requerido
+                </div>
+              </div>
+            </div>
+            <div class="container my-2">
+              <div class="row align-items-center">
+                <label class="col-4" for="localidad">Localidad</label>
+                <input
+                  type="text"
+                  id="localidad"
+                  formControlName="localidad"
+                  class="col form-control rounded-pill bg-fondo-pink"
+                />
+              </div>
+              <div
+                class="d-flex justify-content-end"
+                *ngIf="
+                  formRegisterPatient.get('localidad')?.invalid &&
+                  (formRegisterPatient.get('localidad')?.dirty ||
+                    formRegisterPatient.get('localidad')?.touched)
+                "
+              >
+                <div
+                  class="control-error"
+                  *ngIf="formRegisterPatient.get('localidad')?.errors?.['required']"
+                >
+                  La localidad es requerida
+                </div>
+              </div>
+            </div>
+            <div class="container my-2">
+              <div class="row align-items-center">
+                <label class="col-4" for="direccion">Dirección</label>
+                <input
+                  type="text"
+                  id="direccion"
+                  formControlName="direccion"
+                  class="col form-control rounded-pill bg-fondo-pink"
+                />
+              </div>
+              <div
+                class="d-flex justify-content-end"
+                *ngIf="
+                  formRegisterPatient.get('direccion')?.invalid &&
+                  (formRegisterPatient.get('direccion')?.dirty ||
+                    formRegisterPatient.get('direccion')?.touched)
+                "
+              >
+                <div
+                  class="control-error"
+                  *ngIf="formRegisterPatient.get('direccion')?.errors?.['required']"
+                >
+                  La dirección es requerida
+                </div>
+              </div>
+            </div>
+          <!-- fin   -->
           </div>
-          <form class="my-2" [formGroup]="formRegisterPatient" (ngSubmit)="onSubmit()">
+          <form
+            class="my-2"
+            [formGroup]="formRegisterPatient"
+            (ngSubmit)="onSubmit()"
+          >
             <div class="container my-3">
               <div class="row align-items-center">
                 <label class="col-4" for="password">Contraseña</label>
@@ -164,7 +429,9 @@
 
             <div class="container">
               <div class="row align-items-cente">
-                <label class="col-4" for="confirmPassword">Confirmar Contraseña</label>
+                <label class="col-4" for="confirmPassword"
+                  >Confirmar Contraseña</label
+                >
                 <input
                   type="password"
                   id="confirmPassword"
@@ -209,7 +476,11 @@
         <div class="d-flex justify-content-center">
           <p>
             ¿Ya tienes cuenta?
-            <span><a href="/login" class="text-btn-pink">Inicia sesión aquí</a></span>
+            <span
+              ><a href="/login" class="text-btn-pink"
+                >Inicia sesión aquí</a
+              ></span
+            >
           </p>
         </div>
       </div>

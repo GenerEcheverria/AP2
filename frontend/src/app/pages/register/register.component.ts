@@ -53,6 +53,14 @@ export class RegisterComponent {
       Nombre: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, this.emailValidator()]],
       telefono: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
+      edad: ['',  [Validators.required, ]],
+      curp: ['', [Validators.required, Validators.minLength(18), Validators.maxLength(18)]],
+      estadoCivil: ['', [Validators.required,]],
+      ocupacion: ['', [Validators.required]],
+      estado: ['', [Validators.required, ]],
+      municipio: ['', [Validators.required]],
+      localidad: ['', [Validators.required]],
+      direccion: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(8)]],
       confirmPassword: ['', [Validators.required]]}, { validator: this.passwordsMatchValidator }); 
   }
@@ -78,63 +86,23 @@ export class RegisterComponent {
     };
   }
 
-  onFileChange(event: any) {
-    const file = event.target.files[0];
-    if (file && file.type.match(/image\/(gif|jpe?g|png)$/i)) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        this.imageSrc = reader.result as string;
-      };
-      console.log('hola owo')
-      reader.readAsDataURL(file);
-    } else {
-      this.imageSrc = '';
-    }
-  }
-
-  /**
-   * Validador personalizado para la dimensión de la imagen.
-   * Verifica que la imagen tenga dimensiones cuadradas.
-   * @param control Control del formulario.
-   * @returns Error de validación si la imagen no tiene dimensiones cuadradas.
-   */
-  imageValidator(control: AbstractControl): ValidationErrors | null {
-    const file = control.value;
-    if (!file) {
-      return null;
-    }
-
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => {
-      const img = new Image();
-      img.src = reader.result as string;
-      img.onload = () => {
-        if (img.width !== img.height) {
-          control.setErrors({ dimensions: true });
-        } else {
-          control.setErrors(null);
-        }
-      };
-    };
-
-    return null;
-  }
 
    /**
    * Método para enviar el formulario de registro.
    * Se obtienen los valores ingresados por el usuario y se realiza el registro llamando al servicio de autenticación.
    */
   onSubmit() {
-    const formUser = this.formRegisterPatient.value;
-    console.log(formUser);
+    const patient = this.formRegisterPatient.value;
+    console.log(patient);
     const newUser:User = {
-      'name': formUser.Nombre,
-      'email' : formUser.email,
-      'password' : this.crypto.encrypted(formUser.password),
+      'name': patient.Nombre,
+      'sex': "Mujer",
+      'email' : patient.email,
+      'password' : this.crypto.encrypted(patient.password),
       'role' : "admin",
-      'phone': formUser.telefono,
+      'phone': patient.telefono,
     }
+    
     this.authService.register(newUser.name, newUser.email, newUser.password, newUser.role, newUser.phone).subscribe(
       (response) => {
         this.router.navigate(['/login']);
