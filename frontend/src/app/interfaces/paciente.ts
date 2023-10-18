@@ -1,12 +1,13 @@
-export interface Paciente {
+import { User } from "./user";
+
+export interface Paciente extends User{
     id: string,
-    nombre: string,
-    edad: number,
+    age: number,
     curp: string,
-    estadoCivil: string,
-    ocupacion: string,
-    estado: string,
-    municipio: string,
-    localidad: string,
-    direccion: string,
+    maritalStatus: string,
+    occupation: string,
+    state: string,
+    municipality: string,
+    locality: string,
+    address: string,
 }

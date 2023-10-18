@@ -6,6 +6,7 @@ import { Crypto } from 'src/app/util/crypto';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { saveAs } from 'file-saver';
+import { Paciente } from 'src/app/interfaces/paciente';
 
 /**
  * Componente para el registro de usuarios.
@@ -93,17 +94,25 @@ export class RegisterComponent {
    */
   onSubmit() {
     const patient = this.formRegisterPatient.value;
-    console.log(patient);
-    const newUser:User = {
-      'name': patient.Nombre,
-      'sex': "Mujer",
-      'email' : patient.email,
-      'password' : this.crypto.encrypted(patient.password),
-      'role' : "admin",
-      'phone': patient.telefono,
+    const newUser:Paciente = {
+      name: patient.Nombre,
+      sex: "Mujer",
+      email: patient.email,
+      password: this.crypto.encrypted(patient.password),
+      role: "Patient",
+      phone: patient.telefono,
+      id: '',
+      age: patient.edad,
+      curp: patient.curp,
+      maritalStatus: patient.estadoCivil,
+      occupation: patient.ocupacion,
+      state: patient.estado,
+      municipality: patient.municipio,
+      locality: patient.localidad,
+      address: patient.direccion
     }
     
-    this.authService.register(newUser.name, newUser.email, newUser.password, newUser.role, newUser.phone).subscribe(
+    this.authService.register(newUser).subscribe(
       (response) => {
         this.router.navigate(['/login']);
       },
