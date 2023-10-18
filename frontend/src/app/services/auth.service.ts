@@ -32,7 +32,6 @@ export class AuthService {
    * @returns Observable que representa la respuesta del servidor.
    */
   register(patient:Paciente) {
-    console.log(patient)
     return this.http.post<any>(this.url + '/register-patient', patient, this.httpOptions);
   }
 
