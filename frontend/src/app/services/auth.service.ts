@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { of } from 'rxjs';
 import { Crypto } from '../util/crypto';
+import { Paciente } from '../interfaces/paciente';
 
 /**
  * Servicio de autenticación y gestión de usuarios.
@@ -28,11 +29,10 @@ export class AuthService {
    * @param password Contraseña del usuario.
    * @param role Rol del usuario.
    * @param phone Número de teléfono del usuario.
-   * @param photo Foto del perfil del usuario.
    * @returns Observable que representa la respuesta del servidor.
    */
-  register(name: string, email: string, password: string, role: string, phone: string, photo: string) {
-    return this.http.post<any>(this.url + '/register', { name, email, password, role, phone, photo }, this.httpOptions);
+  register(patient:Paciente) {
+    return this.http.post<any>(this.url + '/register-patient', patient, this.httpOptions);
   }
 
   /**
