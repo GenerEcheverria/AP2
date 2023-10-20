@@ -10,7 +10,8 @@
         <div class="mt-2 bg-white rounded-3">
             <div class="p-3 d-flex text-icon-pink fs-4">
                 <i class="bi-calendar-date text-icon-pink"></i>
-                <p class="ps-4 m-0">Tu próxima cita es: {{ upcomingDate.date }} </p>
+                <p *ngIf="upcomingDate" class="ps-4 m-0">Tu próxima cita es: {{ upcomingDate.date }} a las {{upcomingDate.time}}</p>
+                <p *ngIf="!upcomingDate" class="ps-4 m-0">No hay citas proximas </p>
             </div>
         </div>
 

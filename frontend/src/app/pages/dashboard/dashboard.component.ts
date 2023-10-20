@@ -33,8 +33,12 @@ export class DashboardComponent {
   private upcomingAppointment(){
     if(this.idUser != null){
       this.citaService.getUpcomingAppointment(this.idUser).subscribe(data => {
+        
         this.upcomingDate = data as UpcomingDate;
+        this.upcomingDate.time = this.upcomingDate.time.split(':').slice(0, 2).join(':');
+
       });
     }
+    
   }
 }
