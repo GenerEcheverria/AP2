@@ -34,9 +34,17 @@
         </ul>
         <ul
           *ngIf="role=='Patient'"
-          class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
+          class="pt-5 nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
           id="menu"
         >
+          <li >
+            <!-- Aqui hay que poner el link hacia el dashboard de la paciente (en [link])-->
+            <app-menu-option
+              [titulo]="'Menu'"
+              [link]="'dashboard'"
+              [icon]="'bi-house'"
+            ></app-menu-option>
+          </li>
           <li>
             <app-menu-option
               [titulo]="'Citas'"
