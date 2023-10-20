@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', response.access_token);
         this.authService.setUserRoles(response.role);
         if (response.role === 'Doctor') {
-          this.router.navigate(['/cita']);
+          this.router.navigate(['/admin-citas']);
         } else if (response.role === 'Patient') {
           this.router.navigate(['/mi-cuenta']);
         } else {

@@ -3,22 +3,22 @@
         <div class="form-group mb-4">
             <h5 class="mb-2 text-icon-pink">Seleccione una paciente</h5>
             <select class="form-select mt-2" [(ngModel)]="pacienteSeleccionada" (change)="getInfoPaciente()" >
-              <option *ngFor="let paciente of pacientes" [ngValue]="paciente">{{ paciente.nombre }}</option>
+              <option *ngFor="let paciente of pacientes" [ngValue]="paciente">{{ paciente.name }}</option>
             </select>
         </div>
         <div class="mb-4">
             <h5 class="text-icon-pink">Datos generales de la paciente</h5>
             <div *ngIf="pacienteSeleccionada !== undefined" class="p-3 mt-2 bg-white rounded-3">
                 <app-datos-embarazada
-                    [nombre]= "pacienteSeleccionada.nombre"
-                    [edad]="pacienteSeleccionada.edad"
+                    [nombre]= "pacienteSeleccionada.name"
+                    [edad]="pacienteSeleccionada.age"
                     [curp]="pacienteSeleccionada.curp"
-                    [estadoCivil]="pacienteSeleccionada.estadoCivil"
-                    [ocupacion]="pacienteSeleccionada.ocupacion"
-                    [estado]="pacienteSeleccionada.estado"
-                    [municipio]="pacienteSeleccionada.municipio"
-                    [localidad]="pacienteSeleccionada.localidad"
-                    [direccion]="pacienteSeleccionada.direccion"
+                    [estadoCivil]="pacienteSeleccionada.maritalStatus"
+                    [ocupacion]="pacienteSeleccionada.occupation"
+                    [estado]="pacienteSeleccionada.state"
+                    [municipio]="pacienteSeleccionada.municipality"
+                    [localidad]="pacienteSeleccionada.locality"
+                    [direccion]="pacienteSeleccionada.address"
                 ></app-datos-embarazada>
             </div>
         </div>

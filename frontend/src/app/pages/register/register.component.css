@@ -1,14 +1,3 @@
-#cajaExterior {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-}
-
-.rounded-pill {
-    border-radius: 20px;
-  }
-
 #registrar-url{
     text-decoration: none;
 }

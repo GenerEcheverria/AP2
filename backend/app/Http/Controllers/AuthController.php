@@ -80,7 +80,7 @@ class AuthController extends Controller
 
     private function validatePatientData(Request $request)
     {
-        return $request->validate([
+        $validatedData = $request->validate([
             'name' => 'required',
             'sex' => 'required',
             'phone' => 'required|string|min:10|max:10',
@@ -95,6 +95,8 @@ class AuthController extends Controller
             'locality' => 'required|string',
             'address' => 'string'
         ]);
+        $validatedData['password'] = bcrypt($request->password);
+        return $validatedData;
     }
 
     private function createMedicalRecord(Patient $patient)
