@@ -66,4 +66,15 @@ class AppoinmentController extends Controller
 
         return $resultados;
     }
+
+    public function getUpcomingAppointment(string $idUser){
+        $upcomingDate = DB::table('users')
+            ->join('patients', 'users.id', '=', 'patients.idUser')
+            ->join('appointments', 'patients.idPatient', '=', 'appointments.idPatient')
+            ->select('patients.idPatient', 'appointments.idAppointment', 'appointments.date')
+            ->orderBy(DB::raw('ABS(DATEDIFF(appointments.date, CURDATE()))'))
+            ->limit(1)
+            ->get(); 
+        return $upcomingDate[0];
+    }
 }

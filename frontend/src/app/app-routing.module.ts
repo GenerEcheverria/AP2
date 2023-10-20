@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './pages/register/register.component';
 import { MiCuentaComponent } from "./pages/mi-cuenta/mi-cuenta.component";
 import { CitaComponent } from './pages/cita/cita.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { DiarioComponent } from './pages/diario/diario.component';
 import { ExpedientesComponent } from './pages/expedientes/expedientes.component';
 import { AuthGuard } from './guards/auth.guard';
@@ -22,8 +23,9 @@ const routes: Routes = [
     children: [
       {path: '', redirectTo: '', pathMatch: 'full'},
       {path: 'mi-cuenta', component: MiCuentaComponent, canActivate: [RoleGuard], data: { roles: ['Doctor'] }},
-      {path: 'cita', component: CitaComponent, canActivate: [RoleGuard], data: { roles: ['Doctor'] }},
-      {path: 'diario', component: DiarioComponent, canActivate: [RoleGuard], data: { roles: ['Doctor'] }},
+      {path: 'dashboard', component: DashboardComponent, canActivate: [RoleGuard], data: { roles: ['Doctor','Patient'] }},
+      {path: 'cita', component: CitaComponent, canActivate: [RoleGuard], data: { roles: ['Patient'] }},
+      {path: 'diario', component: DiarioComponent, canActivate: [RoleGuard], data: { roles: ['Patient'] }},
       {path: 'expediente', component: ExpedientesComponent, canActivate: [RoleGuard], data: { roles: ['Doctor'] }},
       {path: '**', redirectTo: '', pathMatch: 'full'},
     ]

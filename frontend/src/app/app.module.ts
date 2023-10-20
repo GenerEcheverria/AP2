@@ -21,6 +21,7 @@ import { InformacionCitaComponent } from './pages/expedientes/components/informa
 import { InformacionMedicaPacienteComponent } from './pages/expedientes/components/informacion-medica-paciente/informacion-medica-paciente.component';
 import { InformacionDiarioPacienteComponent } from './pages/expedientes/components/informacion-diario-paciente/informacion-diario-paciente.component';
 import { DiarioComponent } from './pages/diario/diario.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { DiarioComponent } from './pages/diario/diario.component';
     InformacionMedicaPacienteComponent,
     InformacionDiarioPacienteComponent,
     DiarioComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,

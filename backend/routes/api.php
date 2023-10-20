@@ -60,6 +60,7 @@ Route::group([
     Route::post('cita/', 'App\Http\Controllers\AppoinmentController@createAppointment');
     Route::get('availableTime/{dateSelectedInfo}', 'App\Http\Controllers\AppoinmentController@getAvailableTimeByIdDoctor');
     Route::get('getCitasPacintesById/{idPaciente}', 'App\Http\Controllers\AppoinmentController@getCitasPacintesById');
+    Route::get('getUpcomingAppointment/{idUser}', 'App\Http\Controllers\AppoinmentController@getUpcomingAppointment');
 });
 
 Route::group([
