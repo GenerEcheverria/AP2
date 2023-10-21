@@ -10,7 +10,11 @@
           <div><i class="bi bi-calendar-event"></i> {{currentDate}}</div>
           <button class="btn" (click)="siguienteMes()"><i class="bi bi-chevron-right"></i></button>
         </div>
-        <div class="col-5"><i class="bi bi-filter"></i> Ordenar</div>
+        <div class="col-5 d-flex justify-content-end">
+          <button class="btn bg-white" (click)="ordenar()">
+            <i class="bi bi-filter"></i> Reordenar
+          </button>
+        </div>
       </div>
       <div class="list-container bg-white rounded-3 my-3">
         <ul class="list-group list-group-flush">

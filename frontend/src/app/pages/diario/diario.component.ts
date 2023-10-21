@@ -29,6 +29,7 @@ export class DiarioComponent {
       .getHojasDiarioById(localStorage.getItem('idPatient') || '')
       .subscribe((pages) => {
         this.pages = pages as DiarioEmbarazada[];
+        this.pages.reverse()
         this.filterPagesByDate(); // Llama a la función de filtrado
       });
   }
@@ -43,7 +44,6 @@ export class DiarioComponent {
     });
   }
   
-
   protected siguienteMes() {
     if (this.currentDate) {
       const currentDate = new Date(this.currentDate);
@@ -70,6 +70,10 @@ export class DiarioComponent {
       this.currentDate = this.formatDate(currentDate);
     }
     this.filterPagesByDate()
+  }
+
+  protected ordenar(){
+    this.filteredPages.reverse();
   }
 
   protected showDetails(idPage: number) {
