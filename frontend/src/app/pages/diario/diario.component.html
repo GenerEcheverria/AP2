@@ -14,7 +14,7 @@
       </div>
       <div class="list-container bg-white rounded-3 my-3">
         <ul class="list-group list-group-flush">
-          <li class="list-group-item" *ngFor="let page of pages">
+          <li class="list-group-item" *ngFor="let page of filteredPages">
             <app-page-list-item
               [page]="page"
               [showDetails]="showDetails.bind(this)"

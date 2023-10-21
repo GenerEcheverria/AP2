@@ -11,6 +11,7 @@ import { DatePipe } from '@angular/common'; // Importa DatePipe
 export class DiarioComponent {
   protected verForm: boolean;
   protected pages: DiarioEmbarazada[] = [];
+  protected filteredPages: DiarioEmbarazada[] = [];
   protected currentPage: DiarioEmbarazada | undefined;
   protected currentDate: string;
 
@@ -28,8 +29,20 @@ export class DiarioComponent {
       .getHojasDiarioById(localStorage.getItem('idPatient') || '')
       .subscribe((pages) => {
         this.pages = pages as DiarioEmbarazada[];
+        this.filterPagesByDate(); // Llama a la función de filtrado
       });
   }
+  
+  private filterPagesByDate() {
+    this.filteredPages = this.pages.filter((page) => {
+      // Convierte la fecha del formato actual a Date para comparar
+      const pageDate = new Date(page.fecha);
+  
+      // Compara si el mes y el año de pageDate coinciden con currentDate
+      return this.formatDate(pageDate) === this.currentDate;
+    });
+  }
+  
 
   protected siguienteMes() {
     if (this.currentDate) {
@@ -42,6 +55,7 @@ export class DiarioComponent {
       }
       this.currentDate = this.formatDate(currentDate);
     }
+    this.filterPagesByDate()
   }
 
   protected anteriorMes() {
@@ -55,6 +69,7 @@ export class DiarioComponent {
       }
       this.currentDate = this.formatDate(currentDate);
     }
+    this.filterPagesByDate()
   }
 
   protected showDetails(idPage: number) {
