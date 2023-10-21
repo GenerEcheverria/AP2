@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', response.access_token);
         this.authService.setUserRoles(response.role);
         if (response.role === 'Doctor' || response.role === 'Patient') {
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/']);
         }else {
           // Redirigir a otra página en caso de otro tipo de usuario
           this.router.navigate(['/login']);

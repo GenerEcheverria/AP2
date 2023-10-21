@@ -71,7 +71,7 @@ class AppoinmentController extends Controller
         $upcomingDate = DB::table('users')
             ->join('patients', 'users.id', '=', 'patients.idUser')
             ->join('appointments', 'patients.idPatient', '=', 'appointments.idPatient')
-            ->select('patients.idPatient', 'appointments.idAppointment', 'appointments.date')
+            ->select('patients.idPatient', 'appointments.idAppointment', 'appointments.date', 'appointments.time')
             ->orderBy(DB::raw('ABS(DATEDIFF(appointments.date, CURDATE()))'))
             ->limit(1)
             ->get(); 

@@ -1,0 +1,57 @@
+<div
+  class="alert alert-verdeSuccess px-1 my-2"
+  role="alert"
+  *ngIf="showSuccessAlert"
+>
+  <div class="row">
+    <div class="col-10">La página ha sido agregada a su diario</div>
+    <div class="col-2 d-flex justify-content-end">
+      <button type="button" class="btn-close" (click)="hideAlert()"></button>
+    </div>
+  </div>
+</div>
+
+<div class="py-4 px-1">
+  <h6 class="mb-3">
+    En esta sección podrá escribir comentarios u observaciones sobre su
+    embarazo.
+  </h6>
+  <div class="">
+    <form [formGroup]="diarioForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <input
+          type="text"
+          name="titulo"
+          id="titulo"
+          placeholder="Escribe un título"
+          formControlName="titulo"
+          class="form-control bg-fondo-pink"
+        />
+      </div>
+      <div class="form-group pt-2">
+        <textarea
+          name="comentario"
+          id="comentario"
+          placeholder="Escribe tu comentario u observación"
+          formControlName="comentario"
+          rows="7"
+          class="form-control bg-fondo-pink"
+        >
+        </textarea>
+      </div>
+      <div class="d-flex justify-content-center mt-3">
+        <button
+          type="submit"
+          class="btn bg-btn-pink text-white"
+          [disabled]="
+            !diarioForm.valid ||
+            !diarioForm.get('titulo')?.dirty ||
+            !diarioForm.get('comentario')?.dirty
+          "
+        >
+          Crear página
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

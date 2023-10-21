@@ -11,9 +11,9 @@ import { AuthService } from '../../services/auth.service';
 })
 export class MainLayoutComponent implements OnInit{
   protected name!: string;
-  protected photo!: string;
   protected userRole!: string|null;
-  
+  protected idPregnant!: string;
+
   /**
    * Constructor del componente MainLayoutComponent.
    * @param authService Servicio de autenticación utilizado para obtener información del usuario.
@@ -34,12 +34,6 @@ export class MainLayoutComponent implements OnInit{
   private getUserInfo(){
     this.authService.me().subscribe(data => {
       this.name = data.name;
-      this.photo = data.photo;
-      const img = new Image();
-      img.src = this.photo;
-      img.onerror = () => {
-        this.photo = "../../../assets/images/default-user.png"
-      }
     })
   }
 }
