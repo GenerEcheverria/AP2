@@ -6,21 +6,20 @@ import { DatePipe } from '@angular/common'; // Importa DatePipe
 @Component({
   selector: 'app-diario',
   templateUrl: './diario.component.html',
-  styleUrls: ['./diario.component.css'],
-  providers: [DatePipe], // Agrega DatePipe como un proveedor
+  styleUrls: ['./diario.component.css']
 })
 export class DiarioComponent {
   protected verForm: boolean;
   protected pages: DiarioEmbarazada[] = [];
   protected currentPage: DiarioEmbarazada | undefined;
-  protected currentDate: string; 
+  protected currentDate: string;
 
   constructor(
     private diarioEmbarazadaService: DiarioEmbarazadaService,
-    private datePipe: DatePipe // Inyecta DatePipe
+    private datePipe: DatePipe
   ) {
     this.verForm = false;
-    this.currentDate = this.formatDate(new Date()); 
+    this.currentDate = this.formatDate(new Date());
     this.listPages();
   }
 
@@ -51,7 +50,24 @@ export class DiarioComponent {
     this.verForm = true;
   }
 
+  //No es la mejor forma pero no hay tiempo
   private formatDate(date: Date): string {
-    return this.datePipe.transform(date, 'MMMM y') || "";
+    const monthNames: { [key: string]: string } = {
+      January: 'Enero',
+      February: 'Febrero',
+      March: 'Marzo',
+      April: 'Abril',
+      May: 'Mayo',
+      June: 'Junio',
+      July: 'Julio',
+      August: 'Agosto',
+      September: 'Septiembre',
+      October: 'Octubre',
+      November: 'Noviembre',
+      December: 'Diciembre',
+    };
+    const monthName = monthNames[this.datePipe.transform(date, 'MMMM') as string];
+    return `${monthName} ${this.datePipe.transform(date, 'y')}`;
   }
+  
 }
