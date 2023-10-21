@@ -1,0 +1,5 @@
+.list-container {
+    max-height: 70vh; /* El contenedor ocupará el 100% de la altura de la ventana */
+    overflow-y: auto; /* Agrega un scroll vertical cuando sea necesario */
+  }
+  
