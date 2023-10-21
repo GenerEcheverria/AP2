@@ -23,6 +23,7 @@ import { InformacionDiarioPacienteComponent } from './pages/expedientes/componen
 import { DiarioComponent } from './pages/diario/diario.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CreatePageComponent } from './pages/diario/components/create-page/create-page.component';
+import { PageListItemComponent } from './pages/diario/components/page-list-item/page-list-item.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { CreatePageComponent } from './pages/diario/components/create-page/creat
     DiarioComponent,
     DashboardComponent,
     CreatePageComponent,
+    PageListItemComponent,
   ],
   imports: [
     BrowserModule,
