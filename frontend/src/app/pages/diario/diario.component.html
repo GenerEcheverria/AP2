@@ -4,13 +4,13 @@
     <div class="col-6">
       <div class="row">
         <div
-          class="col-6 d-flex justify-content-center align-items-center bg-white rounded-3"
+          class="col-7 d-flex justify-content-between align-items-center bg-white rounded-3"
         >
-          <button class="btn"><i class="bi bi-chevron-left"></i></button>
+          <button class="btn" (click)="anteriorMes()"><i class="bi bi-chevron-left"></i></button>
           <div><i class="bi bi-calendar-event"></i> {{currentDate}}</div>
           <button class="btn" (click)="siguienteMes()"><i class="bi bi-chevron-right"></i></button>
         </div>
-        <div class="col-6"><i class="bi bi-filter"></i> Ordenar</div>
+        <div class="col-5"><i class="bi bi-filter"></i> Ordenar</div>
       </div>
       <div class="list-container bg-white rounded-3 my-3">
         <ul class="list-group list-group-flush">

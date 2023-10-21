@@ -32,7 +32,29 @@ export class DiarioComponent {
   }
 
   protected siguienteMes() {
-    console.log(1);
+    if (this.currentDate) {
+      const currentDate = new Date(this.currentDate);
+      if (currentDate.getMonth() === 12) {
+        currentDate.setFullYear(currentDate.getFullYear() + 1);
+        currentDate.setMonth(0);
+      } else {
+        currentDate.setMonth(currentDate.getMonth() + 1);
+      }
+      this.currentDate = this.formatDate(currentDate);
+    }
+  }
+
+  protected anteriorMes() {
+    if (this.currentDate) {
+      const currentDate = new Date(this.currentDate);
+      if (currentDate.getMonth() === 0) {
+        currentDate.setFullYear(currentDate.getFullYear() - 1);
+        currentDate.setMonth(11);
+      } else {
+        currentDate.setMonth(currentDate.getMonth() - 1);
+      }
+      this.currentDate = this.formatDate(currentDate);
+    }
   }
 
   protected showDetails(idPage: number) {
@@ -50,24 +72,8 @@ export class DiarioComponent {
     this.verForm = true;
   }
 
-  //No es la mejor forma pero no hay tiempo
   private formatDate(date: Date): string {
-    const monthNames: { [key: string]: string } = {
-      January: 'Enero',
-      February: 'Febrero',
-      March: 'Marzo',
-      April: 'Abril',
-      May: 'Mayo',
-      June: 'Junio',
-      July: 'Julio',
-      August: 'Agosto',
-      September: 'Septiembre',
-      October: 'Octubre',
-      November: 'Noviembre',
-      December: 'Diciembre',
-    };
-    const monthName = monthNames[this.datePipe.transform(date, 'MMMM') as string];
-    return `${monthName} ${this.datePipe.transform(date, 'y')}`;
+    return this.datePipe.transform(date, 'MMMM y') || "";
   }
-  
+
 }
