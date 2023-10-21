@@ -9,29 +9,34 @@ import { DiarioEmbarazadaService } from 'src/app/services/diario-embarazada.serv
 })
 export class DiarioComponent {
   protected verForm: boolean;
-  protected pages: DiarioEmbarazada[] = []; // Variable para almacenar los pages
+  protected pages: DiarioEmbarazada[] = [];
+  protected currentPage:  DiarioEmbarazada | undefined;
 
   constructor(private diarioEmbarazadaService: DiarioEmbarazadaService) {
     this.verForm = false;
     this.listPages()
   }
-  
-  public listPages() {
-    this.diarioEmbarazadaService.getHojasDiarioById(localStorage.getItem('idPatient')||"").subscribe(
+
+  protected listPages() {
+    this.diarioEmbarazadaService.getHojasDiarioById(localStorage.getItem('idPatient') || "").subscribe(
       pages => {
-        this.pages = pages as DiarioEmbarazada[] 
+        this.pages = pages as DiarioEmbarazada[]
       }
     )
   }
 
+  protected showDetails(idPage:number){
+    this.currentPage = this.pages.find(page => page.idPage === idPage);
+    this.verForm = false;
+  }
+  
+  protected deletePage(idPage: number) {
+    this.diarioEmbarazadaService.deletePage(idPage).subscribe(() => {
+      this.listPages();
+    });
+  }
+  
   protected visualizarForm() {
     this.verForm = true;
   }
-
-   deletePage(idPage: number) {
-    this.diarioEmbarazadaService.deletePage(idPage).subscribe(() => {
-      this.listPages(); 
-    });
-  }
-
 }

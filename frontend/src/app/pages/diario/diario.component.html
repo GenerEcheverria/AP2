@@ -17,6 +17,7 @@
           <li class="list-group-item" *ngFor="let page of pages">
             <app-page-list-item
               [page]="page"
+              [showDetails]="showDetails.bind(this)"
               [deletePage]="deletePage.bind(this)"
             ></app-page-list-item>
           </li>
@@ -33,7 +34,11 @@
     </div>
     <!-- Info/Form -->
     <div class="col-6 bg-white rounded-3">
-      <div *ngIf="!this.verForm">Info</div>
+      <div *ngIf="!this.verForm">
+        <app-page-details
+          [page]="currentPage"
+        ></app-page-details>
+      </div>
       <div *ngIf="this.verForm">
         <app-create-page
           [listPages]="listPages.bind(this)"

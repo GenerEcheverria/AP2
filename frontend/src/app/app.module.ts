@@ -24,6 +24,7 @@ import { DiarioComponent } from './pages/diario/diario.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CreatePageComponent } from './pages/diario/components/create-page/create-page.component';
 import { PageListItemComponent } from './pages/diario/components/page-list-item/page-list-item.component';
+import { PageDetailsComponent } from './pages/diario/components/page-details/page-details.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { PageListItemComponent } from './pages/diario/components/page-list-item/
     DashboardComponent,
     CreatePageComponent,
     PageListItemComponent,
+    PageDetailsComponent,
   ],
   imports: [
     BrowserModule,

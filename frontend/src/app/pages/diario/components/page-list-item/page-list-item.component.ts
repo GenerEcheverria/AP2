@@ -8,14 +8,15 @@ import { DiarioEmbarazada } from 'src/app/interfaces/diario-embarazada';
 })
 export class PageListItemComponent {
   @Input() page!: DiarioEmbarazada;
+  @Input() showDetails: any;
   @Input() deletePage: any;
 
   constructor(){
     this.deletePage = () => {}
   }
 
-  showPageDetails(page: DiarioEmbarazada) {
-    console.log(page);
+  showPageDetails(idPage: number) {
+    this.showDetails(idPage);
   }
 
   deletePageCallback(idPage: number) {
