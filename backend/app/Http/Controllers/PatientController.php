@@ -8,24 +8,29 @@ use App\Models\Patient;
 
 class PatientController extends Controller
 {
+    //El parametro dice id_doc pero te juro que es idUser del doctor que busca a sus pacientes
     public function getPacientesByIdDoc(string $_idDoc){
-        $resultados = DB::table('appointments')
-        ->join('patients', 'appointments.idPatient', '=', 'patients.idPatient')
-        ->join('users', 'patients.idUser', '=', 'users.id')
-        ->select(
-            DB::raw('DISTINCT patients.idPatient AS id'),
-            'users.name AS nombre',
-            'patients.age AS edad',
-            'patients.curp AS curp',
-            'patients.maritalStatus AS estadoCivil',
-            'patients.occupation AS ocupacion',
-            'patients.state AS estado',
-            'patients.municipality AS municipio',
-            'patients.locality AS localidad',
-            'patients.address AS direccion'
-        )
-        ->where('appointments.idDoctor', '=', $_idDoc)
-        ->get();
+        $resultados = DB::table('users')
+            ->join('doctors', 'users.id', '=', 'doctors.idDoctor')
+            ->join('appointments', 'doctors.idDoctor', '=', 'appointments.idDoctor')
+            ->join('patients', 'appointments.idPatient', '=', 'patients.idPatient')
+            ->join('users as u', 'patients.idUser', '=', 'u.id')
+            ->where('users.id',  $_idDoc)
+            ->select(
+                'patients.idPatient as id',
+                'u.name as name',
+                'patients.age as age',
+                'patients.curp as curp',
+                'patients.maritalStatus as maritalStatus',
+                'patients.occupation as occupation',
+                'patients.state as state',
+                'patients.municipality as municipality',
+                'patients.locality as locality',
+                'patients.address as address'
+            )
+            ->distinct()
+            ->get();
+
         
         return response()->json($resultados);
     }
