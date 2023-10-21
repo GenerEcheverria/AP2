@@ -21,13 +21,13 @@ const routes: Routes = [
     component: MainLayoutComponent,
     canActivate: [AuthGuard],
     children: [
-      {path: '', redirectTo: '', pathMatch: 'full'},
+      {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
       {path: 'mi-cuenta', component: MiCuentaComponent, canActivate: [RoleGuard], data: { roles: ['Doctor'] }},
       {path: 'dashboard', component: DashboardComponent, canActivate: [RoleGuard], data: { roles: ['Doctor','Patient'] }},
       {path: 'cita', component: CitaComponent, canActivate: [RoleGuard], data: { roles: ['Patient'] }},
       {path: 'diario', component: DiarioComponent, canActivate: [RoleGuard], data: { roles: ['Patient'] }},
       {path: 'expediente', component: ExpedientesComponent, canActivate: [RoleGuard], data: { roles: ['Doctor'] }},
-      {path: '**', redirectTo: '', pathMatch: 'full'},
+      {path: '**', redirectTo: 'dashboard', pathMatch: 'full'},
     ]
   }
 ];
