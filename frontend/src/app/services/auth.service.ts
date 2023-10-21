@@ -11,10 +11,12 @@ import { Paciente } from '../interfaces/paciente';
   providedIn: 'root'
 })
 export class AuthService {
-  url: string = 'http://localhost:8000/api/auth';
+  private url: string = 'http://localhost:8000/api/auth';
   private crypto = new Crypto;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+
+  }
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -22,16 +24,16 @@ export class AuthService {
     })
   }
 
-   /**
-   * Registra un nuevo usuario.
-   * @param name Nombre del usuario.
-   * @param email Correo electrónico del usuario.
-   * @param password Contraseña del usuario.
-   * @param role Rol del usuario.
-   * @param phone Número de teléfono del usuario.
-   * @returns Observable que representa la respuesta del servidor.
-   */
-  register(patient:Paciente) {
+  /**
+  * Registra un nuevo usuario.
+  * @param name Nombre del usuario.
+  * @param email Correo electrónico del usuario.
+  * @param password Contraseña del usuario.
+  * @param role Rol del usuario.
+  * @param phone Número de teléfono del usuario.
+  * @returns Observable que representa la respuesta del servidor.
+  */
+  register(patient: Paciente) {
     return this.http.post<any>(this.url + '/register-patient', patient, this.httpOptions);
   }
 
@@ -49,14 +51,14 @@ export class AuthService {
    * Obtiene la información del usuario actualmente autenticado.
    * @returns Observable que representa la información del usuario.
    */
-  me(){
+  me() {
     const token = this.getToken();
     const httpOptions = {
       headers: new HttpHeaders({
         'Authorization': `Bearer ${token}`
       })
     };
-    return this.http.post<any>(this.url+'/me', {},httpOptions);
+    return this.http.post<any>(this.url + '/me', {}, httpOptions);
   }
 
   /**
@@ -70,7 +72,7 @@ export class AuthService {
         'Authorization': `Bearer ${token}`
       })
     };
-    return this.http.post<any>(this.url + '/logout', {},httpOptions);
+    return this.http.post<any>(this.url + '/logout', {}, httpOptions);
   }
 
   /**
@@ -98,10 +100,10 @@ export class AuthService {
     return of({ valid: false });
   }
 
-   /**
-   * Establece los roles del usuario en el almacenamiento local.
-   * @param role Rol del usuario.
-   */
+  /**
+  * Establece los roles del usuario en el almacenamiento local.
+  * @param role Rol del usuario.
+  */
   public setUserRoles(role: string) {
     localStorage.setItem('role', role);
   }
@@ -114,10 +116,10 @@ export class AuthService {
   public hasRole(requiredRole: string): boolean {
     const userRole: string | null = localStorage.getItem('role');
     if (userRole) {
-      return userRole===requiredRole;
+      return userRole === requiredRole;
     }
     return false;
   }
-  
+
 
 }

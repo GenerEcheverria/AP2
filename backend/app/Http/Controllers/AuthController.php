@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\MedicalRecord;
 use App\Models\Patient;
+use App\Models\Doctor;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -106,13 +107,6 @@ class AuthController extends Controller
         ]);
     }
 
-
-
-
-
-
-
-
     /**
      * Get the authenticated user.
      *
@@ -156,11 +150,25 @@ class AuthController extends Controller
     {
         $user = auth()->user();
         $role = $user->role;
+        $idPatient = null;
+        $idDoctor = null;
+
+        if ($role === 'Patient') {
+            $patient = Patient::where('idUser', $user->id)->first();
+            if ($patient) {
+                $idPatient = $patient->idPatient;
+            }
+        } elseif ($role === 'Doctor') {
+            $doctor = Doctor::where('idUser', $user->id)->first();
+            if ($doctor) {
+                $idDoctor = $doctor->idDoctor;
+            }
+        }
 
         return response()->json([
             'idUser' => $user->id,
-            'idPatient' => $user->idPatient,
-            'idDoctor' => $user->idDoctor,
+            'idPatient' => $idPatient,
+            'idDoctor' => $idDoctor,
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth()->factory()->getTTL() * 60,

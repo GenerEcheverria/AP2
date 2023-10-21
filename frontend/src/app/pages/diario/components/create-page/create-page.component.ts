@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DiarioEmbarazadaService } from 'src/app/services/diario-embarazada.service';
 
@@ -8,6 +8,7 @@ import { DiarioEmbarazadaService } from 'src/app/services/diario-embarazada.serv
   styleUrls: ['./create-page.component.css']
 })
 export class CreatePageComponent {
+  @Input() listPages!: Function;
   diarioForm: FormGroup;
   showSuccessAlert = false;
 
@@ -26,6 +27,7 @@ export class CreatePageComponent {
       this.showAlert()
       this.diarioForm.get('titulo')?.reset('');
       this.diarioForm.get('comentario')?.reset('');
+      this.listPages()
     })
   }
 

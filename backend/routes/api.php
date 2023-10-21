@@ -70,7 +70,7 @@ Route::group([
     // Endpoint para crear cita usando id de user
     Route::get('getHojasDiarioById/{idPaciente}', 'App\Http\Controllers\DiaryPageController@getHojasDiarioById');
     Route::post('paginaDiario/', 'App\Http\Controllers\DiaryPageController@crearPaginaDiario');
-    
+    Route::delete('page/{id}', 'App\Http\Controllers\DiaryPageController@destroy');
 });
 
 Route::group([
