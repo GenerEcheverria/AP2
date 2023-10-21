@@ -1,11 +1,11 @@
 <div class="">
   <div class="row fs-4">
-    <div class="col-1 d-flex justify-content-center align-items-center">{{ day }}</div>
-    <div class="col-8 d-flex align-items-center">{{ title }}</div>
-    <button class="btn col-1 fs-4 d-flex justify-content-center align-items-center" (click)="showPage()">
+    <div class="col-1 d-flex justify-content-center align-items-center">{{ (page.fecha).slice(-2) }}</div>
+    <div class="col-9 d-flex align-items-center">{{ page.title }}</div>
+    <button class="btn col-1 fs-4 d-flex justify-content-center align-items-center" (click)="showPageDetails(page)">
       <i class="bi bi-eye"></i>
     </button>
-    <button class="btn ms-2 col-1 fs-4 text-danger d-flex justify-content-center align-items-center" (click)="deletePage()">
+    <button class="btn col-1 fs-4 text-danger d-flex justify-content-center align-items-center" (click)="deletePageCallback(page.idPage)">
       <i class="bi bi-trash"></i>
     </button>
   </div>

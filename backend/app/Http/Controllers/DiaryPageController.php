@@ -37,4 +37,14 @@ class DiaryPageController extends Controller
 
         return response()->json(['message' => 'La página ha sido agregada a su diario'], 201);
     }
-}
+
+    public function destroy(string $id)
+    {
+        $page = DiaryPage::findOrFail($id);
+        $page->delete();
+
+        return response()->json([
+            'message' => 'Successfully deleted',
+            'page' => $page
+        ], 200);
+    }}

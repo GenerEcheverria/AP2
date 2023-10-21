@@ -16,9 +16,8 @@
         <ul class="list-group list-group-flush">
           <li class="list-group-item" *ngFor="let page of pages">
             <app-page-list-item
-              [day]="page.fecha.slice(-2)"
-              [title]="page.title"
-              [id]="page.idPage"
+              [page]="page"
+              [deletePage]="deletePage.bind(this)"
             ></app-page-list-item>
           </li>
         </ul>

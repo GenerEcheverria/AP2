@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class DiaryPage extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'idPage';
 
     protected $fillable = [
         'idPage',

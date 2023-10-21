@@ -16,7 +16,7 @@ export class DiarioComponent {
     this.listPages()
   }
   
-  private listPages() {
+  public listPages() {
     this.diarioEmbarazadaService.getHojasDiarioById(localStorage.getItem('idPatient')||"").subscribe(
       pages => {
         this.pages = pages as DiarioEmbarazada[] 
@@ -28,5 +28,10 @@ export class DiarioComponent {
     this.verForm = true;
   }
 
+   deletePage(idPage: number) {
+    this.diarioEmbarazadaService.deletePage(idPage).subscribe(() => {
+      this.listPages(); 
+    });
+  }
 
 }

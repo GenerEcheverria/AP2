@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { DiarioEmbarazada } from 'src/app/interfaces/diario-embarazada';
 
 @Component({
   selector: 'app-page-list-item',
@@ -6,15 +7,18 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./page-list-item.component.css']
 })
 export class PageListItemComponent {
-  @Input() day: string ="";
-  @Input() title: string ="";
-  @Input() id: number | undefined;
-  
-  protected deletePage() {
-    console.log(this.id)
+  @Input() page!: DiarioEmbarazada;
+  @Input() deletePage: any;
+
+  constructor(){
+    this.deletePage = () => {}
   }
 
-  protected showPage() {
-    console.log(this.id)
+  showPageDetails(page: DiarioEmbarazada) {
+    console.log(page);
+  }
+
+  deletePageCallback(idPage: number) {
+    this.deletePage(idPage);
   }
 }
