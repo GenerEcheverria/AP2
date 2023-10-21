@@ -35,7 +35,9 @@
     <div class="col-6 bg-white rounded-3">
       <div *ngIf="!this.verForm">Info</div>
       <div *ngIf="this.verForm">
-        <app-create-page></app-create-page>
+        <app-create-page
+          [listPages]="listPages.bind(this)"
+        ></app-create-page>
       </div>
     </div>
   </div>
