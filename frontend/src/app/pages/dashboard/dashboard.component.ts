@@ -19,6 +19,7 @@ export class DashboardComponent {
   //Doctor
   protected calendarDate!: string;
   private idDoctor!: string;
+  protected appointments: any = [];
 
   constructor(private authService: AuthService, private citaService: CitaService) { }
 
@@ -66,9 +67,17 @@ export class DashboardComponent {
 
   protected listAppointments() {
     this.citaService.getAppointmentForDoctor(this.idDoctor, this.calendarDate).subscribe(data => {
-      console.log(data); 
-    })
+      if (data && typeof data === 'object') {
+        const appointmentsArray = Object.values(data);
+        appointmentsArray.forEach((appointment: any) => {
+          appointment.isCurrent = this.isAppointmentCurrent(appointment.time);
+        });
+        this.appointments = appointmentsArray;
+        console.log(this.appointments)
+      }
+    });
   }
+  
 
   private formatDate(date: Date){
     const year = date.getFullYear();
@@ -76,5 +85,20 @@ export class DashboardComponent {
     const day = ('0' + date.getDate()).slice(-2);
     return `${year}-${month}-${day}`
   }
+
+  protected isAppointmentCurrent(appointmentTime: string): boolean {
+    const appointmentDate = new Date();
+    const parts = appointmentTime.split(':');
+    const appointmentHour = Number(parts[0]);
+    const appointmentMinute = Number(parts[1]);
+    appointmentDate.setHours(appointmentHour, appointmentMinute, 0, 0);
+  
+    const currentDate = new Date();
+  
+    const currentDatePlus30Minutes = new Date(currentDate.getTime() + 30 * 60000); 
+  
+    return appointmentDate <= currentDatePlus30Minutes;
+  }
+  
 
 }

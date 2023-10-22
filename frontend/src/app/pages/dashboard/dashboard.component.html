@@ -28,10 +28,14 @@
               Fecha: 
               <input class="rounded-3" type="date" name="calendar" [value]="calendarDate" (change)="setCalendarDate($event)"/>
             </div>
-            <div class="list-container bg-white rounded-3 my-3">
+            <div class="list-container my-3">
               <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                  Lista de citas
+                <li class="list-group-item rounded-3" *ngFor="let appointment of appointments">
+                  <app-appointment-list-item
+                    [patient]="appointment.patient.user.name"
+                    [time]="(appointment.time).slice(0,5)"
+                    [isCurrent]="appointment.isCurrent"
+                  ></app-appointment-list-item>
                 </li>
               </ul>
             </div>
