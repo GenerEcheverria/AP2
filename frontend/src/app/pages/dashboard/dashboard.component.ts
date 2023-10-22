@@ -73,12 +73,25 @@ export class DashboardComponent {
           appointment.isCurrent = this.isAppointmentCurrent(appointment.time);
         });
         this.appointments = appointmentsArray;
+        this.removePrevAppointments()
         console.log(this.appointments)
       }
     });
   }
-  
 
+  private removePrevAppointments() {
+    const currentAppointments = [];
+    for (let i = this.appointments.length - 1; i >= 0; i--) {
+      const appointment = this.appointments[i];
+      if(!appointment.isCurrent) currentAppointments.push(appointment)
+      if(appointment.isCurrent){
+        currentAppointments.push(appointment)
+        break;
+      }
+    }
+    this.appointments = currentAppointments.reverse()
+  }
+  
   private formatDate(date: Date){
     const year = date.getFullYear();
     const month = ('0' + (date.getMonth() + 1)).slice(-2);
