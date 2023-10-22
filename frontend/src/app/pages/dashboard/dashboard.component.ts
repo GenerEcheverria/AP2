@@ -16,28 +16,14 @@ export class DashboardComponent {
   protected userRole!: string | null;
   //Patient
   protected upcomingDate!: UpcomingDate;
-  //Doctor
-  protected calendarDate!: Date;
-  protected options!: DatepickerOptions;
 
-  constructor(private authService: AuthService, private citaService: CitaService) { }
+  constructor(private authService: AuthService, private citaService: CitaService){}
 
   ngOnInit(): void {
     this.idUser = localStorage.getItem('idUser')
     this.getUserInfo()
     this.userRole = localStorage.getItem('role');
     if (this.userRole == "Doctor") {
-      this.calendarDate = new Date()
-      this.options = {
-        placeholder: 'Selecciona una fecha', 
-        format: 'LLLL do yyyy', 
-        formatTitle: 'LLLL yyyy',
-        formatDays: 'EEEEE',
-        firstCalendarDay: 1, 
-        position: 'bottom',
-        calendarClass: 'datepicker-default', 
-        scrollBarColor: '#dfe3e9',
-      }
     } else {
       this.upcomingAppointment();
     }

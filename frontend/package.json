@@ -27,7 +27,6 @@
     "file-saver": "^2.0.5",
     "jquery": "^3.6.4",
     "modules": "^0.4.0",
-    "ng2-datepicker": "^12.0.0",
     "pdfmake": "^0.2.7",
     "rxjs": "~7.8.0",
     "rxjs-compat": "^6.6.7",
