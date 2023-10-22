@@ -30,4 +30,8 @@ export class CitaService {
   availableTime(dateSelectedInfo: string){
     return this.http.get(this.url + '/availableTime/'+dateSelectedInfo, this.httpOptions)
   }
+
+  getAppointmentForDoctor(idDoctor:string, date:string){
+    return this.http.get(this.url + '/getForDoctor/'+idDoctor+'/'+date, this.httpOptions)
+  }
 }

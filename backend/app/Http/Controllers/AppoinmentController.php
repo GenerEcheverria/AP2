@@ -84,6 +84,7 @@ class AppoinmentController extends Controller
     {
         $appointments = Appoinment::where('idDoctor', $idDoctor)
             ->where('date', $date)
+            ->with('patient.user')
             ->get();
 
         return $appointments;

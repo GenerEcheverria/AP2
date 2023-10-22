@@ -18,6 +18,11 @@ class Appoinment extends Model
         'summary',
         'prescription',
     ];
-
     protected $table = 'appointments';
+
+    public function patient()
+    {
+        return $this->belongsTo(Patient::class, 'idPatient');
+    }
+
 }

@@ -18,6 +18,7 @@ export class DashboardComponent {
   protected upcomingDate!: UpcomingDate;
   //Doctor
   protected calendarDate!: string;
+  private idDoctor!: string;
 
   constructor(private authService: AuthService, private citaService: CitaService) { }
 
@@ -26,7 +27,9 @@ export class DashboardComponent {
     this.getUserInfo()
     this.userRole = localStorage.getItem('role');
     if (this.userRole == "Doctor") {
+      this.idDoctor = localStorage.getItem('idDoctor') || "";
       this.initCalendarDate()
+      this.listAppointments()
     } else {
       this.upcomingAppointment();
     }
@@ -49,16 +52,22 @@ export class DashboardComponent {
       });
     }
   }
-  
+
   //Doctor
   private initCalendarDate() {
     const currentDate = new Date();
     this.calendarDate=this.formatDate(currentDate);
   }
 
-  protected listAppointments(event: any) {
-    const newDate = this.formatDate(new Date(event.target.value));
-    console.log(newDate); 
+  protected setCalendarDate(event:any) {
+    this.calendarDate = this.formatDate(new Date(event.target.value));
+    this.listAppointments();
+  }
+
+  protected listAppointments() {
+    this.citaService.getAppointmentForDoctor(this.idDoctor, this.calendarDate).subscribe(data => {
+      console.log(data); 
+    })
   }
 
   private formatDate(date: Date){
