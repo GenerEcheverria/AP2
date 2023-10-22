@@ -16,14 +16,17 @@ export class DashboardComponent {
   protected userRole!: string | null;
   //Patient
   protected upcomingDate!: UpcomingDate;
+  //Doctor
+  protected calendarDate!: string;
 
-  constructor(private authService: AuthService, private citaService: CitaService){}
+  constructor(private authService: AuthService, private citaService: CitaService) { }
 
   ngOnInit(): void {
     this.idUser = localStorage.getItem('idUser')
     this.getUserInfo()
     this.userRole = localStorage.getItem('role');
     if (this.userRole == "Doctor") {
+      this.initCalendarDate()
     } else {
       this.upcomingAppointment();
     }
@@ -35,6 +38,7 @@ export class DashboardComponent {
     })
   }
 
+  //Patient
   private upcomingAppointment() {
     if (this.idUser != null) {
       this.citaService.getUpcomingAppointment(this.idUser).subscribe(data => {
@@ -44,6 +48,24 @@ export class DashboardComponent {
 
       });
     }
-
   }
+  
+  //Doctor
+  private initCalendarDate() {
+    const currentDate = new Date();
+    this.calendarDate=this.formatDate(currentDate);
+  }
+
+  protected listAppointments(event: any) {
+    const newDate = this.formatDate(new Date(event.target.value));
+    console.log(newDate); 
+  }
+
+  private formatDate(date: Date){
+    const year = date.getFullYear();
+    const month = ('0' + (date.getMonth() + 1)).slice(-2);
+    const day = ('0' + date.getDate()).slice(-2);
+    return `${year}-${month}-${day}`
+  }
+
 }
