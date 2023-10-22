@@ -12,7 +12,7 @@
           <li >
             <!-- Aqui hay que poner el link hacia el dashboard del doctor (en [link])-->
             <app-menu-option
-              [titulo]="'Menu'"
+              [titulo]="'Citas'"
               [link]="'dashboard'"
               [icon]="'bi-house'"
             ></app-menu-option>
@@ -24,13 +24,13 @@
               [icon]="'bi bi-folder'"
             ></app-menu-option>
           </li>
-          <li>
+          <!-- <li>
             <app-menu-option
               [titulo]="'Perfil'"
               [link]="'mi-cuenta'"
               [icon]="'bi-person'"
             ></app-menu-option>
-          </li>
+          </li> -->
         </ul>
         <ul
           *ngIf="role=='Patient'"
