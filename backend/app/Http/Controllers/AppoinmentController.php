@@ -85,6 +85,7 @@ class AppoinmentController extends Controller
         $appointments = Appoinment::where('idDoctor', $idDoctor)
             ->where('date', $date)
             ->with('patient.user')
+            ->orderBy('time', 'asc') 
             ->get();
 
         return $appointments;
