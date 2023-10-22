@@ -15,6 +15,8 @@ export class DashboardComponent {
   protected userRole!: string|null;
   protected upcomingDate!: UpcomingDate;
 
+  protected calendarDate!: Date;
+
   constructor(private authService: AuthService, private citaService: CitaService){}
 
   ngOnInit(): void {
