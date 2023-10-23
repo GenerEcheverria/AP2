@@ -43,10 +43,9 @@
           </div>
           <!-- Notas -->
           <div class="col-6 bg-white rounded-3">
-            <div >
-                Form nota medica
-            </div>
-            
+            <app-appointment-summary-form
+              [idAppointment]="appointments[0].idAppointment"
+            ></app-appointment-summary-form>
           </div>
         </div>
       </div>

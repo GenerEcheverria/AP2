@@ -85,9 +85,23 @@ class AppoinmentController extends Controller
         $appointments = Appoinment::where('idDoctor', $idDoctor)
             ->where('date', $date)
             ->with('patient.user')
-            ->orderBy('time', 'asc') 
+            ->orderBy('time', 'asc')
             ->get();
 
         return $appointments;
+    }
+
+
+    public function setSummary(Request $request, $idAppointment)
+    {
+        $appointment = Appoinment::find($idAppointment);
+        if (!$appointment) {
+            return response()->json(['error' => 'Cita no encontrada'], 404);
+        }
+        $data = $request->only(['summary', 'prescription']);
+        $appointment->summary = $data['summary'];
+        $appointment->prescription = $data['prescription'];
+        $appointment->save();
+        return response()->json(['message' => 'Cita actualizada con éxito'], 200);
     }
 }

@@ -62,6 +62,7 @@ Route::group([
     Route::get('getCitasPacintesById/{idPaciente}', 'App\Http\Controllers\AppoinmentController@getCitasPacintesById');
     Route::get('getUpcomingAppointment/{idUser}', 'App\Http\Controllers\AppoinmentController@getUpcomingAppointment');
     Route::get('getForDoctor/{idDoctor}/{date}', 'App\Http\Controllers\AppoinmentController@getAppointmentsForDoctor');
+    Route::put('setSummary/{idAppointment}', 'App\Http\Controllers\AppoinmentController@setSummary');
 });
 
 Route::group([
