@@ -9,6 +9,7 @@ import { CitaService } from 'src/app/services/cita.service';
 })
 export class AppointmentSummaryFormComponent {
   @Input() idAppointment!: string
+  @Input() summaryDone!: any
   summaryForm: FormGroup;
   showSuccessAlert = false;
 
@@ -31,10 +32,15 @@ export class AppointmentSummaryFormComponent {
         this.showAlert();
         summaryControl.reset('');
         prescriptionControl.reset('');
+        this.summaryDoneReference()
       });
     }
+
   }
   
+  protected summaryDoneReference(){
+    this.summaryDone()
+  }
   
 
   showAlert() {

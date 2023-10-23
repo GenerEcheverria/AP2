@@ -1,15 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { CitaService } from '../../services/cita.service';
 import { UpcomingDate } from '../../interfaces/upcoming-date';
-import { DatepickerOptions } from 'ng2-datepicker';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent {
+export class DashboardComponent implements AfterViewInit {
   protected name!: string;
   protected date!: string;
   protected idUser!: string | null;
@@ -22,6 +21,10 @@ export class DashboardComponent {
   protected appointments: any = [];
 
   constructor(private authService: AuthService, private citaService: CitaService) { }
+
+  ngAfterViewInit() {
+    //this.terminarCitaActual();
+  }
 
   ngOnInit(): void {
     this.idUser = localStorage.getItem('idUser')
@@ -57,10 +60,10 @@ export class DashboardComponent {
   //Doctor
   private initCalendarDate() {
     const currentDate = new Date();
-    this.calendarDate=this.formatDate(currentDate);
+    this.calendarDate = this.formatDate(currentDate);
   }
 
-  protected setCalendarDate(event:any) {
+  protected setCalendarDate(event: any) {
     this.calendarDate = this.formatDate(new Date(event.target.value));
     this.listAppointments();
   }
@@ -71,6 +74,11 @@ export class DashboardComponent {
         const appointmentsArray = Object.values(data);
         appointmentsArray.forEach((appointment: any) => {
           appointment.isCurrent = this.isAppointmentCurrent(appointment.time);
+          if (appointment.summary == "" && appointment.prescription == "") {
+            appointment.isDone = false;
+          } else {
+            appointment.isDone = true;
+          }
         });
         this.appointments = appointmentsArray;
         this.removePrevAppointments()
@@ -78,21 +86,20 @@ export class DashboardComponent {
       }
     });
   }
-
   private removePrevAppointments() {
     const currentAppointments = [];
     for (let i = this.appointments.length - 1; i >= 0; i--) {
       const appointment = this.appointments[i];
-      if(!appointment.isCurrent) currentAppointments.push(appointment)
-      if(appointment.isCurrent){
+      if (!appointment.isCurrent) currentAppointments.push(appointment)
+      if (appointment.isCurrent && !appointment.isDone) {
         currentAppointments.push(appointment)
         break;
       }
     }
     this.appointments = currentAppointments.reverse()
   }
-  
-  private formatDate(date: Date){
+
+  private formatDate(date: Date) {
     const year = date.getFullYear();
     const month = ('0' + (date.getMonth() + 1)).slice(-2);
     const day = ('0' + date.getDate()).slice(-2);
@@ -105,13 +112,30 @@ export class DashboardComponent {
     const appointmentHour = Number(parts[0]);
     const appointmentMinute = Number(parts[1]);
     appointmentDate.setHours(appointmentHour, appointmentMinute, 0, 0);
-  
+
     const currentDate = new Date();
-  
-    const currentDatePlus30Minutes = new Date(currentDate.getTime() + 30 * 60000); 
-  
-    return appointmentDate <= currentDatePlus30Minutes;
+
+    const appointmentDatePlus30Minutes = new Date(appointmentDate.getTime() + 30 * 60000);
+    const currentDatePlus30Minutes = new Date(currentDate.getTime() + 30 * 60000);
+
+    return appointmentDatePlus30Minutes <= currentDatePlus30Minutes;
   }
-  
+
+  protected terminarCitaActual() {
+    this.appointments[0].isDone = false
+    if (this.appointments[0].summary == "" && this.appointments[0].isCurrent && !this.appointments[0].isDone) {
+      this.citaService.setSummary(this.appointments[0].idAppointment, "Cita cancelada", "Cita cancelada").subscribe(() => {
+        this.listAppointments()
+      });
+    } else {
+      this.listAppointments()
+    }
+  }
+
+  protected summaryDone(){
+    this.appointments[0].isDone = true;
+    this.appointments[0].summary = "1"
+  }
+
 
 }
