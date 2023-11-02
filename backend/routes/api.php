@@ -60,6 +60,9 @@ Route::group([
     Route::post('cita/', 'App\Http\Controllers\AppoinmentController@createAppointment');
     Route::get('availableTime/{dateSelectedInfo}', 'App\Http\Controllers\AppoinmentController@getAvailableTimeByIdDoctor');
     Route::get('getCitasPacintesById/{idPaciente}', 'App\Http\Controllers\AppoinmentController@getCitasPacintesById');
+    Route::get('getUpcomingAppointment/{idUser}', 'App\Http\Controllers\AppoinmentController@getUpcomingAppointment');
+    Route::get('getForDoctor/{idDoctor}/{date}', 'App\Http\Controllers\AppoinmentController@getAppointmentsForDoctor');
+    Route::put('setSummary/{idAppointment}', 'App\Http\Controllers\AppoinmentController@setSummary');
 });
 
 Route::group([
@@ -69,7 +72,7 @@ Route::group([
     // Endpoint para crear cita usando id de user
     Route::get('getHojasDiarioById/{idPaciente}', 'App\Http\Controllers\DiaryPageController@getHojasDiarioById');
     Route::post('paginaDiario/', 'App\Http\Controllers\DiaryPageController@crearPaginaDiario');
-    
+    Route::delete('page/{id}', 'App\Http\Controllers\DiaryPageController@destroy');
 });
 
 Route::group([

@@ -21,6 +21,12 @@ import { InformacionCitaComponent } from './pages/expedientes/components/informa
 import { InformacionMedicaPacienteComponent } from './pages/expedientes/components/informacion-medica-paciente/informacion-medica-paciente.component';
 import { InformacionDiarioPacienteComponent } from './pages/expedientes/components/informacion-diario-paciente/informacion-diario-paciente.component';
 import { DiarioComponent } from './pages/diario/diario.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { CreatePageComponent } from './pages/diario/components/create-page/create-page.component';
+import { PageListItemComponent } from './pages/diario/components/page-list-item/page-list-item.component';
+import { PageDetailsComponent } from './pages/diario/components/page-details/page-details.component';
+import { AppointmentListItemComponent } from './pages/dashboard/components/appointment-list-item/appointment-list-item.component';
+import { AppointmentSummaryFormComponent } from './pages/dashboard/components/appointment-summary-form/appointment-summary-form.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +45,12 @@ import { DiarioComponent } from './pages/diario/diario.component';
     InformacionMedicaPacienteComponent,
     InformacionDiarioPacienteComponent,
     DiarioComponent,
+    DashboardComponent,
+    CreatePageComponent,
+    PageListItemComponent,
+    PageDetailsComponent,
+    AppointmentListItemComponent,
+    AppointmentSummaryFormComponent,
   ],
   imports: [
     BrowserModule,

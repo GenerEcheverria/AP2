@@ -13,6 +13,8 @@ export interface User {
    */
     name: string,
 
+    sex: string,
+
      /**
    * El correo electrónico del usuario.
    * 
@@ -40,11 +42,4 @@ export interface User {
    * @property {string} phone
    */
     phone: string,
-
-    /**
-   * La foto del usuario.
-   * 
-   * @property {string} photo
-   */
-    photo: string,
 }

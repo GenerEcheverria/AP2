@@ -1,0 +1,64 @@
+<!-- Dashboard Patient -->
+<div *ngIf="userRole === 'Patient'" class="mx-5">
+  <div class="row mb-4">
+    <p class="fs-1 text-icon-pink">Bienvenida {{ name }}</p>
+    <h3 class="fs-3 text-icon-pink">¿Cómo te encuentras hoy?</h3>
+  </div>
+  <div class="row mt-4">
+    <div class="mt-2 bg-white rounded-3">
+      <div class="p-3 d-flex text-icon-pink fs-4">
+        <i class="bi-calendar-date text-icon-pink"></i>
+        <p *ngIf="upcomingDate" class="ps-4 m-0">
+          Tu próxima cita es: {{ upcomingDate.date }} a las
+          {{ upcomingDate.time }}
+        </p>
+        <p *ngIf="!upcomingDate" class="ps-4 m-0">No hay citas proximas</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Dashboard Doctor -->
+<div *ngIf="userRole === 'Doctor'">
+  <div class="container">
+    <div class="row">
+      <!-- Citas -->
+      <div class="col-6">
+        <div class="fs-4">
+          Fecha:
+          <input
+            class="rounded-3"
+            type="date"
+            name="calendar"
+            [value]="calendarDate"
+            (change)="setCalendarDate($event)"
+            min="{{ calendarDate }}"
+          />
+        </div>
+        <button class="btn mt-5 btn-danger" (click)="terminarCitaActual()">Terminar cita actual</button>
+        <div class="list-container my-3" *ngIf="appointments.length > 0">
+          <ul 
+           class="list-group list-group-flush">
+            <li
+              class="list-group-item rounded-3"
+              *ngFor="let appointment of appointments"
+            >
+              <app-appointment-list-item
+                [patient]="appointment.patient.user.name"
+                [time]="appointment.time.slice(0, 5)"
+                [isCurrent]="appointment.isCurrent"
+              ></app-appointment-list-item>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- Notas -->
+      <div class="col-6 bg-white rounded-3" *ngIf="appointments.length > 0">
+        <app-appointment-summary-form
+          [idAppointment]="appointments[0].idAppointment"
+          [summaryDone]="summaryDone.bind(this)"
+        ></app-appointment-summary-form>
+      </div>
+    </div>
+  </div>
+</div>

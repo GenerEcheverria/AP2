@@ -1,0 +1,53 @@
+<div
+  class="alert alert-verdeSuccess px-1 my-2"
+  role="alert"
+  *ngIf="showSuccessAlert"
+>
+  <div class="row">
+    <div class="col-10">
+      Se han agregado correctamente los datos a la cita actual
+    </div>
+    <div class="col-2 d-flex justify-content-end">
+      <button type="button" class="btn-close" (click)="hideAlert()"></button>
+    </div>
+  </div>
+</div>
+<div class="py-4">
+  <form [formGroup]="summaryForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <textarea
+        type="text"
+        name="summary"
+        id="summary"
+        placeholder="Escribe las observaciones"
+        formControlName="summary"
+        rows="7"
+        class="form-control bg-fondo-pink"
+      ></textarea>
+    </div>
+    <div class="form-group pt-2">
+      <textarea
+        name="prescription"
+        id="prescription"
+        placeholder="Escribe tu prescription"
+        formControlName="prescription"
+        rows="7"
+        class="form-control bg-fondo-pink"
+      >
+      </textarea>
+    </div>
+    <div class="d-flex justify-content-center mt-3">
+      <button
+        type="submit"
+        class="btn bg-btn-pink text-white"
+        [disabled]="
+          !summaryForm.valid ||
+          !summaryForm.get('summary')?.dirty ||
+          !summaryForm.get('prescription')?.dirty
+        "
+      >
+        Agregar resumen de cita
+      </button>
+    </div>
+  </form>
+</div>

@@ -17,7 +17,7 @@ class AppoinmentController extends Controller
 
         $idPatient = User::select('patients.idPatient')
             ->join('patients', 'users.id', '=', 'patients.idUser')
-            ->where('users.id', $data['idPatient'] )
+            ->where('users.id', $data['idPatient'])
             ->get();
 
         $appointment = new Appoinment([
@@ -37,7 +37,7 @@ class AppoinmentController extends Controller
     public function getAvailableTimeByIdDoctor(string $dateSelectedInfo)
     {
         $dateTimeSelected = json_decode($dateSelectedInfo, true);
-        
+
         $horarios = Appoinment::where('idDoctor', $dateTimeSelected['idDoc'])
             ->where('date', $dateTimeSelected['dateValue'])
             ->select('time as hora')
@@ -48,22 +48,60 @@ class AppoinmentController extends Controller
         foreach ($horarios as $horario) {
             $horasOcupadas[] = $horario['hora'];
         }
-    
+
         return $horasOcupadas;
     }
 
-    public function getCitasPacintesById(string $idPaciente){
+    public function getCitasPacintesById(string $idPaciente)
+    {
         $resultados = DB::table('appointments')
-        ->select(
-            'appointments.idAppointment as idCita',
-            'appointments.date as fecha',
-            'appointments.time as hora',
-            'appointments.summary',
-            'appointments.prescription'
-        )
-        ->where('appointments.idPatient', '=', $idPaciente)
-        ->get();
+            ->select(
+                'appointments.idAppointment as idCita',
+                'appointments.date as fecha',
+                'appointments.time as hora',
+                'appointments.summary',
+                'appointments.prescription'
+            )
+            ->where('appointments.idPatient', '=', $idPaciente)
+            ->get();
 
         return $resultados;
+    }
+
+    public function getUpcomingAppointment(string $idUser)
+    {
+        $upcomingDate = DB::table('users')
+            ->join('patients', 'users.id', '=', 'patients.idUser')
+            ->join('appointments', 'patients.idPatient', '=', 'appointments.idPatient')
+            ->select('patients.idPatient', 'appointments.idAppointment', 'appointments.date', 'appointments.time')
+            ->orderBy(DB::raw('ABS(DATEDIFF(appointments.date, CURDATE()))'))
+            ->limit(1)
+            ->get();
+        return $upcomingDate[0];
+    }
+
+    public function getAppointmentsForDoctor(string $idDoctor, string $date)
+    {
+        $appointments = Appoinment::where('idDoctor', $idDoctor)
+            ->where('date', $date)
+            ->with('patient.user')
+            ->orderBy('time', 'asc')
+            ->get();
+
+        return $appointments;
+    }
+
+
+    public function setSummary(Request $request, $idAppointment)
+    {
+        $appointment = Appoinment::find($idAppointment);
+        if (!$appointment) {
+            return response()->json(['error' => 'Cita no encontrada'], 404);
+        }
+        $data = $request->only(['summary', 'prescription']);
+        $appointment->summary = $data['summary'];
+        $appointment->prescription = $data['prescription'];
+        $appointment->save();
+        return response()->json(['message' => 'Cita actualizada con éxito'], 200);
     }
 }

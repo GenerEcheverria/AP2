@@ -21,4 +21,8 @@ export class DiarioEmbarazadaService {
   crearPaginaDiario(informacionDiario: string) { 
     return this.http.post(this.url + '/paginaDiario', {informacionDiario}, this.httpOptions )
   }
+
+  deletePage(id:number) {
+    return this.http.delete(this.url + '/page/'+id, this.httpOptions)
+  }
 }

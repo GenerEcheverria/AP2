@@ -1,46 +1,49 @@
-<div class="alert alert-verdeSuccess mx-5" role="alert" *ngIf="showSuccessAlert">
-    <div class="row">
-        <div class="col-6">
-            La página ha sido agregada a su diario
+<div class="container">
+  <div class="row">
+    <!-- Historial -->
+    <div class="col-6">
+      <div class="row">
+        <div
+          class="col-7 d-flex justify-content-between align-items-center bg-white rounded-3"
+        >
+          <button class="btn" (click)="anteriorMes()"><i class="bi bi-chevron-left"></i></button>
+          <div><i class="bi bi-calendar-event"></i> {{currentDate}}</div>
+          <button class="btn" (click)="siguienteMes()"><i class="bi bi-chevron-right"></i></button>
         </div>
-        <div class="col-6 d-flex justify-content-end">
-            <button type="button" class="btn-close" (click)="hideAlert()"></button>
+        <div class="col-5 d-flex justify-content-end">
+          <button class="btn bg-white" (click)="ordenar()">
+            <i class="bi bi-filter"></i> Reordenar
+          </button>
         </div>
+      </div>
+      <div class="list-container bg-white rounded-3 my-3">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" *ngFor="let page of filteredPages">
+            <app-page-list-item
+              [page]="page"
+              [showDetails]="showDetails.bind(this)"
+              [deletePage]="deletePage.bind(this)"
+            ></app-page-list-item>
+          </li>
+        </ul>
+      </div>
+      <div class="d-flex justify-content-center">
+        <button
+          class="btn bg-btn-pink text-white rounded-circle fs-3"
+          (click)="visualizarForm()"
+        >
+          <i class="bi bi-plus"></i>
+        </button>
+      </div>
     </div>
+    <!-- Info/Form -->
+    <div class="col-6 bg-white rounded-3">
+      <div *ngIf="!this.verForm">
+        <app-page-details [page]="currentPage"></app-page-details>
+      </div>
+      <div *ngIf="this.verForm">
+        <app-create-page [listPages]="listPages.bind(this)"></app-create-page>
+      </div>
+    </div>
+  </div>
 </div>
-
-<h3 class="text-icon-pink mx-5">Bienvenida a Mi Diario</h3>
-<h5 class="mx-5">En esta sección podrá escribir comentarios u observaciones sobre su embarazo.</h5>
-<br>
-<div class="bg-fondo-pink mx-5 px-5 py-3 border border-icon-pink border-5">
-    <form [formGroup]="diarioForm" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <input  
-            type="text" 
-            name="titulo" 
-            id="titulo"
-            placeholder="Escribe un título"
-            formControlName="titulo"
-            class="form-control">
-      </div>
-      <div class="form-group pt-4">
-        <textarea 
-            name="comentario" 
-            id="comentario"
-            placeholder="Escribe tu comentario u observación"
-            formControlName="comentario"
-            rows="7"
-            class="form-control">
-        </textarea>
-      </div>
-      <div class="pt-4 d-flex justify-content-end">
-          <button type="submit" class="btn bg-btn-pink text-white">Crear página</button>
-      </div>
-    </form>
-</div>
-
-
-
-
-
-  
