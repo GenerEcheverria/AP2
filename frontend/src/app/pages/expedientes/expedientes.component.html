@@ -31,6 +31,20 @@
                 ></app-informacion-cita>
             </div>
         </div>
+        <div class="mb-4">
+            <h5 class="text-icon-pink">Expediente de la paciente</h5>
+            <div class="p-3 mt-2 bg-white rounded-3">
+                <app-informacion-expediente-paciente
+                    [MedRecBackground]="pacienteSeleccionada.MedRecBackground"
+                    [MedRecDiagnostic]="pacienteSeleccionada.MedRecDiagnostic"
+                    [MedRecNumber]="pacienteSeleccionada.MedRecNumber"
+                    [MedRecPhyExam]="pacienteSeleccionada.MedRecPhyExam"
+                    [MedRecResults]="pacienteSeleccionada.MedRecResults"
+                    [MedRecTreatment]="pacienteSeleccionada.MedRecTreatment"
+                    [idUser]="pacienteSeleccionada.id"
+                ></app-informacion-expediente-paciente>
+            </div>
+        </div>
     </div>
     <div class="col-6">
         <div class="mb-4">

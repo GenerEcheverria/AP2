@@ -1,0 +1,33 @@
+<form [formGroup]="medRecForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="MedRecBackground">Background:</label>
+      <input type="text" class="form-control" formControlName="MedRecBackground">
+    </div>
+  
+    <div class="form-group">
+      <label for="MedRecDiagnostic">Diagnostic:</label>
+      <input type="text" class="form-control" formControlName="MedRecDiagnostic">
+    </div>
+  
+    <div class="form-group">
+      <label for="MedRecNumber">Number:</label>
+      <input type="text" class="form-control" formControlName="MedRecNumber">
+    </div>
+  
+    <div class="form-group">
+      <label for="MedRecPhyExam">PhyExam:</label>
+      <input type="text" class="form-control" formControlName="MedRecPhyExam">
+    </div>
+  
+    <div class="form-group">
+      <label for="MedRecResults">Results:</label>
+      <input type="text" class="form-control" formControlName="MedRecResults">
+    </div>
+  
+    <div class="form-group">
+      <label for="MedRecTreatment">Treatment:</label>
+      <input type="text" class="form-control" formControlName="MedRecTreatment">
+    </div>
+  
+    <button type="submit" style="margin-top: 10px;" class="btn bg-btn-pink rounded-pill text-white">Actualizar</button>
+  </form>

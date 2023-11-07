@@ -27,6 +27,8 @@ import { PageListItemComponent } from './pages/diario/components/page-list-item/
 import { PageDetailsComponent } from './pages/diario/components/page-details/page-details.component';
 import { AppointmentListItemComponent } from './pages/dashboard/components/appointment-list-item/appointment-list-item.component';
 import { AppointmentSummaryFormComponent } from './pages/dashboard/components/appointment-summary-form/appointment-summary-form.component';
+import { ListUsersComponent } from './pages/list-users/list-users.component';
+import { InformacionExpedientePacienteComponent } from './pages/expedientes/components/informacion-expediente-paciente/informacion-expediente-paciente.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,8 @@ import { AppointmentSummaryFormComponent } from './pages/dashboard/components/ap
     PageDetailsComponent,
     AppointmentListItemComponent,
     AppointmentSummaryFormComponent,
+    ListUsersComponent,
+    InformacionExpedientePacienteComponent,
   ],
   imports: [
     BrowserModule,

@@ -87,7 +87,9 @@ Route::group([
     'prefix' => 'paciente'
 ], function ($router) {
     Route::get('pacientes/{_idDoc}', 'App\Http\Controllers\PatientController@getPacientesByIdDoc');
+    Route::get('all-pacientes', 'App\Http\Controllers\PatientController@getAllPacientes');
     Route::get('info-paciente/{idPaciente}', 'App\Http\Controllers\PatientController@getMedicalInfoById');
+    Route::put('updateExpediente/{idPaciente}', 'App\Http\Controllers\PatientController@updateExpediente');
 });
 
 // Endpoint para obtener los datos del usuario autenticado

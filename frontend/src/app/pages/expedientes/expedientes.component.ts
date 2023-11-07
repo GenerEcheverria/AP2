@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { PacienteService } from '../../services/paciente.service';
 import { CitaService } from '../../services/cita.service';
 import { DiarioEmbarazadaService } from '../../services/diario-embarazada.service';
@@ -23,7 +24,7 @@ export class ExpedientesComponent implements OnInit {
   citaElegida: any;
   modalVisibleCita: boolean = false;
 
-  constructor(private pacienteService:PacienteService, private citaPaciente: CitaService, private diarioEmbarazadaService: DiarioEmbarazadaService ){ }
+  constructor(private route: ActivatedRoute, private pacienteService:PacienteService, private citaPaciente: CitaService, private diarioEmbarazadaService: DiarioEmbarazadaService ){ }
 
   openModal(hoja: any) {
     this.hojaSeleccionada = hoja;
@@ -42,9 +43,27 @@ export class ExpedientesComponent implements OnInit {
 
   ngOnInit(): void {
     let _idDoc = localStorage.getItem('idUser');
+    // console.log(_idDoc)
     if(_idDoc != null){
       this.pacienteService.getPacientes(_idDoc).subscribe(data => {
+        // console.log(data)
          this.pacientes = data as Paciente[];
+         this.route.params.subscribe(params => {
+          const id = params['id'];
+          if (id) {
+            // Realiza la acción que deseas solo si hay un parámetro 'id' presente
+            // console.log('ID del expediente:', id);
+            // console.log(this.pacientes)
+            let pacient = this.pacientes.find(paciente => paciente.id == id);
+            // console.log(pacient)
+            if (pacient) {
+              this.pacienteSeleccionada = pacient
+              this.getInfoPaciente()
+            } else {
+              console.log('No se encontró ningún paciente con el ID proporcionado.');
+            }
+          }
+        });
       })
     }
   }

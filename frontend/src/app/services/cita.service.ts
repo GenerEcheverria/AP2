@@ -38,4 +38,8 @@ export class CitaService {
   setSummary(idAppointment:string, summary:string, prescription:string){
     return this.http.put(this.url + '/setSummary/'+idAppointment, {summary,prescription}, this.httpOptions )
   }
+
+  getAllDateByIdDoctor(idDoctor: string){
+    return this.http.put(this.url + '/getDateByIdDoctor', {idDoctor}, this.httpOptions )
+  }
 }

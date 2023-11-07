@@ -35,7 +35,18 @@
             min="{{ calendarDate }}"
           />
         </div>
-        <button class="btn mt-5 btn-danger" (click)="terminarCitaActual()">Terminar cita actual</button>
+        <div class="card" style="margin-top:10px;" *ngIf="appointments.length > 0">
+          <div class="card-body">
+            <h5 class="card-title">Información de Cita</h5>
+            <p class="card-text">Fecha: {{ appointmentSelected.date }}</p>
+            <p class="card-text">Horaa: {{ appointmentSelected.time }}</p>
+            <p class="card-text">Nombre de Paciente: {{ appointmentSelected.patient.user.name }}</p>
+            <p class="card-text">Municipio: {{ appointmentSelected.patient.municipality }}</p>
+            <p class="card-text">Ocupación: {{ appointmentSelected.patient.occupation }}</p>
+            <p class="card-text">Estado Marital: {{ appointmentSelected.patient.maritalStatus }}</p>
+            <p class="card-text">Edad: {{ appointmentSelected.patient.age }}</p>
+          </div>
+        </div>
         <div class="list-container my-3" *ngIf="appointments.length > 0">
           <ul 
            class="list-group list-group-flush">
@@ -46,7 +57,28 @@
               <app-appointment-list-item
                 [patient]="appointment.patient.user.name"
                 [time]="appointment.time.slice(0, 5)"
+                [data]="appointment"
                 [isCurrent]="appointment.isCurrent"
+                (activarFuncionEvent)="miFuncion($event)"
+              ></app-appointment-list-item>
+            </li>
+          </ul>
+        </div>        
+        <button style="margin-top:0px !important; margin-bottom: 20px;" class="btn mt-5 btn-danger" (click)="terminarCitaActual()">Terminar cita actual</button>
+        <div class="list-container my-3" *ngIf="appointmentsList.length > 0">
+          <ul 
+           class="list-group list-group-flush">
+            <li
+              class="list-group-item rounded-3"
+              *ngFor="let appointment of appointmentsList"
+              style="margin-top: 10px;"
+            >
+              <app-appointment-list-item
+                [patient]="appointment.patient.user.name"
+                [time]="appointment.time.slice(0, 5)"
+                [data]="appointment"
+                [isCurrent]="appointment.isCurrent"
+                (activarFuncionEvent)="miFuncion($event)"
               ></app-appointment-list-item>
             </li>
           </ul>

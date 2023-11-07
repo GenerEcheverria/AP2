@@ -19,7 +19,14 @@ export class PacienteService {
     return this.http.get(this.url + '/pacientes/'+_idDoc, this.httpOptions)
   }
 
+  getAllPacientes(){
+    return this.http.get(this.url + '/all-pacientes', this.httpOptions)
+  }
+
   getInfoPaciente(idPaciente: string){
     return this.http.get(this.url + '/info-paciente/'+idPaciente, this.httpOptions)
+  }
+  updateExpediente(idPaciente: string, MedRecBackground: string, MedRecNumber: number, MedRecPhyExam: string, MedRecResults: string, MedRecTreatment: string ){
+    return this.http.put(this.url + '/updateExpediente/'+idPaciente, {idPaciente, MedRecBackground, MedRecNumber, MedRecPhyExam, MedRecResults, MedRecTreatment}, this.httpOptions)
   }
 }

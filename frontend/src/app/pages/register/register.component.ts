@@ -109,7 +109,13 @@ export class RegisterComponent {
       state: patient.estado,
       municipality: patient.municipio,
       locality: patient.localidad,
-      address: patient.direccion
+      address: patient.direccion,
+      MedRecBackground: '',
+      MedRecDiagnostic: '',
+      MedRecNumber: 0,
+      MedRecPhyExam: '',
+      MedRecResults: '',
+      MedRecTreatment: ''
     }
     
     this.authService.register(newUser).subscribe(
