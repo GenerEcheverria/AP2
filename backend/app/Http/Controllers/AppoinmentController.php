@@ -74,6 +74,7 @@ class AppoinmentController extends Controller
             ->join('patients', 'users.id', '=', 'patients.idUser')
             ->join('appointments', 'patients.idPatient', '=', 'appointments.idPatient')
             ->select('patients.idPatient', 'appointments.idAppointment', 'appointments.date', 'appointments.time')
+            ->where('users.id', '=', $idUser)
             ->orderBy(DB::raw('ABS(DATEDIFF(appointments.date, CURDATE()))'))
             ->limit(1)
             ->get();

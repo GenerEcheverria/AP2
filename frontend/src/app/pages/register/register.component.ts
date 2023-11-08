@@ -126,5 +126,7 @@ export class RegisterComponent {
         console.error(error);
       }
     );
+    this.router.navigate(['/login']);
+
   }
 }
