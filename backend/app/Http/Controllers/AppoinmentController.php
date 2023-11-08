@@ -83,7 +83,7 @@ class AppoinmentController extends Controller
     public function getAppointmentsForDoctor(string $idDoctor, string $date)
     {
         $appointments = Appoinment::where('idDoctor', $idDoctor)
-            ->where('date', $date)
+            ->where('date', '>=', $date)
             ->with('patient.user')
             ->orderBy('time', 'asc')
             ->get();

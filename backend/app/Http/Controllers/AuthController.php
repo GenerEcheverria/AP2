@@ -102,8 +102,9 @@ class AuthController extends Controller
 
     private function createMedicalRecord(Patient $patient)
     {
+        echo($patient);
         return MedicalRecord::create([
-            'idPatient' => $patient->id
+            'idPatient' => $patient->idPatient
         ]);
     }
 

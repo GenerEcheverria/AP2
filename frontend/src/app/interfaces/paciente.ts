@@ -10,4 +10,10 @@ export interface Paciente extends User{
     municipality: string,
     locality: string,
     address: string,
+    MedRecBackground: string,
+    MedRecDiagnostic: string,
+    MedRecNumber: number,
+    MedRecPhyExam: string,
+    MedRecResults: string,
+    MedRecTreatment: string
 }

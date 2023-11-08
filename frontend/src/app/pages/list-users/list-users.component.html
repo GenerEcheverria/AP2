@@ -1,0 +1,19 @@
+<div class="container mt-4">
+    <input type="text" class="form-control mb-4" placeholder="Buscar usuarios" [(ngModel)]="filtroNombre">
+  
+    <div class="row">
+      <div class="col-md-4" *ngFor="let usuario of filtrarPorNombre()">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title">{{ usuario.name }}</h5>
+            <p class="card-text">Edad: {{ usuario.age }}</p>
+            <p class="card-text">Estado: {{ usuario.state }}</p>
+          </div>
+          <div class="card-footer text-right">
+            <a (click)="navegarAExpediente(usuario.id)" class="btn btn-primary"><i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

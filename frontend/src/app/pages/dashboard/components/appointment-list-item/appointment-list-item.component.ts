@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-appointment-list-item',
@@ -8,6 +8,11 @@ import { Component, Input } from '@angular/core';
 export class AppointmentListItemComponent {
   @Input() patient!: string
   @Input() time!: string
+  @Input() data!: any
   @Input() isCurrent!: boolean
+  @Output() activarFuncionEvent = new EventEmitter<any>();
 
+  activarFuncion() {
+    this.activarFuncionEvent.emit(this.data);
+  }
 }

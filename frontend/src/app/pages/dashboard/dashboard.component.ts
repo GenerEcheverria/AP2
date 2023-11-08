@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, EventEmitter } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { CitaService } from '../../services/cita.service';
 import { UpcomingDate } from '../../interfaces/upcoming-date';
@@ -18,7 +18,9 @@ export class DashboardComponent implements AfterViewInit {
   //Doctor
   protected calendarDate!: string;
   private idDoctor!: string;
+  protected appointmentSelected: any = {};
   protected appointments: any = [];
+  protected appointmentsList: any = [];
 
   constructor(private authService: AuthService, private citaService: CitaService) { }
 
@@ -44,7 +46,11 @@ export class DashboardComponent implements AfterViewInit {
       this.name = data.name;
     })
   }
-
+  public miFuncion(eventData: any) {
+    this.appointmentSelected = eventData
+    // Aquí puedes poner el código que quieres que se ejecute cuando se activa la función desde el componente hijo
+    // console.log('Función activada desde el componente hijo');
+  }
   //Patient
   private upcomingAppointment() {
     if (this.idUser != null) {
@@ -80,23 +86,35 @@ export class DashboardComponent implements AfterViewInit {
             appointment.isDone = true;
           }
         });
-        this.appointments = appointmentsArray;
+        this.appointments = appointmentsArray.reverse();
         this.removePrevAppointments()
         console.log(this.appointments)
       }
     });
   }
+  protected getInfo(appointmentData: any){
+    this.appointmentSelected = appointmentData
+  }
   private removePrevAppointments() {
     const currentAppointments = [];
+    const currentAppointmentsList = [];
     for (let i = this.appointments.length - 1; i >= 0; i--) {
       const appointment = this.appointments[i];
+      console.log(appointment.isCurrent, appointment.isDone)
       if (!appointment.isCurrent) currentAppointments.push(appointment)
       if (appointment.isCurrent && !appointment.isDone) {
-        currentAppointments.push(appointment)
-        break;
+        if(currentAppointments.length<1){
+          currentAppointments.push(appointment)
+          this.appointmentSelected = appointment
+        }else{
+          appointment.isCurrent = false;
+        currentAppointmentsList.push(appointment)
+        }
       }
     }
-    this.appointments = currentAppointments.reverse()
+    console.log(currentAppointments)
+    this.appointments = currentAppointments
+    this.appointmentsList = currentAppointmentsList
   }
 
   private formatDate(date: Date) {
