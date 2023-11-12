@@ -31,7 +31,7 @@
                 ></app-informacion-cita>
             </div>
         </div>
-        <div class="mb-4">
+        <div class="mb-4" *ngIf="pacienteSeleccionada !== undefined">
             <h5 class="text-icon-pink">Expediente de la paciente</h5>
             <div class="p-3 mt-2 bg-white rounded-3">
                 <app-informacion-expediente-paciente
