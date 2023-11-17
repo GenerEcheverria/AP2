@@ -41,7 +41,7 @@ class PatientController extends Controller
             // ->get();
             ->join('patients', 'patients.idUser', '=', 'users.id')
             ->leftJoin('appointments', 'appointments.idPatient', '=', 'patients.idPatient')
-            ->leftJoin('medical_records as mc', 'mc.idPatient', '=', 'users.id')
+            ->leftJoin('medical_records as mc', 'mc.idPatient', '=', 'patients.idPatient')
             ->select(
                 'patients.idPatient as id',
                 'users.name as name',
@@ -91,12 +91,13 @@ class PatientController extends Controller
 
     public function updateExpediente(Request $request, $idPaciente)
     {
-        $data = $request->only(['idPaciente','MedRecBackground', 'MedRecNumber', 'MedRecPhyExam', 'MedRecResults', 'MedRecTreatment']);
+        $data = $request->only(['idPaciente','MedRecBackground', 'MedRecDiagnostic', 'MedRecNumber', 'MedRecPhyExam', 'MedRecResults', 'MedRecTreatment']);
         $expediente = MedicalRecord::where('idPatient', $data['idPaciente'])->first();
         if (!$expediente) {
             return response()->json(['error' => 'Expediente no encontrado'], 404);
         }
         $expediente->background = $data['MedRecBackground'];
+        $expediente->diagnostic = $data['MedRecDiagnostic'];
         $expediente->number = $data['MedRecNumber'];
         $expediente->phyExam = $data['MedRecPhyExam'];
         $expediente->results = $data['MedRecResults'];

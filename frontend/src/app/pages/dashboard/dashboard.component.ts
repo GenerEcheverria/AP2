@@ -48,8 +48,6 @@ export class DashboardComponent implements AfterViewInit {
   }
   public miFuncion(eventData: any) {
     this.appointmentSelected = eventData
-    // Aquí puedes poner el código que quieres que se ejecute cuando se activa la función desde el componente hijo
-    // console.log('Función activada desde el componente hijo');
   }
   //Patient
   private upcomingAppointment() {
@@ -114,6 +112,7 @@ export class DashboardComponent implements AfterViewInit {
     }
     console.log(currentAppointments)
     this.appointments = currentAppointments
+    this.getInfo(this.appointments[0])
     this.appointmentsList = currentAppointmentsList
   }
 

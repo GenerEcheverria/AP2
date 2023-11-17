@@ -26,7 +26,7 @@ export class PacienteService {
   getInfoPaciente(idPaciente: string){
     return this.http.get(this.url + '/info-paciente/'+idPaciente, this.httpOptions)
   }
-  updateExpediente(idPaciente: string, MedRecBackground: string, MedRecNumber: number, MedRecPhyExam: string, MedRecResults: string, MedRecTreatment: string ){
-    return this.http.put(this.url + '/updateExpediente/'+idPaciente, {idPaciente, MedRecBackground, MedRecNumber, MedRecPhyExam, MedRecResults, MedRecTreatment}, this.httpOptions)
+  updateExpediente(idPaciente: string, MedRecBackground: string, MedRecDiagnostic: string, MedRecNumber: number, MedRecPhyExam: string, MedRecResults: string, MedRecTreatment: string ){
+    return this.http.put(this.url + '/updateExpediente/'+idPaciente, {idPaciente, MedRecBackground, MedRecDiagnostic, MedRecNumber, MedRecPhyExam, MedRecResults, MedRecTreatment}, this.httpOptions)
   }
 }
