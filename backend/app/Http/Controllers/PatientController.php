@@ -12,15 +12,39 @@ class PatientController extends Controller
     //El parametro dice id_doc pero te juro que es idUser del doctor que busca a sus pacientes
     public function getPacientesByIdDoc(string $_idDoc){
         $resultados = DB::table('users')
-            ->join('doctors', 'users.id', '=', 'doctors.idDoctor')
-            ->join('appointments', 'doctors.idDoctor', '=', 'appointments.idDoctor')
-            ->join('patients', 'appointments.idPatient', '=', 'patients.idPatient')
-            ->join('users as u', 'patients.idUser', '=', 'u.id')
-            ->join('medical_records as mc', 'mc.idPatient', '=','patients.idPatient')
-            ->where('users.id',  $_idDoc)
+            // ->join('doctors', 'users.id', '=', 'doctors.idDoctor')
+            // ->join('appointments', 'doctors.idDoctor', '=', 'appointments.idDoctor')
+            // ->join('patients', 'appointments.idPatient', '=', 'patients.idPatient')
+            // ->join('users as u', 'patients.idUser', '=', 'u.id')
+            // ->join('medical_records as mc', 'mc.idPatient', '=','patients.idPatient')
+            // ->where('users.id',  $_idDoc)
+            // ->select(
+            //     'patients.idPatient as id',
+            //     'u.name as name',
+            //     'patients.age as age',
+            //     'patients.curp as curp',
+            //     'patients.maritalStatus as maritalStatus',
+            //     'patients.occupation as occupation',
+            //     'patients.state as state',
+            //     'patients.municipality as municipality',
+            //     'patients.locality as locality',
+            //     'patients.address as address',
+            //     'mc.idMedRec as idMedRec',
+            //     'mc.number as MedRecNumber',
+            //     'mc.background as MedRecBackground',
+            //     'mc.phyExam as MedRecPhyExam',
+            //     'mc.diagnostic as MedRecDiagnostic',
+            //     'mc.treatment as MedRecTreatment',
+            //     'mc.results as MedRecResults',
+            // )
+            // ->distinct()
+            // ->get();
+            ->join('patients', 'patients.idUser', '=', 'users.id')
+            ->leftJoin('appointments', 'appointments.idPatient', '=', 'patients.idPatient')
+            ->leftJoin('medical_records as mc', 'mc.idPatient', '=', 'patients.idPatient')
             ->select(
                 'patients.idPatient as id',
-                'u.name as name',
+                'users.name as name',
                 'patients.age as age',
                 'patients.curp as curp',
                 'patients.maritalStatus as maritalStatus',
@@ -35,7 +59,7 @@ class PatientController extends Controller
                 'mc.phyExam as MedRecPhyExam',
                 'mc.diagnostic as MedRecDiagnostic',
                 'mc.treatment as MedRecTreatment',
-                'mc.results as MedRecResults',
+                'mc.results as MedRecResults'
             )
             ->distinct()
             ->get();
@@ -67,12 +91,13 @@ class PatientController extends Controller
 
     public function updateExpediente(Request $request, $idPaciente)
     {
-        $data = $request->only(['idPaciente','MedRecBackground', 'MedRecNumber', 'MedRecPhyExam', 'MedRecResults', 'MedRecTreatment']);
+        $data = $request->only(['idPaciente','MedRecBackground', 'MedRecDiagnostic', 'MedRecNumber', 'MedRecPhyExam', 'MedRecResults', 'MedRecTreatment']);
         $expediente = MedicalRecord::where('idPatient', $data['idPaciente'])->first();
         if (!$expediente) {
             return response()->json(['error' => 'Expediente no encontrado'], 404);
         }
         $expediente->background = $data['MedRecBackground'];
+        $expediente->diagnostic = $data['MedRecDiagnostic'];
         $expediente->number = $data['MedRecNumber'];
         $expediente->phyExam = $data['MedRecPhyExam'];
         $expediente->results = $data['MedRecResults'];

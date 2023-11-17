@@ -81,12 +81,13 @@ export class InformacionExpedientePacienteComponent {
 
     // const formData = this.medRecForm.value;
     const MedRecBackground = this.medRecForm.get('MedRecBackground');
+    const MedRecDiagnostic = this.medRecForm.get('MedRecDiagnostic')
     const MedRecNumber = this.medRecForm.get('MedRecNumber');
     const MedRecPhyExam = this.medRecForm.get('MedRecPhyExam');
     const MedRecResults = this.medRecForm.get('MedRecResults');
     const MedRecTreatment = this.medRecForm.get('MedRecTreatment');
     // console.log(formData);
-    this.pacienteService.updateExpediente(this.idUser, MedRecBackground?.value, MedRecNumber?.value, MedRecPhyExam?.value, MedRecResults?.value, MedRecTreatment?.value ).subscribe(data => {
+    this.pacienteService.updateExpediente(this.idUser, MedRecBackground?.value, MedRecDiagnostic?.value, MedRecNumber?.value, MedRecPhyExam?.value, MedRecResults?.value, MedRecTreatment?.value ).subscribe(data => {
       console.log('se actualizo')
    })
   }
