@@ -17,6 +17,7 @@ export class CitaComponent implements OnInit{
   horasNoOcupadas!: string[];
   doctores!: any[];
   showSuccessAlert = false;
+  today = this.formatDate(new Date());
   
   constructor(private fb: FormBuilder, private citaService: CitaService, private doctorService: DoctorService) {
     this.citaForm = this.fb.group({
@@ -68,4 +69,10 @@ export class CitaComponent implements OnInit{
     this.showSuccessAlert = false;
   }
   
+  private formatDate(date: Date) {
+    const year = date.getFullYear();
+    const month = ('0' + (date.getMonth() + 1)).slice(-2);
+    const day = ('0' + date.getDate()).slice(-2);
+    return `${year}-${month}-${day}`
+  }
 }

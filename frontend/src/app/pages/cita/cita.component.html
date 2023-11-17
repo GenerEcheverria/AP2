@@ -19,7 +19,7 @@
     </div>
     <div class="form-group pt-4">
       <label for="date">Seleccione el día de la cita</label>
-      <input type="date" class="form-control" id="date" formControlName="date" (ngModelChange)="availableTime()">
+      <input type="date" class="form-control" id="date" formControlName="date" min="{{today}}" (ngModelChange)="availableTime()">
     </div>
     <div class="form-group pt-4">
       <label for="time">Seleccione la hora de la cita</label>
