@@ -71,9 +71,16 @@ export class DashboardComponent implements AfterViewInit {
   }
 
   protected setCalendarDate(event: any) {
-    this.calendarDate = this.formatDate(new Date(event.target.value));
+    const selectedDate = new Date(event.target.value);
+    
+    // Agregar un día a la fecha
+    selectedDate.setDate(selectedDate.getDate() + 1);
+
+    this.calendarDate = this.formatDate(selectedDate);
+    console.log(selectedDate);
+    console.log(this.calendarDate);
     this.listAppointments();
-  }
+}
 
   protected listAppointments() {
     this.citaService.getAppointmentForDoctor(this.idDoctor, this.calendarDate).subscribe(data => {
