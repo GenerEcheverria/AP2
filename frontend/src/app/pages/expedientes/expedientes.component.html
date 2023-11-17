@@ -106,13 +106,13 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title text-icon-pink" id="exampleModalLabel">{{ citaElegida?.summary }}</h5>
+          <h5 class="modal-title text-icon-pink" id="exampleModalLabel">{{ citaElegida?.fecha }}</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <span class="fw-bold">Fecha:</span>
-            <p>{{ citaElegida?.fecha }}</p>
-            <span class="fw-bold">Más información:</span>
+            <span class="fw-bold">Observaciones:</span>
+            <p>{{ citaElegida?.summary }}</p>
+            <span class="fw-bold">Prescripción:</span>
             <p>{{ citaElegida?.prescription }}</p>
         </div>
         <div class="modal-footer">
