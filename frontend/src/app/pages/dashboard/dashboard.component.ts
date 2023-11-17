@@ -21,6 +21,7 @@ export class DashboardComponent implements AfterViewInit {
   protected appointmentSelected: any = {};
   protected appointments: any = [];
   protected appointmentsList: any = [];
+  protected minDate!: string;
 
   constructor(private authService: AuthService, private citaService: CitaService) { }
 
@@ -34,8 +35,10 @@ export class DashboardComponent implements AfterViewInit {
     this.userRole = localStorage.getItem('role');
     if (this.userRole == "Doctor") {
       this.idDoctor = localStorage.getItem('idDoctor') || "";
-      this.initCalendarDate()
+      //this.initCalendarDate()
+      this.calendarDate = this.formatDate(new Date())
       this.listAppointments()
+      this.minDate = this.formatDate(new Date())
     } else {
       this.upcomingAppointment();
     }

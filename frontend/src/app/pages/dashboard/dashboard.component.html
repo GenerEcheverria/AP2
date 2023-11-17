@@ -34,7 +34,7 @@
             name="calendar"
             [value]="calendarDate"
             (change)="setCalendarDate($event)"
-            min="{{ calendarDate }}"
+            min="{{ minDate }}"
           />
         </div>
         <div class="card" style="margin-top:10px;" *ngIf="appointments.length > 0">
