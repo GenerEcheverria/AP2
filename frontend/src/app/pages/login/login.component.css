@@ -3,6 +3,15 @@
     align-items: center;
     justify-content: center;
     height: 100vh; 
+    background-color: #fff9f9;
+    opacity: 1;
+    background-image:  radial-gradient(#ffd9e5 2px, transparent 2px), radial-gradient(#ffd9e5 2px, #fff9f9 2px);
+    background-size: 80px 80px;
+    background-position: 0 0,40px 40px;
+}
+
+#myIcon{
+  background: #fff;
 }
 
 .rounded-pill {
